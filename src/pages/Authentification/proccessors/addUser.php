@@ -11,9 +11,9 @@
             $roles->setData($_POST['role']);
             $id_role = $roles->getData()['id_role'];
             if ($_POST['role'] == 'Enseignant') {
-                $status = 'Suspendu';
+                $status = 'En Vérification';
             } else if ($_POST['role'] == 'Etudiant') {
-                $status = 'Active';
+                $status = 'Activé';
             }
         }
 

@@ -42,7 +42,7 @@
                             if (messageElement) {
                                 messageElement.remove();
                             }
-                        }, 3000);
+                        }, 6000);
                 </script>';
         }
     ?>

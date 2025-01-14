@@ -60,11 +60,11 @@
         public function connexion() {
             $requite = new Requites();
             $users = $requite->selectWhere('users', 'email', $this->email);
-            $roles = $requite->selectWhere('roles', 'id_role', $users['role']);
+            $roles = $requite->selectWhere('roles', 'id_role', $users['id_role']);
             $this->role = $roles['role'];
 
-            if ($users['status'] == 'Active') {
-                if ($users != NULL) {
+            if ($users != NULL) {
+                if ($users['status'] == 'Activé') {
                     if (password_verify($this->password , $users['password'])) {
                         session_start();
                         $this->id_role = $users['id_role'];
@@ -78,22 +78,21 @@
 
                     } else {
                         $erreur = 'Le mot de pas est inccorect . ';
-                        header("Location: ".$_SERVER['HTTP_REFERER']."?erreur=$erreur");
+                        header("Location: ../connexion.php?erreur=$erreur");
                         exit;
                     }
-                } else {
-                    $erreur = 'Cette Compts n\'existe pas .';
-                    header("Location: ".$_SERVER['HTTP_REFERER']."?erreur=$erreur");
+                } else if ($users['status'] == 'En Vérification') {
+                    $erreur = "Votre compte n'a pas encore été vérifié par l'administrateur, veuillez patienter.";
+                    header("Location: ../connexion.php?erreur=$erreur");
+                    exit;
+                } else if ($users['status'] == 'Suspendu') {
+                    $erreur = "Votre compte a été suspendu. Veuillez patienter, votre compte sera activé prochainement.";
+                    header("Location: ../connexion.php?erreur=$erreur");
                     exit;
                 }
             } else {
-                if ($this->role == 'Enseignant') {
-                    $erreur = "Votre compte n'a pas encore été vérifié par l'administrateur, veuillez patienter.";
-                } else if ($this->role == 'Enseignant') {
-                    $erreur = "Votre compte a été suspendu. Veuillez patienter, votre compte sera activé prochainement.";
-                }
-
-                header("Location: ".$_SERVER['HTTP_REFERER']."?erreur=$erreur");
+                $erreur = 'Cette Compts n\'existe pas .';
+                header("Location: ../connexion.php?erreur=$erreur");
                 exit;
             }
         }
