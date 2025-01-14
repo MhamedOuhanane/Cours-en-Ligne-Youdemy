@@ -126,39 +126,44 @@
                 </div>
             </div>
 
-            <!-- Recent Activities -->
+            <!-- Recent Activities with Top Teachers -->
             <div class="bg-white rounded-xl shadow-sm p-6">
-                <h3 class="text-xl font-semibold mb-4">Activités Récentes</h3>
-                <div class="space-y-4">
-                    <div class="flex items-center py-3 border-b">
-                        <div class="p-3 bg-blue-100 rounded-full mr-4">
-                            <i class="fas fa-user-plus text-blue-500"></i>
+                    <h3 class="text-xl font-semibold mb-4">Top 3 Enseignants</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center py-3 border-b">
+                            <div class="p-3 bg-yellow-100 rounded-full mr-4">
+                                <i class="fas fa-trophy text-yellow-500"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-medium">Sarah Martin</p>
+                                <p class="text-sm text-gray-500">Développement Web - 4.9★ (156 avis)</p>
+                            </div>
+                            <span class="text-green-500 font-bold">1er</span>
                         </div>
-                        <div>
-                            <p class="font-medium">Nouveau compte créé</p>
-                            <p class="text-sm text-gray-500">Il y a 2 heures</p>
+                        <div class="flex items-center py-3 border-b">
+                            <div class="p-3 bg-gray-100 rounded-full mr-4">
+                                <i class="fas fa-medal text-gray-500"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-medium">Jean Dubois</p>
+                                <p class="text-sm text-gray-500">Design UX/UI - 4.8★ (132 avis)</p>
+                            </div>
+                            <span class="text-blue-500 font-bold">2ème</span>
                         </div>
-                    </div>
-                    <div class="flex items-center py-3 border-b">
-                        <div class="p-3 bg-green-100 rounded-full mr-4">
-                            <i class="fas fa-book text-green-500"></i>
-                        </div>
-                        <div>
-                            <p class="font-medium">Nouveau cours publié</p>
-                            <p class="text-sm text-gray-500">Il y a 3 heures</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center py-3">
-                        <div class="p-3 bg-yellow-100 rounded-full mr-4">
-                            <i class="fas fa-star text-yellow-500"></i>
-                        </div>
-                        <div>
-                            <p class="font-medium">Nouvel avis 5 étoiles</p>
-                            <p class="text-sm text-gray-500">Il y a 5 heures</p>
+                        <div class="flex items-center py-3">
+                            <div class="p-3 bg-orange-100 rounded-full mr-4">
+                                <i class="fas fa-award text-orange-500"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-medium">Marie Laurent</p>
+                                <p class="text-sm text-gray-500">Marketing Digital - 4.7★ (98 avis)</p>
+                            </div>
+                            <span class="text-orange-500 font-bold">3ème</span>
                         </div>
                     </div>
                 </div>
             </div>
+
         </main>
     </div>
 
