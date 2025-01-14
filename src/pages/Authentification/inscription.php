@@ -45,7 +45,7 @@
                     <h3 class="text-xl font-semibold text-gray-700 mb-6 text-center">Choisissez votre rôle</h3>
                     <div class="flex justify-center space-x-6">
                         <label class="relative cursor-pointer">
-                            <input type="radio" name="role" value="student" class="peer sr-only" checked>
+                            <input type="radio" name="Etudiant" value="Etudiant" class="peer sr-only" checked>
                             <div class="flex flex-col items-center p-6 border-2 rounded-xl peer-checked:border-blue-600 peer-checked:bg-blue-50 hover:bg-gray-50 transition-all duration-200">
                                 <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3">
                                     <i class="fas fa-user-graduate text-2xl text-blue-600"></i>
@@ -56,7 +56,7 @@
                         </label>
 
                         <label class="relative cursor-pointer">
-                            <input type="radio" name="role" value="teacher" class="peer sr-only">
+                            <input type="radio" name="Enseignant" value="Enseignant" class="peer sr-only">
                             <div class="flex flex-col items-center p-6 border-2 rounded-xl peer-checked:border-blue-600 peer-checked:bg-blue-50 hover:bg-gray-50 transition-all duration-200">
                                 <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3">
                                     <i class="fas fa-chalkboard-teacher text-2xl text-blue-600"></i>
@@ -70,9 +70,9 @@
 
                 <!-- Form Content -->
                 <div class="p-8">
-                    <form class="space-y-8" action="./proccessors/auth.php" method="POST" enctype="multipart/form-data">
+                    <form class="space-y-8" action="./proccessors/addUser.php" method="POST" enctype="multipart/form-data">
                         <!-- Hidden Role Input -->
-                        <input type="hidden" name="user_role" id="user_role" value="student">
+                        <input type="hidden" name="user_role" id="user_role" value="Etudiant">
                         
                         <!-- Grid Layout -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -105,7 +105,7 @@
                             <div class="space-y-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Téléphone</label>
-                                    <input type="tel" name="telephone" placeholder="+33 6 12 34 56 78" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-colors duration-200"/>
+                                    <input type="tel" name="telephone" placeholder="+212 6 12 34 56 78" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-colors duration-200"/>
                                 </div>
 
                                 <div>
@@ -128,7 +128,7 @@
 
                         <!-- Submit Button -->
                         <div>
-                            <button type="submit" name="submitForm" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold text-lg hover:bg-blue-700 transition duration-200">
+                            <button type="submit" name="submitInscr" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold text-lg hover:bg-blue-700 transition duration-200">
                                 Créer mon compte
                             </button>
                         </div>
@@ -145,22 +145,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        
-        document.querySelectorAll('input[name="role"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-
-                document.getElementById('user_role').value = this.value;
-                
-                const teacherFields = document.getElementById('teacher-fields');
-                if (this.value === 'teacher') {
-                    teacherFields.classList.remove('hidden');
-                } else {
-                    teacherFields.classList.add('hidden');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
