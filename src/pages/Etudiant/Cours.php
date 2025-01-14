@@ -13,10 +13,16 @@
         <div class="container mx-auto px-6 py-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <a href="#" class="text-2xl font-bold text-blue-600">Youdemy</a>
+                    <a href="../../" class="text-2xl font-bold text-blue-600">Youdemy</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../../" class="text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="Cours.php" class="text-blue-600">Cours</a>
+                    <a href="Profil.php" class="text-gray-600 hover:text-blue-600">Profil</a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="#" class="text-gray-600 hover:text-blue-600">Retour</a>
+                    <a href="../Authentification/connexion.php" class="text-gray-600 hover:text-blue-600">Se connecter</a>
+                    <a href="../../pages/Authentification/inscription.php" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">S'inscrire</a>
                 </div>
             </div>
         </div>
@@ -77,7 +83,7 @@
                             <i class="fas fa-folder-open mr-2"></i>
                             <span>Développement Web</span>
                         </div>
-                        <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Voir le cours</a>
+                        <a href="./Details.php" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Voir le cours</a>
                     </div>
                 </div>
             </div>

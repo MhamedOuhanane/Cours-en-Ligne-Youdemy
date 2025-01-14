@@ -4,24 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youdemy - Plateforme d'apprentissage en ligne</title>
+    <link
+        rel="shortcut icon"
+        href="./assets/images/logo_icone.png"
+        type="image/png"
+    >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-md">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <a href="#" class="text-2xl font-bold text-blue-600">Youdemy</a>
+    <nav class="bg-white h-[4rem] shadow-md">
+        <div class="container h-full mx-auto px-6 py-3">
+            <div class="flex h-full items-center justify-between">
+                <div class="flex h-full items-center">
+                    <a href="./" class="text-2xl h-full font-bold text-blue-600">
+                        <img src="./assets/images/logo.png" alt="logo du site" class="h-full">
+                    </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-gray-600 hover:text-blue-600">Catalogue</a>
-                    <a href="./pages/Enseignant/CoursEns.php" class="text-gray-600 hover:text-blue-600">Catégories</a>
-                    <a href="#" class="text-gray-600 hover:text-blue-600">Enseignants</a>
+                    <a href="./" class="text-blue-600">Home</a>
+                    <a href="./pages/Etudiant/Cours.php" class="text-gray-600 hover:text-blue-600">Cours</a>
+                    <a href="./pages/Etudiant/Profil.php" class="text-gray-600 hover:text-blue-600">Profil</a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="#" class="text-gray-600 hover:text-blue-600">Se connecter</a>
+                    <a href="./pages/Authentification/connexion.php" class="text-gray-600 hover:text-blue-600">Se connecter</a>
                     <a href="./pages/Authentification/inscription.php" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">S'inscrire</a>
                 </div>
             </div>
@@ -36,12 +43,11 @@
                     <h1 class="text-4xl md:text-5xl font-bold mb-6">Développez vos compétences avec Youdemy</h1>
                     <p class="text-xl mb-8">Accédez à des milliers de cours en ligne dispensés par des experts.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">Commencer</a>
-                        <a href="#" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600">En savoir plus</a>
+                        <a href="./pages/Etudiant/Cours.php" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">Commencer</a>
                     </div>
                 </div>
-                <div class="md:w-1/2">
-                    <img src="/api/placeholder/600/400" alt="Learning" class="rounded-lg shadow-xl">
+                <div class="md:w-1/2 h-full">
+                    <img src="./assets/images/logo_image.webp" alt="Learning" class="rounded-lg h-full object-cover shadow-xl">
                 </div>
             </div>
         </div>
@@ -166,7 +172,7 @@
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold mb-4">Prêt à commencer votre apprentissage ?</h2>
             <p class="text-xl mb-8">Rejoignez des milliers d'apprenants qui ont déjà transformé leur vie avec Youdemy</p>
-            <a href="#" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100">S'inscrire gratuitement</a>
+            <a href="./pages/Authentification/inscription.php" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100">S'inscrire gratuitement</a>
         </div>
     </div>
 

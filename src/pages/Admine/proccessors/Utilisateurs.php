@@ -17,15 +17,30 @@
                 <p class="text-gray-400">Administration</p>
             </div>
             <nav class="mt-8">
-                <a href="#dashboard" onclick="showPage('dashboard')" class="flex items-center px-6 py-3 hover:bg-gray-800 text-blue-500">
+                <a href="../Dashbord.php" class="flex items-center px-6 py-3 hover:bg-gray-800">
                     <i class="fas fa-tachometer-alt w-6"></i>
                     <span>Tableau de bord</span>
                 </a>
-                <a href="#users" onclick="showPage('users')" class="flex items-center px-6 py-3 hover:bg-gray-800">
+                <a href="./Utilisateurs.php" class="flex items-center px-6 py-3 hover:bg-gray-800 text-blue-500">
                     <i class="fas fa-users w-6"></i>
                     <span>Utilisateurs</span>
                 </a>
-                <!-- Autres liens du menu -->
+                <a href="./Cours.php" class="flex items-center px-6 py-3 hover:bg-gray-800">
+                    <i class="fas fa-book w-6"></i>
+                    <span>Cours</span>
+                </a>
+                <a href="./Catégories.php" class="flex items-center px-6 py-3 hover:bg-gray-800">
+                    <i class="fas fa-folder w-6"></i>
+                    <span>Catégories</span>
+                </a>
+                <a href="./Tags.php" class="flex items-center px-6 py-3 hover:bg-gray-800">
+                    <i class="fas fa-tags w-6"></i>
+                    <span>Tags</span>
+                </a>
+                <a href="./Enseignants.php" class="flex items-center px-6 py-3 hover:bg-gray-800">
+                    <i class="fas fa-chalkboard-teacher w-6"></i>
+                    <span>Enseignants</span>
+                </a>
             </nav>
         </aside>
 
@@ -51,7 +66,7 @@
             <div id="dashboard" class="page">
                 
             <!-- Users Page -->
-            <div id="users" class="page hidden">
+            <div id="users" class="page">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- User Card 1 -->
                     <div class="bg-white rounded-xl shadow-sm p-6">
@@ -66,14 +81,14 @@
                             <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Enseignant</span>
                         </div>
                         <div class="flex gap-2">
-                            <button class="flex-1 bg-green-500 text-white px-3 py-2 rounded-lg hover:bg-green-600">
-                                <i class="fas fa-check mr-2"></i>Activer
+                            <button class="flex-1 bg-green-500 text-white rounded-lg hover:bg-green-600">
+                                <i class="fas fa-check"></i>
                             </button>
-                            <button class="flex-1 bg-yellow-500 text-white px-3 py-2 rounded-lg hover:bg-yellow-600">
-                                <i class="fas fa-pause mr-2"></i>Suspendre
+                            <button class="flex-1 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">
+                                <i class="fas fa-pause"></i>
                             </button>
-                            <button class="flex-1 bg-red-500 text-white px-3 py-2 rounded-lg hover:bg-red-600">
-                                <i class="fas fa-trash mr-2"></i>Supprimer
+                            <button class="flex-1 bg-red-500 text-white rounded-lg hover:bg-red-600">
+                                <i class="fas fa-ban"></i>
                             </button>
                         </div>
                     </div>
@@ -91,14 +106,14 @@
                             <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Étudiant</span>
                         </div>
                         <div class="flex gap-2">
-                            <button class="flex-1 bg-green-500 text-white px-3 py-2 rounded-lg hover:bg-green-600">
-                                <i class="fas fa-check mr-2"></i>Activer
+                            <button class="flex-1 bg-green-500 text-white rounded-lg hover:bg-green-600">
+                                <i class="fas fa-check"></i>
                             </button>
-                            <button class="flex-1 bg-yellow-500 text-white px-3 py-2 rounded-lg hover:bg-yellow-600">
-                                <i class="fas fa-pause mr-2"></i>Suspendre
+                            <button class="flex-1 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">
+                                <i class="fas fa-pause"></i>
                             </button>
-                            <button class="flex-1 bg-red-500 text-white px-3 py-2 rounded-lg hover:bg-red-600">
-                                <i class="fas fa-trash mr-2"></i>Supprimer
+                            <button class="flex-1 bg-red-500 text-white rounded-lg hover:bg-red-600">
+                                <i class="fas fa-ban"></i>
                             </button>
                         </div>
                     </div>
@@ -116,14 +131,14 @@
                             <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Étudiant</span>
                         </div>
                         <div class="flex gap-2">
-                            <button class="flex-1 bg-green-500 text-white px-3 py-2 rounded-lg hover:bg-green-600">
-                                <i class="fas fa-check mr-2"></i>Activer
+                            <button class="flex-1 bg-green-500 text-white rounded-lg hover:bg-green-600">
+                                <i class="fas fa-check"></i>
                             </button>
-                            <button class="flex-1 bg-yellow-500 text-white px-3 py-2 rounded-lg hover:bg-yellow-600">
-                                <i class="fas fa-pause mr-2"></i>Suspendre
+                            <button class="flex-1 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">
+                                <i class="fas fa-pause"></i>
                             </button>
-                            <button class="flex-1 bg-red-500 text-white px-3 py-2 rounded-lg hover:bg-red-600">
-                                <i class="fas fa-trash mr-2"></i>Supprimer
+                            <button class="flex-1 bg-red-500 text-white rounded-lg hover:bg-red-600">
+                                <i class="fas fa-ban"></i>
                             </button>
                         </div>
                     </div>

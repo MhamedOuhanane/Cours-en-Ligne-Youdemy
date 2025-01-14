@@ -17,27 +17,27 @@
                 <p class="text-gray-400">Administration</p>
             </div>
             <nav class="mt-8">
-                <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-800 text-blue-500">
+                <a href="Dashbord.php" class="flex items-center px-6 py-3 hover:bg-gray-800 text-blue-500">
                     <i class="fas fa-tachometer-alt w-6"></i>
                     <span>Tableau de bord</span>
                 </a>
-                <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-800">
+                <a href="./proccessors/Utilisateurs.php" class="flex items-center px-6 py-3 hover:bg-gray-800">
                     <i class="fas fa-users w-6"></i>
                     <span>Utilisateurs</span>
                 </a>
-                <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-800">
+                <a href="./proccessors/Cours.php" class="flex items-center px-6 py-3 hover:bg-gray-800">
                     <i class="fas fa-book w-6"></i>
                     <span>Cours</span>
                 </a>
-                <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-800">
+                <a href="./proccessors/Catégories.php" class="flex items-center px-6 py-3 hover:bg-gray-800">
                     <i class="fas fa-folder w-6"></i>
                     <span>Catégories</span>
                 </a>
-                <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-800">
+                <a href="./proccessors/Tags.php" class="flex items-center px-6 py-3 hover:bg-gray-800">
                     <i class="fas fa-tags w-6"></i>
                     <span>Tags</span>
                 </a>
-                <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-800">
+                <a href="./proccessors/Enseignants.php" class="flex items-center px-6 py-3 hover:bg-gray-800">
                     <i class="fas fa-chalkboard-teacher w-6"></i>
                     <span>Enseignants</span>
                 </a>

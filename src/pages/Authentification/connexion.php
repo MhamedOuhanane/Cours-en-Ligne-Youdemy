@@ -83,7 +83,7 @@
 
         <!-- Section Image -->
         <div class="w-1/2 shadow-2xl">
-            <img class="object-fill w-full h-screen hidden md:block" src="../../assets/images//logo_image.webp">
+            <img class="object-fill w-full h-screen hidden md:block" src="../../assets/images/connexion-image.jpg">
         </div>
     </div>
     
