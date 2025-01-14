@@ -28,4 +28,24 @@
         //         }
         //     }
         // }
+
+        public function setData($role) {
+            $requite = new Requites();
+            $this->role = $role;
+            $Array = $requite->selectWhere('roles', 'role', $this->role);
+            if ($Array) {
+                $this->id_role = $Array['id_role'];
+            } else {
+                $this->id_role = null;
+            }
+        }
+
+        public function getData() {
+            return [
+                'id_role' => $this->id_role,
+                'role' => $this->role
+            ];
+        }
+
+
     }

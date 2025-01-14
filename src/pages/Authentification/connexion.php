@@ -56,7 +56,7 @@
                     <img src="../../assets/images/logo.png" alt="Logo du site" class="h-12 w-17">
                 </a>
                 <div class="flex items-center space-x-4">
-                    <a href="./pages/Authentification/connexion.php" class="text-gray-600 border-[1px] border-red-600 rounded-md py-1 px-4  hover:text-red-600">Retour</a>
+                    <a href="../../index.php" class="text-gray-600 border-[1px] border-red-600 rounded-md py-1 px-4  hover:text-red-600">Retour</a>
                 </div>
             </div>
 
@@ -75,7 +75,7 @@
                         <span class="hidden text-red-500">Mot de passe incorrect</span>
                     </div>
     
-                    <input type="submit" value="Se connecter" class="bg-blue-600 text-white font-bold text-lg hover:bg-blue-700 p-2 mt-8 rounded transition duration-200">
+                    <input type="submit" name="" value="Se connecter" class="bg-blue-600 text-white font-bold text-lg hover:bg-blue-700 p-2 mt-8 rounded transition duration-200">
                 </form>
                 <div class="text-center pt-12 pb-12">
                     <p>Vous n'avez pas de compte ? <a href="inscription.php" class="text-blue-600 font-semibold hover:text-blue-700">Inscrivez-vous ici.</a></p>

@@ -23,7 +23,7 @@
                     </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="./pages/Authentification/connexion.php" class="text-gray-600 border-[1px] border-red-600 rounded-md py-1 px-4  hover:text-red-600">Retour</a>
+                    <a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="text-gray-600 border-[1px] border-red-600 rounded-md py-1 px-4  hover:text-red-600">Retour</a>
                 </div>
             </div>
         </div>
@@ -40,37 +40,38 @@
                     <p class="text-blue-100">Commencez votre parcours d'apprentissage dès aujourd'hui</p>
                 </div>
 
-                <!-- Role Selection -->
-                <div class="p-8 border-b border-gray-200">
-                    <h3 class="text-xl font-semibold text-gray-700 mb-6 text-center">Choisissez votre rôle</h3>
-                    <div class="flex justify-center space-x-6">
-                        <label class="relative cursor-pointer">
-                            <input type="radio" name="Etudiant" value="Etudiant" class="peer sr-only" checked>
-                            <div class="flex flex-col items-center p-6 border-2 rounded-xl peer-checked:border-blue-600 peer-checked:bg-blue-50 hover:bg-gray-50 transition-all duration-200">
-                                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3">
-                                    <i class="fas fa-user-graduate text-2xl text-blue-600"></i>
-                                </div>
-                                <h4 class="font-semibold text-gray-800">Étudiant</h4>
-                                <p class="text-sm text-gray-500 text-center mt-2">Accédez à des milliers de cours et développez vos compétences</p>
-                            </div>
-                        </label>
-
-                        <label class="relative cursor-pointer">
-                            <input type="radio" name="Enseignant" value="Enseignant" class="peer sr-only">
-                            <div class="flex flex-col items-center p-6 border-2 rounded-xl peer-checked:border-blue-600 peer-checked:bg-blue-50 hover:bg-gray-50 transition-all duration-200">
-                                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3">
-                                    <i class="fas fa-chalkboard-teacher text-2xl text-blue-600"></i>
-                                </div>
-                                <h4 class="font-semibold text-gray-800">Enseignant</h4>
-                                <p class="text-sm text-gray-500 text-center mt-2">Partagez vos connaissances et créez des cours en ligne</p>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
+                
                 <!-- Form Content -->
                 <div class="p-8">
                     <form class="space-y-8" action="./proccessors/addUser.php" method="POST" enctype="multipart/form-data">
+                        <!-- Role Selection -->
+                        <div class="p-8 border-b border-gray-200">
+                            <h3 class="text-xl font-semibold text-gray-700 mb-6 text-center">Choisissez votre rôle</h3>
+                            <div class="flex justify-center space-x-6">
+                                <label class="relative w-1/2 cursor-pointer">
+                                    <input type="radio" name="role" value="Etudiant" class="peer sr-only" checked>
+                                    <div class="flex flex-col items-center p-6 border-2 rounded-xl peer-checked:border-blue-600 peer-checked:bg-blue-50 hover:bg-gray-50 transition-all duration-200">
+                                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3">
+                                            <i class="fas fa-user-graduate text-2xl text-blue-600"></i>
+                                        </div>
+                                        <h4 class="font-semibold text-gray-800">Étudiant</h4>
+                                        <p class="text-sm text-gray-500 text-center mt-2">Accédez à des milliers de cours et développez vos compétences</p>
+                                    </div>
+                                </label>
+        
+                                <label class="relative w-1/2 cursor-pointer">
+                                    <input type="radio" name="role" value="Enseignant" class="peer sr-only">
+                                    <div class="flex flex-col items-center p-6 border-2 rounded-xl peer-checked:border-blue-600 peer-checked:bg-blue-50 hover:bg-gray-50 transition-all duration-200">
+                                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3">
+                                            <i class="fas fa-chalkboard-teacher text-2xl text-blue-600"></i>
+                                        </div>
+                                        <h4 class="font-semibold text-gray-800">Enseignant</h4>
+                                        <p class="text-sm text-gray-500 text-center mt-2">Partagez vos connaissances et créez des cours en ligne</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
                         <!-- Hidden Role Input -->
                         <input type="hidden" name="user_role" id="user_role" value="Etudiant">
                         
