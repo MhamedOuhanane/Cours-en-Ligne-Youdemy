@@ -17,7 +17,7 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#" class="text-gray-600 hover:text-blue-600">Catalogue</a>
-                    <a href="#" class="text-gray-600 hover:text-blue-600">Catégories</a>
+                    <a href="./pages/Enseignant/CoursEns.php" class="text-gray-600 hover:text-blue-600">Catégories</a>
                     <a href="#" class="text-gray-600 hover:text-blue-600">Enseignants</a>
                 </div>
                 <div class="flex items-center space-x-4">
