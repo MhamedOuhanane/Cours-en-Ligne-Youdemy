@@ -63,3 +63,11 @@ CREATE TABLE inscriptionCours(
     FOREIGN KEY (id_cour) REFERENCES cours(id_cour) on DELETE CASCADE,
     FOREIGN KEY (id_user) REFERENCES users(id_user) on DELETE CASCADE
 );
+
+CREATE VIEW listecours AS 
+SELECT c.* ,g.catalogue_titre, g.catalogue_contenu, u.username, u.image, t.*
+FROM cours c
+JOIN catalogues g ON c.id_catalogue = g.id_catalogue
+JOIN users u ON u.id_user = c.id_user 
+JOIN tagcours tc ON tc.id_cour = c.id_cour
+left JOIN tags t ON t.id_tag = tc.id_tag
