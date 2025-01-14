@@ -13,6 +13,34 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
+
+    <!-- Afficher les messages et les erreur d'insertion -->
+    <?php
+        if (isset($_GET)) {
+            if (isset($_GET['erreur'])) {
+                echo '
+                        <div id="SwitAlair" class="absolute w-[28rem] right-[-28rem] p-5 my-5 border-[1px] bg-red-200 bg-opacity-90 border-red-400 rounded-lg transition-all duration-700 ease-in-out">
+                            <span class="xbg-inherit ml-5 text-xl cursor-pointer" onclick="this.parentElement.remove();">&times;</span>
+                            <strong>Erreur!</strong> ' . htmlspecialchars($_GET['erreur']) . '
+                        </div>';
+            }
+
+
+            echo    '<script>
+                        let messageElement = document.getElementById("SwitAlair");
+                        if (messageElement) {
+                            messageElement.style.right = "0"; 
+                        }
+                        
+                        setTimeout(function() {
+                            if (messageElement) {
+                                messageElement.remove();
+                            }
+                        }, 3000);
+                </script>';
+        }
+    ?>
+
     <!-- Navigation -->
     <nav class="bg-white h-[4rem] shadow-md">
         <div class="container h-full mx-auto px-6 py-3">
@@ -23,7 +51,7 @@
                     </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="text-gray-600 border-[1px] border-red-600 rounded-md py-1 px-4  hover:text-red-600">Retour</a>
+                    <a href="<?= (isset($_GET['erreur'])) ? './connexion.php' : $_SERVER['HTTP_REFERER'] ?>" class="text-gray-600 border-[1px] border-red-600 rounded-md py-1 px-4  hover:text-red-600">Retour</a>
                 </div>
             </div>
         </div>

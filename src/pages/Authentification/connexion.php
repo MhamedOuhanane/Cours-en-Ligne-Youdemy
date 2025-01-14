@@ -75,7 +75,7 @@
                         <span class="hidden text-red-500">Mot de passe incorrect</span>
                     </div>
     
-                    <input type="submit" name="" value="Se connecter" class="bg-blue-600 text-white font-bold text-lg hover:bg-blue-700 p-2 mt-8 rounded transition duration-200">
+                    <input type="submit" name="submitConne" value="Se connecter" class="bg-blue-600 text-white font-bold text-lg hover:bg-blue-700 p-2 mt-8 rounded transition duration-200">
                 </form>
                 <div class="text-center pt-12 pb-12">
                     <p>Vous n'avez pas de compte ? <a href="inscription.php" class="text-blue-600 font-semibold hover:text-blue-700">Inscrivez-vous ici.</a></p>
