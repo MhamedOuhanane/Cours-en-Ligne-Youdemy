@@ -30,10 +30,36 @@ CREATE TABLE catalogues(
 CREATE TABLE cours(
     id_cour int PRIMARY KEY AUTO_INCREMENT,
     cours_titre varchar(225) NOT NULL,
-    cours_contenu varchar(225) NOT NULL,
-    video text NULL,
+    description text NULL,
+    cours_contenu text NOT NULL,
     id_user int NOT NULL,
     id_catalogue int NOT NULL,
     FOREIGN KEY (id_catalogue) REFERENCES catalogues(id_catalogue) ON DELETE CASCADE,
     FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE
+);
+
+ALTER TABLE cours 
+ADD createDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER cours_contenu;
+
+CREATE TABLE tags(
+    id_tag int PRIMARY KEY AUTO_INCREMENT,
+    tag_Titre varchar(225) NOT NULL
+);
+
+
+CREATE TABLE tagCours(
+    id_tag int NOT NULL,
+    id_cour int NOT NULL,
+    FOREIGN KEY (id_cour) REFERENCES cours(id_cour) on DELETE CASCADE,
+    FOREIGN KEY (id_tag) REFERENCES tags(id_tag) on DELETE CASCADE
+);
+
+
+CREATE TABLE inscriptionCours(
+    id_inscription int PRIMARY KEY AUTO_INCREMENT,
+    date_inscret datetime DEFAULT CURRENT_TIMESTAMP,
+    id_user int NOT null,
+    id_cour int NOT null, 
+    FOREIGN KEY (id_cour) REFERENCES cours(id_cour) on DELETE CASCADE,
+    FOREIGN KEY (id_user) REFERENCES users(id_user) on DELETE CASCADE
 );
