@@ -77,48 +77,90 @@
         </div>
     </div>
 
-    <!-- Popular Courses -->
+    <!-- Popular Courses section becomes Catalogue Section -->
     <div class="py-16 bg-gray-50">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">Cours populaires</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Catalogue des cours</h2>
+            
+            <!-- Search and Filter -->
+            <div class="mb-8 flex flex-col md:flex-row gap-4 justify-between">
+                <div class="relative flex-1 max-w-lg">
+                    <input type="search" 
+                        class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" 
+                        placeholder="Rechercher dans le catalogue...">
+                    <div class="absolute left-3 top-2.5 text-gray-400">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                
+                <select class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                    <option value="">Trier par</option>
+                    <option value="title">Titre</option>
+                    <option value="date">Date</option>
+                </select>
+            </div>
+
+            <!-- Catalogue Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <!-- Carte 1 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="/api/placeholder/400/200" alt="Course" class="w-full h-48 object-cover">
+                    <img src="/api/placeholder/400/200" alt="Catalogue 1" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Développement Web Full-Stack</h3>
-                        <p class="text-gray-600 mb-4">Par Marie Laurent</p>
+                        <span class="text-sm text-gray-500 mb-2 block">Catalogue #1</span>
+                        <h3 class="text-xl font-semibold mb-2">Développement Web</h3>
+                        <p class="text-gray-600 mb-4">Une collection complète de cours sur le développement web, du frontend au backend.</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-blue-600 font-semibold">49,99 €</span>
-                            <a href="#" class="text-blue-600 hover:text-blue-700">En savoir plus</a>
+                            <span class="text-blue-600 font-semibold">12 cours</span>
+                            <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Voir le catalogue</a>
                         </div>
                     </div>
                 </div>
+
+                <!-- Carte 2 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="/api/placeholder/400/200" alt="Course" class="w-full h-48 object-cover">
+                    <img src="/api/placeholder/400/200" alt="Catalogue 2" class="w-full h-48 object-cover">
                     <div class="p-6">
+                        <span class="text-sm text-gray-500 mb-2 block">Catalogue #2</span>
                         <h3 class="text-xl font-semibold mb-2">Marketing Digital</h3>
-                        <p class="text-gray-600 mb-4">Par Pierre Dubois</p>
+                        <p class="text-gray-600 mb-4">Maîtrisez les outils et stratégies du marketing numérique moderne.</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-blue-600 font-semibold">39,99 €</span>
-                            <a href="#" class="text-blue-600 hover:text-blue-700">En savoir plus</a>
+                            <span class="text-blue-600 font-semibold">8 cours</span>
+                            <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Voir le catalogue</a>
                         </div>
                     </div>
                 </div>
+
+                <!-- Carte 3 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="/api/placeholder/400/200" alt="Course" class="w-full h-48 object-cover">
+                    <img src="/api/placeholder/400/200" alt="Catalogue 3" class="w-full h-48 object-cover">
                     <div class="p-6">
+                        <span class="text-sm text-gray-500 mb-2 block">Catalogue #3</span>
                         <h3 class="text-xl font-semibold mb-2">Data Science</h3>
-                        <p class="text-gray-600 mb-4">Par Sophie Martin</p>
+                        <p class="text-gray-600 mb-4">De l'analyse de données à l'intelligence artificielle, tout pour devenir data scientist.</p>
                         <div class="flex items-center justify-between">
-                            <span class="text-blue-600 font-semibold">59,99 €</span>
-                            <a href="#" class="text-blue-600 hover:text-blue-700">En savoir plus</a>
+                            <span class="text-blue-600 font-semibold">15 cours</span>
+                            <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Voir le catalogue</a>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center items-center space-x-2">
+                <button class="px-4 py-2 border rounded-lg hover:bg-gray-100 disabled:opacity-50" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">1</button>
+                <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">2</button>
+                <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">3</button>
+                <span class="px-4 py-2">...</span>
+                <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">10</button>
+                <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
         </div>
     </div>
-
     <!-- Call to Action -->
     <div class="bg-blue-600 text-white py-16">
         <div class="container mx-auto px-6 text-center">
