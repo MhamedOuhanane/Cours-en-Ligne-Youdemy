@@ -6,7 +6,7 @@
     <title>Youdemy - Connexion</title>
     <link
         rel="shortcut icon"
-        href="../../assets/images/Logo-site.png"
+        href="../../assets/images/logo_icone.png"
         type="image/png"
     />
     <!-- Tailwind -->
@@ -51,15 +51,18 @@
         <!-- Section Connexion -->
         <div class="w-full md:w-1/2 flex flex-col">
 
-            <div class="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-12">
-                <a href="../../" class="bg-blue-600 text-white font-bold text-xl p-4 rounded">
-                    <img src="../../assets/images/Logo-site.png" alt="Logo du site" class="h-12 w-17">
+            <div class=" flex justify-between pt-12 md:px-12">
+                <a href="../../index.php">
+                    <img src="../../assets/images/logo.png" alt="Logo du site" class="h-12 w-17">
                 </a>
+                <div class="flex items-center space-x-4">
+                    <a href="./pages/Authentification/connexion.php" class="text-gray-600 border-[1px] border-red-600 rounded-md py-1 px-4  hover:text-red-600">Retour</a>
+                </div>
             </div>
 
-            <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
+            <div class="flex flex-col justify-center md:justify-start pt-8 md:pt-4 px-8 md:px-24 lg:px-32">
                 <p class="text-center text-3xl">Bienvenue.</p>
-                <form class="flex flex-col pt-3 md:pt-8" action="./proccessors/auth.php" method="POST">
+                <form class="flex flex-col pt-3 md:pt-4" action="./proccessors/auth.php" method="POST">
                     <div class="flex flex-col pt-4">
                         <label for="email" class="text-lg">Email</label>
                         <input type="email" name="emailConnex" id="email" placeholder="votre@email.com" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500">

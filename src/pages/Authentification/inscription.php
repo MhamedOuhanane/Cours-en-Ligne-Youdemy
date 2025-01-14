@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youdemy - Inscription</title>
+    <link
+        rel="shortcut icon"
+        href="../../assets/images/logo_icone.png"
+        type="image/png"
+    >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-md">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <a href="#" class="text-2xl font-bold text-blue-600">Youdemy</a>
+    <nav class="bg-white h-[4rem] shadow-md">
+        <div class="container h-full mx-auto px-6 py-3">
+            <div class="flex h-full items-center justify-between">
+                <div class="flex h-full items-center">
+                    <a href="../../index.php" class="text-2xl h-full font-bold">
+                        <img src="../../assets/images/logo.png" alt="logo du site" class="h-full">
+                    </a>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-gray-600 hover:text-blue-600">Catalogue</a>
-                    <a href="#" class="text-gray-600 hover:text-blue-600">Catégories</a>
-                    <a href="#" class="text-gray-600 hover:text-blue-600">Enseignants</a>
+                <div class="flex items-center space-x-4">
+                    <a href="./pages/Authentification/connexion.php" class="text-gray-600 border-[1px] border-red-600 rounded-md py-1 px-4  hover:text-red-600">Retour</a>
                 </div>
             </div>
         </div>
