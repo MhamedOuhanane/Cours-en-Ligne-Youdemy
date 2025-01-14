@@ -8,7 +8,7 @@ class Database {
         private static $instance;
         private $connection;
 
-        public function __construct() {
+        private function __construct() {
             $this->connection = new PDO("mysqli:host=$this->host,dbname=$this->dbName",$this->username, $this->password);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
