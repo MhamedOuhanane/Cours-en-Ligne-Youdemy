@@ -116,17 +116,10 @@
 
             <!-- Pagination -->
             <div class="flex justify-center items-center space-x-2">
-                <button class="px-4 py-2 border rounded-lg hover:bg-gray-100 disabled:opacity-50" disabled>
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">1</button>
-                <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">2</button>
-                <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">3</button>
-                <span class="px-4 py-2">...</span>
-                <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">10</button>
-                <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <?php 
+                    $catalogue = new Catalogues();
+                    $catalogue->pagination(3);
+                ?>
             </div>
         </div>
     </div>

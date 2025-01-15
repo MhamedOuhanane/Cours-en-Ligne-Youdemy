@@ -1,0 +1,30 @@
+<?php
+    spl_autoload_register(function($class){
+        require $class .".class.php";
+    });
+
+    class Catalogues {
+        protected $id_catalogue;
+        private $catalogue_titre;
+        private $catalogue_contenu;
+        private $catalogue_image;
+
+        public function setData($name, $value) {
+            $this->$name = $value;
+        }
+        
+        public function getData($name) {
+            return $this->$name;
+        }
+
+        public function pagination($totalPage) {
+            $rqt = new Requites();
+            $countCata = $rqt->selectCount('catalogues');
+            $btnpage = ceil($countCata/$totalPage);
+            for ($i=1; $i < $btnpage+1; $i++) { 
+                $stylePg = ($i == 1) ? 'bg-blue-600 text-white' : 'hover:bg-gray-100'; 
+                echo '<input type="radio" name="pagination" value="'. $i .'" class="hidden">
+                        <label for="page1" class="px-4 py-2 border rounded-lg '. $stylePg .' cursor-pointer">'. $i .'</label>';
+            }
+        }
+    }
