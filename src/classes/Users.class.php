@@ -16,11 +16,12 @@
 
         public function __construct($ArrayUser)
         {
+            $this->id_user = $ArrayUser['id_user'] ?? null;
             $this->username = $ArrayUser['username'] ?? null;
             $this->email = $ArrayUser['email'] ?? null;
             $this->ville = $ArrayUser['ville'] ?? null;
             $this->telephone = $ArrayUser['telephone'] ?? null;
-            $this->image = base64_encode($ArrayUser['image']) ?? null;
+            $this->image = $ArrayUser['image'] ?? null;
             $this->password = $ArrayUser['password'] ?? null;
             $this->status = $ArrayUser['status'] ?? null;
             $this->id_role = $ArrayUser['id_role'] ?? null;
