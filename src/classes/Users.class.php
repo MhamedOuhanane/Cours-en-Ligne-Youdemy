@@ -100,8 +100,17 @@
 
         public function toStringUser() {
             if ($this->role != 'Admine' && $this->status != 'En Vérification') {
-                $btnActive = ($this->status == 'Activé') ? 'btnStatusFible cursor-not-allowed bg-gray-500' : 'btnStatus bg-green-500 text-white hover:bg-green-600';
-                $btnSuspendu = ($this->status == 'Suspendu') ? 'btnStatusFible cursor-not-allowed bg-gray-500' : 'btnStatus bg-yellow-500 text-white hover:bg-yellow-600';
+                $btnActive =  'cursor-not-allowed bg-gray-500';
+                $btnSuspendu = 'cursor-not-allowed bg-gray-500';
+                $urlA = '';
+                $urlS = '';
+                if ($this->status == 'Activé') {
+                    $btnActive =  'bg-green-500 text-white hover:bg-green-600';
+                    $urlS = 'pointer-events-none';
+                } else if ($this->status == 'Suspendu') {
+                    $btnSuspendu = 'bg-yellow-500 text-white hover:bg-yellow-600';
+                    $urlA = 'pointer-events-none';
+                }
 
                 $styleUser = ($this->role == 'Etudiant') ? 'bg-purple-100 text-purple-600' : 'bg-blue-100 text-blue-600';
 
@@ -117,15 +126,21 @@
                                 <p class="text-gray-500 text-sm font-bold">'. htmlspecialchars($this->ville) .'</p>
                             </div>
                             <div class="flex gap-2">
-                                <button data-iduser="'. htmlspecialchars($this->id_user) .'" data-status="Activé" class="'. $btnActive .' flex-1 rounded-lg">
-                                    <i class="fas fa-check"></i>
-                                </button>
-                                <button data-iduser="'. htmlspecialchars($this->id_user) .'" data-status="Suspendu" class="'. $btnSuspendu .' flex-1 rounded-lg">
-                                    <i class="fas fa-pause "></i>
-                                </button>
-                                <button data-iduser="'. htmlspecialchars($this->id_user) .'" data-status="Refuse" class="btnStatus flex-1 bg-red-500 text-white rounded-lg hover:bg-red-600">
-                                    <i class="fas fa-ban "></i>
-                                </button>
+                                <a href="./crud/gestionUser.php?idUser='. htmlspecialchars($this->id_user) .'&status=Activé" class="flex-1 '.htmlspecialchars($urlA).'">
+                                    <button class="w-full '. $btnActive .' flex-1 rounded-lg">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </a>
+                                <a href="./crud/gestionUser.php?idUser='. htmlspecialchars($this->id_user) .'&status=Suspendu" class="flex-1  '.htmlspecialchars($urlS).'">
+                                    <button class="w-full '. $btnSuspendu .' rounded-lg">
+                                        <i class="fas fa-pause "></i>
+                                    </button>
+                                </a>
+                                <a href="./crud/gestionUser.php?idUser='. htmlspecialchars($this->id_user) .'&status=ban" class="flex-1 ">
+                                    <button class="w-full flex-1 bg-red-500 text-white rounded-lg hover:bg-red-600">
+                                        <i class="fas fa-ban "></i>
+                                    </button>
+                                </a>
                             </div>
                         </div>';
             }

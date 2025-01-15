@@ -22,8 +22,12 @@
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <aside class="w-64 bg-gray-900 text-white fixed h-full">
+            <div class="w-full bg-white flex h-[4rem] items-center border-r-2 border-black">
+                <a href="./" class="text-2xl h-full font-bold text-blue-600">
+                    <img src="../../../assets/images/logo.png" alt="logo du site" class="h-full">
+                </a>
+            </div>
             <div class="p-6 border-b border-gray-800">
-                <h1 class="text-2xl font-bold text-blue-500">Youdemy</h1>
                 <p class="text-gray-400">Administration</p>
             </div>
             <nav class="mt-8">
