@@ -4,7 +4,7 @@
     });
 
     class Enseignants extends Users {
-        public function toStringUser() {
+        function toStringUser() {
             if ($this->status == 'En Vérification') {
                 echo '<div class="enseignant bg-white rounded-xl shadow-lg p-6 hover:scale-[1.01]">
                             <div class="flex flex-col items-center mb-4">

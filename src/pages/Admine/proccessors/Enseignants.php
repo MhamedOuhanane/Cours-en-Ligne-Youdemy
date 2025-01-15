@@ -80,7 +80,7 @@
                     <!-- les cartes des Enseignants -->
                     <?php
                         $usersEn = $requite->selectAll('users', 'id_role', $role->getData()['id_role']);
-                        if ($usersEn) {
+                        if ($usersEn != []) {
                             foreach($usersEn as $enseign) {
                                 $Enseignant = new Enseignants($enseign);
                                 $Enseignant->toStringUser();

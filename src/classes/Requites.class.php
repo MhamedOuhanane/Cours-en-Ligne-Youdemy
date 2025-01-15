@@ -39,8 +39,13 @@ use function PHPSTORM_META\type;
             return $result->execute();
         }
 
-        public function selectAll($table, $columnName1 = null, $columnValue1 = null) {
-            $this->sql = "SELECT * FROM $table";
+        public function selectAll($table, $columnName1 = null, $columnValue1 = null, $tableJoin1 = null, $conditionJoin1 = null) {
+            $this->sql = "SELECT * FROM $table ";
+
+            if ($tableJoin1 != null && $conditionJoin1 != null) {
+                $this->sql .= " JOIN roles r ON $table.$conditionJoin1 = r.$conditionJoin1";
+            }
+
             $this->data = $this->dbcon->query($this->sql);
 
             if ($columnName1 != null && $columnValue1 != null) {
