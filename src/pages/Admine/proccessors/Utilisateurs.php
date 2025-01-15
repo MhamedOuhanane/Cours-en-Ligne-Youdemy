@@ -89,5 +89,7 @@
             </div>
         </main>
     </div>
+
+    <script src="../../../assets/js/utilisateurs.js"></script>
 </body>
 </html>

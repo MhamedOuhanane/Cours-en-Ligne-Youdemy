@@ -100,9 +100,12 @@
 
         public function toStringUser() {
             if ($this->role != 'Admine' && $this->status != 'En Vérification') {
-                $active = ($this->status == 'Activé') ? 'btnStatus' : ' cursor-not-allowed';
-                $suspendu = ($this->status == 'Suspendu') ? 'btnStatus' : ' cursor-not-allowed';
-                echo '<div class="bg-white rounded-xl shadow-lg p-6 hover:scale-[1.01]">
+                $btnActive = ($this->status == 'Activé') ? 'btnStatusFible cursor-not-allowed bg-gray-500' : 'btnStatus bg-green-500 text-white hover:bg-green-600';
+                $btnSuspendu = ($this->status == 'Suspendu') ? 'btnStatusFible cursor-not-allowed bg-gray-500' : 'btnStatus bg-yellow-500 text-white hover:bg-yellow-600';
+
+                $styleUser = ($this->role == 'Etudiant') ? 'bg-purple-100 text-purple-600' : 'bg-blue-100 text-blue-600';
+
+                echo '<div class="utilisateurs bg-white rounded-xl shadow-lg p-6 hover:scale-[1.01]">
                             <div class="flex flex-col items-center mb-4">
                                 <img src="data:image/png;base64,'. base64_encode($this->image) .'" alt="'. htmlspecialchars($this->role) .'" class="w-36 rounded-full mr-4">
                                 <h4 class="font-bold">'. htmlspecialchars($this->username) .'</h4>
@@ -110,21 +113,18 @@
                                 <p class="text-gray-500 text-sm"><span class="font-bold">Téle: </span> '. htmlspecialchars($this->telephone) .'</p>
                             </div>
                             <div class="flex justify-between items-center mr-3 mb-4">
-                                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">'. htmlspecialchars($this->role) .'</span>
+                                <span class="px-3 py-1 '. $styleUser .' rounded-full text-sm">'. htmlspecialchars($this->role) .'</span>
                                 <p class="text-gray-500 text-sm font-bold">'. htmlspecialchars($this->ville) .'</p>
                             </div>
-                            <div class="flex gap-2">';
-                        if ($this->status == 'Suspendu') {
-                            echo '<button data-iduser="'. htmlspecialchars($this->id_user) .'" data-status="Activé" class="btnStatus flex-1 bg-green-500 text-white rounded-lg hover:bg-green-600">
-                                    <i class="fas fa-check mr-2"></i>Activé
-                                </button>';
-                        } else if ($this->status == 'Activé') {
-                            echo '<button data-iduser="'. htmlspecialchars($this->id_user) .'" data-status="Suspendu" class="btnStatus flex-1 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">
-                                    <i class="fas fa-pause mr-2"></i>Suspendu
-                                </button>';
-                        }
-                            echo '<button data-iduser="'. htmlspecialchars($this->id_user) .'" data-status="Refuse" class="btnStatus flex-1 bg-red-500 text-white rounded-lg hover:bg-red-600">
-                                    <i class="fas fa-ban mr-2"></i>Ban
+                            <div class="flex gap-2">
+                                <button data-iduser="'. htmlspecialchars($this->id_user) .'" data-status="Activé" class="'. $btnActive .' flex-1 rounded-lg">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                <button data-iduser="'. htmlspecialchars($this->id_user) .'" data-status="Suspendu" class="'. $btnSuspendu .' flex-1 rounded-lg">
+                                    <i class="fas fa-pause "></i>
+                                </button>
+                                <button data-iduser="'. htmlspecialchars($this->id_user) .'" data-status="Refuse" class="btnStatus flex-1 bg-red-500 text-white rounded-lg hover:bg-red-600">
+                                    <i class="fas fa-ban "></i>
                                 </button>
                             </div>
                         </div>';
