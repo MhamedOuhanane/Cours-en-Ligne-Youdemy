@@ -14,6 +14,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin - Youdemy</title>
+    <link
+        rel="shortcut icon"
+        href="../../../assets/images/logo_icone.png"
+        type="image/png"
+    >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -22,7 +27,7 @@
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <aside class="w-64 bg-gray-900 text-white fixed h-full">
-            <div class="w-full bg-white flex h-[4rem] items-center border-r-2 border-black">
+            <div class="w-full flex h-[4rem] items-center border-r-2 border-black">
                 <a href="./" class="text-2xl h-full font-bold text-blue-600">
                     <img src="../../../assets/images/logo.png" alt="logo du site" class="h-full">
                 </a>

@@ -17,6 +17,7 @@ use function PHPSTORM_META\type;
             $this->dbcon = Database::getInstance()->getConnection(); 
         }
 
+        // insertData
         public function insertData($table, $values) {
             $columns = "";
             $placeholders = "";
@@ -39,6 +40,7 @@ use function PHPSTORM_META\type;
             return $result->execute();
         }
 
+        //  selectAll
         public function selectAll($table, $columnName1 = null, $columnValue1 = null, $tableJoin1 = null, $conditionJoin1 = null) {
             $this->sql = "SELECT * FROM $table ";
 
@@ -61,6 +63,7 @@ use function PHPSTORM_META\type;
             }
         }
 
+        // selectWhere 
         public function selectWhere($table, $columnName1, $columnValue1 ) {
             $this->sql = "SELECT * FROM $table WHERE $columnName1 = :$columnName1";
             $result = $this->dbcon->prepare($this->sql);
@@ -72,6 +75,7 @@ use function PHPSTORM_META\type;
             }
         }
 
+        // selectCount
         public function selectCount($table, $columnName1 = null, $columnValue1 = null) {
             $this->sql = "SELECT COUNT(*) FROM $table ";
             $result = $this->dbcon->query($this->sql);
@@ -88,6 +92,7 @@ use function PHPSTORM_META\type;
             }
         }
 
+        // update
         public function update($table, $values, $columnName1, $columnValue1) {
             $columnSet = "";
             $param = [];
@@ -116,6 +121,7 @@ use function PHPSTORM_META\type;
             }
         }
 
+        // deleteWhere
         public function deleteWhere($table, $columnName1, $columnValue1) {
             $this->sql = "DELETE FROM $table WHERE $columnName1 = :keyName";
             $stmt = $this->dbcon->prepare($this->sql);
@@ -123,6 +129,15 @@ use function PHPSTORM_META\type;
             $stmt->bindValue(':keyName', $columnValue1, $type);
             if ($stmt->execute()) {
                 return $stmt;
+            }
+        }
+
+        // fetchData
+        public function fetchData($table, $filter1, $filter2, $search) {
+            $this->sql = "SELECT * FROM $table WHERE 1";
+            $stmt = $this->dbcon->query($this->sql);
+            if ($stmt->execute()) {
+                return $this->data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
         }
     }
