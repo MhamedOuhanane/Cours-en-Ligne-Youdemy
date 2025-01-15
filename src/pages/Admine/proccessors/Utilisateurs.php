@@ -1,6 +1,6 @@
 <?php 
     spl_autoload_register(function($class){
-        require "./classes/". $class . ".class.php";
+        require "../../../classes/". $class . ".class.php";
     });
     session_start();
     $requite = new Requites();
@@ -77,22 +77,17 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- User Cards -->
                     <?php
-                        $user = $requite->selectAll('users', )
+                        $utilisateurs = $requite->selectAll('users', null,null, 'roles', 'id_role');
+                        if ($utilisateurs) {
+                            foreach($utilisateurs as $utilisateur){
+                                $user = new Users($utilisateur);
+                                $user->toStringUser();
+                            }
+                        }
                     ?>
                 </div>
             </div>
         </main>
     </div>
-
-    <script>
-        function showPage(pageId) {
-            // Cacher toutes les pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.add('hidden');
-            });
-            // Afficher la page sélectionnée
-            document.getElementById(pageId).classList.remove('hidden');
-        }
-    </script>
 </body>
 </html>
