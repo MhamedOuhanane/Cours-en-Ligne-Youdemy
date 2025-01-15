@@ -1,3 +1,11 @@
+<?php 
+    spl_autoload_register(function($class){
+        require "./classes/". $class . ".class.php";
+    });
+    session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,8 +20,12 @@
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <aside class="w-64 bg-gray-900 text-white fixed h-full">
+            <div class="w-full bg-white flex h-[4rem] items-center border-r-2 border-black">
+                <a href="./" class="text-2xl h-full font-bold text-blue-600">
+                    <img src="../../assets/images/logo.png" alt="logo du site" class="h-full">
+                </a>
+            </div>
             <div class="p-6 border-b border-gray-800">
-                <h1 class="text-2xl font-bold text-blue-500">Youdemy</h1>
                 <p class="text-gray-400">Administration</p>
             </div>
             <nav class="mt-8">
@@ -50,14 +62,16 @@
             <header class="bg-white shadow-sm rounded-xl p-4 mb-8">
                 <div class="flex justify-between items-center">
                     <h2 class="text-2xl font-bold text-gray-800">Tableau de bord</h2>
-                    <div class="flex items-center gap-4">
-                        <div class="flex items-center">
-                            <img src="/api/placeholder/32/32" alt="Admin" class="w-8 h-8 rounded-full mr-2">
-                            <span class="text-gray-600 mr-2">Admin</span>
-                        </div>
-                        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-red-400">
-                            <i class="fas fa-sign-out-alt mr-2"></i>Déconnexion
-                        </button>
+                    <div class="flex items-center space-x-4">
+                        <a href="./pages/Etudiant/Prfil.php">
+                            <button class="flex items-center text-gray-700 hover:text-blue-600">
+                                <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
+                                <span><?= htmlspecialchars($_SESSION['username'])?></span>
+                            </button>
+                        </a>
+                        <a href="../../pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
                     </div>
                 </div>
             </header>

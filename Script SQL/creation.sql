@@ -70,4 +70,8 @@ FROM cours c
 JOIN catalogues g ON c.id_catalogue = g.id_catalogue
 JOIN users u ON u.id_user = c.id_user 
 JOIN tagcours tc ON tc.id_cour = c.id_cour
-left JOIN tags t ON t.id_tag = tc.id_tag
+left JOIN tags t ON t.id_tag = tc.id_tag;
+
+ALTER TABLE cours
+CHANGE desctiption description text NOT NULL,
+ADD imageCours longblob NOT  NULL AFTER description;

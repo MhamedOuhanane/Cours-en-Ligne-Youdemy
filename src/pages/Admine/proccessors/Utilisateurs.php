@@ -1,3 +1,10 @@
+<?php 
+    spl_autoload_register(function($class){
+        require "./classes/". $class . ".class.php";
+    });
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -70,12 +77,10 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- User Card 1 -->
                     <div class="bg-white rounded-xl shadow-sm p-6">
-                        <div class="flex items-center mb-4">
-                            <img src="/api/placeholder/48/48" alt="User" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <h4 class="font-bold">Thomas Bernard</h4>
-                                <p class="text-gray-500 text-sm">thomas.bernard@email.com</p>
-                            </div>
+                        <div class="flex flex-col items-center mb-4">
+                            <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="User" class="w-36 rounded-full mr-4">
+                            <h4 class="font-bold">Thomas Bernard</h4>
+                            <p class="text-gray-500 text-sm">thomas.bernard@email.com</p>
                         </div>
                         <div class="flex items-center mb-4">
                             <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Enseignant</span>
@@ -96,7 +101,7 @@
                     <!-- User Card 2 -->
                     <div class="bg-white rounded-xl shadow-sm p-6">
                         <div class="flex items-center mb-4">
-                            <img src="/api/placeholder/48/48" alt="User" class="w-12 h-12 rounded-full mr-4">
+                            <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="User" class="w-12 h-12 rounded-full mr-4">
                             <div>
                                 <h4 class="font-bold">Sophie Martin</h4>
                                 <p class="text-gray-500 text-sm">sophie.martin@email.com</p>
@@ -120,8 +125,8 @@
 
                     <!-- User Card 3 -->
                     <div class="bg-white rounded-xl shadow-sm p-6">
-                        <div class="flex items-center mb-4">
-                            <img src="/api/placeholder/48/48" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div class="flex flex-col items-center mb-4">
+                            <img src="/api/placeholder/48/48" alt="User" class="w-30 h-30 rounded-full mr-4 ">
                             <div>
                                 <h4 class="font-bold">Pierre Durand</h4>
                                 <p class="text-gray-500 text-sm">pierre.durand@email.com</p>
