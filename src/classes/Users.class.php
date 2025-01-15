@@ -105,11 +105,11 @@
                 $urlA = '';
                 $urlS = '';
                 if ($this->status == 'Activé') {
-                    $btnActive =  'bg-green-500 text-white hover:bg-green-600';
-                    $urlS = 'pointer-events-none';
-                } else if ($this->status == 'Suspendu') {
                     $btnSuspendu = 'bg-yellow-500 text-white hover:bg-yellow-600';
                     $urlA = 'pointer-events-none';
+                } else if ($this->status == 'Suspendu') {
+                    $btnActive =  'bg-green-500 text-white hover:bg-green-600';
+                    $urlS = 'pointer-events-none';
                 }
 
                 $styleUser = ($this->role == 'Etudiant') ? 'bg-purple-100 text-purple-600' : 'bg-blue-100 text-blue-600';
@@ -145,4 +145,20 @@
                         </div>';
             }
         }
+
+        public function UpdatStatus() {
+            $requite = new Requites();
+            if ($this->status != 'ban') {
+                $result = $requite->update('users', ['status' => $this->status], 'id_user', $this->id_user);
+                if ($result) {
+                    return header('Location: '.$_SERVER['HTTP_REFERER']);
+                }
+            } else {
+                $result = $requite->deleteWhere('users', 'id_user', $this->id_user);
+                if ($result) {
+                    return header('Location: '.$_SERVER['HTTP_REFERER']);
+                }
+            }
+        }
+
     }
