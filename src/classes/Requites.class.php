@@ -39,10 +39,18 @@ use function PHPSTORM_META\type;
             return $result->execute();
         }
 
-        public function selectAll($table) {
+        public function selectAll($table, $columnName1 = null, $columnValue1 = null) {
             $this->sql = "SELECT * FROM $table";
+            $this->data = $this->dbcon->query($this->sql);
 
-            $this->data = $this->dbcon->prepare($this->sql);
+            if ($columnName1 != null && $columnValue1 != null) {
+                $this->sql .= " WHERE $columnName1 = :$columnName1";
+                $this->data = $this->dbcon->prepare($this->sql);
+
+                $type = is_int($columnValue1) ? PDO::PARAM_INT : PDO::PARAM_STR;
+                $this->data->bindValue(":$columnName1", $columnValue1, $type);
+            }
+
             if ( $this->data->execute()) {
                 return $this->data->fetchAll(PDO::FETCH_ASSOC);
             }

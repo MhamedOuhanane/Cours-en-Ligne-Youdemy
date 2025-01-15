@@ -1,8 +1,11 @@
 <?php 
     spl_autoload_register(function($class){
-        require "./classes/". $class . ".class.php";
+        require "../../../classes/". $class . ".class.php";
     });
     session_start();
+    $requite = new Requites();
+    $role = new Roles();
+    $role->setData('Enseignant');
 ?>
 
 <!DOCTYPE html>
@@ -75,21 +78,19 @@
             <div id="Enseignants" class="page">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- les cartes des Enseignants -->
-                    
+                    <?php
+                        $usersEn = $requite->selectAll('users', 'id_role', $role->getData()['id_role']);
+                        if ($usersEn) {
+                            foreach($usersEn as $enseign) {
+                                $Enseignant = new Enseignants($enseign);
+                                $Enseignant->toStringUser();
+                            }
+                        }
+                    ?>
                 </div>
             </div>
         </main>
     </div>
-
-    <script>
-        function showPage(pageId) {
-            // Cacher toutes les pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.add('hidden');
-            });
-            // Afficher la page sélectionnée
-            document.getElementById(pageId).classList.remove('hidden');
-        }
-    </script>
+    
 </body>
 </html>

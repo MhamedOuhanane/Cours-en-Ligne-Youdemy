@@ -75,3 +75,6 @@ left JOIN tags t ON t.id_tag = tc.id_tag;
 ALTER TABLE cours
 CHANGE desctiption description text NOT NULL,
 ADD imageCours longblob NOT  NULL AFTER description;
+
+ALTER TABLE users
+MODIFY telephone varchar(13) NOT NULL;
