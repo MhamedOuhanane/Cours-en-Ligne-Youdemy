@@ -82,4 +82,33 @@ use function PHPSTORM_META\type;
                 return $this->data["COUNT(*)"];
             }
         }
+
+        public function update($table, $values, $columnName1, $columnValue1) {
+            $columnSet = "";
+            $param = [];
+
+            foreach($values as $Key => $value) {
+                $paramKey = "parame" . count($param);
+                $columnSet .= $Key . "= :" . $paramKey .", ";
+                $param[$paramKey] = $value;
+            }
+
+            $columnSet = rtrim($columnSet, ", ");
+            $this->sql = "UPDATE $table SET $columnSet WHERE $columnName1 = :conditionValue";
+            
+            $stmt = $this->dbcon->prepare($this->sql);
+
+            foreach($param as $Key => $value) {
+                $type = is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR;
+                $stmt->bindValue(":$Key", $value, $type);
+            }    
+
+            $type = is_int($columnValue1) ? PDO::PARAM_INT : PDO::PARAM_STR;
+            $stmt->bindValue(":conditionValue", $columnValue1, $type);
+
+            if ($stmt->execute()) {
+                return $stmt;
+            }
+        
+        }
     }

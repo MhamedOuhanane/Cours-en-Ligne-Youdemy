@@ -1,13 +1,13 @@
-let btnValide = document.querySelectorAll(".enseignant .valide");
-let btnRefuse = document.querySelectorAll(".enseignant .refuse");
+let btnValidation = document.querySelectorAll(".enseignant .btnValidation");
 let carte = null;
 
-if (btnValide) {
-    btnValide.forEach(element => {
+if (btnValidation) {
+    btnValidation.forEach(element => {
         element.addEventListener('click', ()=> {
             carte = element.closest('.enseignant ');
-            idUser = element.dataset['valide'];
-            ValidationEnseigb(carte, idUser, 'Activé');
+            idUser = element.dataset['iduser'];
+            statusEn = element.dataset['status'];
+            ValidationEnseigb(carte, idUser, statusEn);
         });
     });
     
