@@ -110,48 +110,8 @@
             <h2 class="text-3xl font-bold text-center mb-12">Catalogue des cours</h2>
 
             <!-- Catalogue Grid -->
-            <div id="Catalogues" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <!-- Carte 1 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="/api/placeholder/400/200" alt="Catalogue 1" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <span class="text-sm text-gray-500 mb-2 block">Catalogue #1</span>
-                        <h3 class="text-xl font-semibold mb-2">Développement Web</h3>
-                        <p class="text-gray-600 mb-4">Une collection complète de cours sur le développement web, du frontend au backend.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-blue-600 font-semibold">12 cours</span>
-                            <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Voir le catalogue</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Carte 2 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="/api/placeholder/400/200" alt="Catalogue 2" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <span class="text-sm text-gray-500 mb-2 block">Catalogue #2</span>
-                        <h3 class="text-xl font-semibold mb-2">Marketing Digital</h3>
-                        <p class="text-gray-600 mb-4">Maîtrisez les outils et stratégies du marketing numérique moderne.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-blue-600 font-semibold">8 cours</span>
-                            <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Voir le catalogue</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Carte 3 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="/api/placeholder/400/200" alt="Catalogue 3" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <span class="text-sm text-gray-500 mb-2 block">Catalogue #3</span>
-                        <h3 class="text-xl font-semibold mb-2">Data Science</h3>
-                        <p class="text-gray-600 mb-4">De l'analyse de données à l'intelligence artificielle, tout pour devenir data scientist.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-blue-600 font-semibold">15 cours</span>
-                            <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Voir le catalogue</a>
-                        </div>
-                    </div>
-                </div>
+            <div id="continaireCatalogues" class="grid grid-cols-1 md:grid-cols-3 min-h-64 gap-8 mb-8">
+                <!-- Affichage des Catalogues disponible  -->
             </div>
 
             <!-- Pagination -->
