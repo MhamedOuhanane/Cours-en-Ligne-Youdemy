@@ -115,7 +115,7 @@
             </div>
 
             <!-- Pagination -->
-            <div class="flex justify-center items-center space-x-2">
+            <div id="conPagination" class="flex justify-center items-center space-x-2">
                 <?php 
                     $catalogue = new Catalogues();
                     $catalogue->pagination(3);

@@ -1,5 +1,25 @@
+
+inputPagines = document.querySelectorAll('#conPagination input[type="radio"]');
 let NBpage = 1;
 
+
+// inistialiser le style des input de pagination
+function styleInit(){
+    document.querySelector('#conPagination .bg-blue-600').classList.add('hover:bg-gray-100');
+    document.querySelector('#conPagination .bg-blue-600').classList.remove('bg-blue-600', 'text-white');
+}
+
+// continaire de pagination 
+inputPagines.forEach(element => {
+    element.addEventListener('change', () => {
+        styleInit();
+        const label = document.querySelector(`label[for="${element.id}"]`);
+        label.classList.remove('hover:bg-gray-100');
+        label.classList.add('bg-blue-600', 'text-white');
+        NBpage = element.value;
+        FetchCatalogue();
+    })
+});
 
 function FetchCatalogue(){
     const url = `./pages/Etudiant/proccessors/fetchCata.php?NBpage=${NBpage}`;
@@ -26,7 +46,7 @@ function toSring(Catalog) {
     
     Catalog.forEach(element => {
         continaireCatalogues.innerHTML += `<div class="bg-white rounded-lg shadow-md overflow-hidden">
-                                            <img src="data:image/png;base64,${element['catalogue_image']}" alt="Catalogue ${element['id_catalogue']}" class="w-full h-60">
+                                            <img src="data:image/png;base64,${element['catalogue_image']}" alt="Catalogue ${element['id_catalogue']}" class="w-full h-60 object-cover">
                                             <div class="p-6">
                                                 <span class="text-sm text-gray-500 mb-2 block">Catalogue #${element['id_catalogue']}</span>
                                                 <h3 class="text-xl font-semibold mb-2">${element['catalogue_titre']}</h3>
