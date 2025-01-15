@@ -7,7 +7,9 @@ if (btnValidation) {
             carte = element.closest('.enseignant ');
             idUser = element.dataset['iduser'];
             statusEn = element.dataset['status'];
-            ValidationEnseigb(carte, idUser, statusEn);
+            console.log(statusEn);
+            
+            // ValidationEnseigb(carte, idUser, statusEn);
         });
     });
     

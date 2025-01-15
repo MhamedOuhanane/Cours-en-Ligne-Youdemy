@@ -107,8 +107,17 @@ use function PHPSTORM_META\type;
             $stmt->bindValue(":conditionValue", $columnValue1, $type);
 
             if ($stmt->execute()) {
+                return $stmt;   
+            }
+        }
+
+        public function deleteWhere($table, $columnName1, $columnValue1) {
+            $this->sql = "DELETE FROM $table WHERE $columnName1 = :keyName";
+            $stmt = $this->dbcon->prepare($this->sql);
+            $type = is_int($columnValue1) ? PDO::PARAM_INT : PDO::PARAM_STR;
+            $stmt->bindValue(':keyName', $columnValue1, $type);
+            if ($stmt->execute()) {
                 return $stmt;
             }
-        
         }
     }
