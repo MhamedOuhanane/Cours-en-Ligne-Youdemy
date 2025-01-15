@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
     spl_autoload_register(function($class){
         require $class . ".class.php";
     });
@@ -53,6 +56,22 @@
             $result->bindValue(":".$columnName1, $columnValue1, $type);
             if ($result->execute()) {
                 return $result->fetch(PDO::FETCH_ASSOC);
+            }
+        }
+
+        public function selectCount($table, $columnName1 = null, $columnValue1 = null) {
+            $this->sql = "SELECT COUNT(*) FROM $table ";
+            $result = $this->dbcon->query($this->sql);
+
+            if ($columnName1 != null && $columnValue1 != null) {
+                $this->sql .= " WHERE $columnName1 = :$columnName1";
+                $result = $this->dbcon->prepare($this->sql);
+                $type = is_int($columnValue1) ? PDO::PARAM_INT : PDO::PARAM_STR;
+                $result->bindValue(":$columnName1", $columnValue1, $type);
+            }
+            if ($result->execute()) {
+                $this->data = $result->fetch(PDO::FETCH_ASSOC);
+                return $this->data["COUNT(*)"];
             }
         }
     }

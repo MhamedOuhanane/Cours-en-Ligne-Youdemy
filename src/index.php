@@ -108,27 +108,9 @@
     <div class="py-16 bg-gray-50">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-12">Catalogue des cours</h2>
-            
-            <!-- Search and Filter -->
-            <div class="mb-8 flex flex-col md:flex-row gap-4 justify-between">
-                <div class="relative flex-1 max-w-lg">
-                    <input type="search" 
-                        class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" 
-                        placeholder="Rechercher dans le catalogue...">
-                    <div class="absolute left-3 top-2.5 text-gray-400">
-                        <i class="fas fa-search"></i>
-                    </div>
-                </div>
-                
-                <select class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
-                    <option value="">Trier par</option>
-                    <option value="title">Titre</option>
-                    <option value="date">Date</option>
-                </select>
-            </div>
 
             <!-- Catalogue Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div id="Catalogues" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <!-- Carte 1 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
                     <img src="/api/placeholder/400/200" alt="Catalogue 1" class="w-full h-48 object-cover">
@@ -240,5 +222,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
