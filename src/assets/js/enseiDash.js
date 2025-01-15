@@ -9,7 +9,7 @@ if (btnValidation) {
             statusEn = element.dataset['status'];
             console.log(statusEn);
             
-            // ValidationEnseigb(carte, idUser, statusEn);
+            ValidationEnseigb(carte, idUser, statusEn);
         });
     });
     

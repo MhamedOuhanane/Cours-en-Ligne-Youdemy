@@ -18,7 +18,7 @@
                                 <p class="text-gray-500 text-sm font-bold">'. htmlspecialchars($this->ville) .'</p>
                             </div>
                             <div class="flex gap-2">
-                                <button data-iduser="'. htmlspecialchars($this->id_user) .'" data-status="Validé" class="btnValidation flex-1 border-2 border-green-500 text-green-500 hover:text-white rounded-lg hover:bg-green-600">
+                                <button data-iduser="'. htmlspecialchars($this->id_user) .'" data-status="Activé" class="btnValidation flex-1 border-2 border-green-500 text-green-500 hover:text-white rounded-lg hover:bg-green-600">
                                     <i class="fas fa-check"></i>
                                 </button>
                                 <button data-iduser="'. htmlspecialchars($this->id_user) .'" data-status="Refuse" class="btnValidation flex-1 border-2 border-red-500 text-red-500 hover:text-white rounded-lg hover:bg-red-600">
@@ -27,5 +27,25 @@
                             </div>
                         </div>';
             }
+        }
+
+        public function ValidationCompt() {
+            $requite = new Requites();
+            if ($this->status == 'Activé') {
+                $result = $requite->update('users', ['status' => $this->status], 'id_user', $this->id_user);
+                if ($result) {
+                    echo json_encode(true);
+                } else {
+                    echo json_encode(false);
+                }
+            } else if ($this->status == 'Refuse') {
+                $result = $requite->deleteWhere('users', 'id_user', $this->id_user);
+                if ($result) {
+                    echo json_encode(true);
+                } else {
+                    echo json_encode(false);
+                }
+            }
+            
         }
     }
