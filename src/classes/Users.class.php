@@ -4,14 +4,14 @@
     });
 
     class Users extends Roles {
-        private $id_user;
-        private $username;
-        private $email;
-        private $ville;
-        private $telephone;
-        private $image;
-        private $password;
-        private $status;
+        protected $id_user;
+        protected $username;
+        protected $email;
+        protected $ville;
+        protected $telephone;
+        protected $image;
+        protected $password;
+        protected $status;
 
 
         public function __construct($ArrayUser)

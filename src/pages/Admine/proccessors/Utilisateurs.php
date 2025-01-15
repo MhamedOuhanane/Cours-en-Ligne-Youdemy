@@ -56,22 +56,21 @@
             <!-- Header -->
             <header class="bg-white shadow-sm rounded-xl p-4 mb-8">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-2xl font-bold text-gray-800">Tableau de bord</h2>
-                    <div class="flex items-center gap-4">
-                        <div class="flex items-center">
-                            <img src="/api/placeholder/32/32" alt="Admin" class="w-8 h-8 rounded-full mr-2">
-                            <span class="text-gray-600 mr-2">Admin</span>
-                        </div>
-                        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-red-400">
-                            <i class="fas fa-sign-out-alt mr-2"></i>Déconnexion
-                        </button>
+                    <h2 class="text-2xl font-bold text-gray-800">Utilisateurs</h2>
+                    <div class="flex items-center space-x-4">
+                        <a href="./pages/Etudiant/Prfil.php">
+                            <button class="flex items-center text-gray-700 hover:text-blue-600">
+                                <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
+                                <span><?= htmlspecialchars($_SESSION['username'])?></span>
+                            </button>
+                        </a>
+                        <a href="../../../pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
                     </div>
                 </div>
             </header>
 
-            <!-- Dashboard Page -->
-            <div id="dashboard" class="page">
-                
             <!-- Users Page -->
             <div id="users" class="page">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
