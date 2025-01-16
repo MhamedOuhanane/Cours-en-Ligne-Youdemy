@@ -1,0 +1,37 @@
+<?php 
+    spl_autoload_register(function($class){
+        require "../../../../classes/". $class .".class.php";
+    });
+    session_start();
+    $requite = new Requites();
+
+    $filterCata = $_GET['CatalogueId'] ?? "";
+    $Search = $_GET['Search'] ?? "";
+    
+
+    $Cours = $requite->fetchData('listecours', $filterCata, "", $Search);
+    $FormerCours = array_map(function($array) use ($requite){
+        $etudiant = $requite->selectCount('inscriptioncours', 'id_cour', $array['id_cour']);
+        return [
+            'id_cour' => $array['id_cour'],
+            'catalogue_titre' => $array['catalogue_titre'],
+            'description' => $array['description'],
+            'imageCours' => $array['imageCours'],
+            'id_user' => $array['id_user'],
+            'username' => $array['username'],
+            'image' => base64_encode($array['image']),
+            'etudians' => $etudiant,
+            'createDate' => $array['createDate'],
+            'id_tag' => $array['id_tag'],
+            'tag_Titre' => $array['tag_Titre']
+        ];
+    }, $Cours);
+    
+    echo json_encode($FormerCours);
+    
+    
+    
+    
+    
+    
+    

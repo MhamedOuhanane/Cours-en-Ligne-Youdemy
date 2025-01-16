@@ -1,8 +1,9 @@
 <?php 
     spl_autoload_register(function($class){
-        require "./classes/". $class . ".class.php";
+        require "../../../classes/". $class . ".class.php";
     });
     session_start();
+    $requite = new Requites();
 ?>
 
 <!DOCTYPE html>
@@ -76,15 +77,24 @@
             <!-- Search and Filter -->
             <div class="flex flex-col md:flex-row gap-4 mb-8">
                 <div class="flex-1">
-                    <input type="search" 
+                    <input id="InputSearch" type="search" 
                         class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
                         placeholder="Rechercher un cours...">
                 </div>
-                <select class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                <select id="selectCatalogue" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
                     <option value="">Filtrer par catégorie</option>
-                    <option value="web">Développement Web</option>
-                    <option value="mobile">Développement Mobile</option>
-                    <option value="data">Data Science</option>
+                    <?php
+                        $catalgue = new Catalogues();
+                        $data = $requite->selectAll('catalogues');
+                        if ($data) {
+                            foreach($data as $catalo) {
+                                $catalgue->setData('id_catalogue', $catalo['id_catalogue']);
+                                $catalgue->setData('catalogue_titre', $catalo['catalogue_titre']);
+                                $id = $_GET['idCatalogue'] ?? null;
+                                $catalgue->SelectorCatal($id);
+                            }
+                        }
+                    ?>
                 </select>
             </div>
 
