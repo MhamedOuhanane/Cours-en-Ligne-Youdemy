@@ -137,15 +137,15 @@ use function PHPSTORM_META\type;
             $this->sql = "SELECT * FROM $table WHERE 1";
             $params = array();
 
-            if ($filter1 != null) {
+            if ($filter1 != "") {
                 $this->sql .= " AND id_catalogue = ?";
                 $params [] = $filter1;
             }
-            if ($filter2 != null) {
+            if ($filter2 != "") {
                 $this->sql .= " AND id_tag = ?";
                 $params [] = $filter2;
             }
-            if ($search != null) {
+            if ($search != "") {
                 $this->sql .= " AND ((cours_titre LIKE ?) OR (createDate LIKE ?))";
                 $params [] = "%" . $search . "%"; 
                 $params [] = "%" . $search . "%";

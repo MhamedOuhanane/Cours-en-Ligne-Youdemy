@@ -1,7 +1,8 @@
 function filterCours() {
     const searchValue = InputSearch.value;
-    const filterValue = selectTags.value;
-    const urlfiltre = `./proccessors/fetchCours.php?tagId=${filterValue}&Search=${searchValue}`;
+    const filterCata = selectCatalogue.value;
+    const filtertag = selectTags.value;
+    const urlfiltre = `./proccessors/fetchCours.php?CatalogueId=${filterCata}&tagId=${filtertag}&Search=${searchValue}`;
     console.log(urlfiltre);
     
     fetch(urlfiltre)
@@ -80,6 +81,7 @@ InputSearch.addEventListener('input', () => {
 });
 
 
+selectCatalogue.addEventListener('change', filterCours);
 selectTags.addEventListener('change', filterCours);
 
 document.addEventListener('DOMContentLoaded', filterCours);

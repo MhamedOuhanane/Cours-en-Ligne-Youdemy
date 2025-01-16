@@ -13,6 +13,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youdemy - Cours</title>
+    <link
+        rel="shortcut icon"
+        href="../../assets/images/logo_icone.png"
+        type="image/png"
+    >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -66,7 +71,7 @@
                 </div>
             </div>
             <div class="flex gap-4">
-                <select class="px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500">
+                <select id="selectCatalogue" class="px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500">
                     <option value="">Filtrer par catalogue</option>
                     <?php
                         $catalgue = new Catalogues();

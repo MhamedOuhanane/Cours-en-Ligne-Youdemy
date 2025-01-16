@@ -5,9 +5,10 @@
     session_start();
     $requite = new Requites();
 
-    $filterTag = $_GET['tagId'] ?? null;
-    $filterCata = $_GET['CatalogueId'] ?? null;
-    $Search = $_GET['Search'] ?? null;
+    $filterTag = $_GET['tagId'] ?? "";
+    $filterCata = $_GET['CatalogueId'] ?? "";
+    $Search = $_GET['Search'] ?? "";
+    
     $role = 'Visiteur';
     if (isset($_SESSION['role'])) {
         $role = $_SESSION['role'];
