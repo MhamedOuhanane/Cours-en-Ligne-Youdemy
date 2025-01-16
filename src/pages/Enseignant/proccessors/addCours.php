@@ -156,16 +156,16 @@
                             <label for="tags" class="block text-sm font-medium text-gray-700">Tags</label>
                             <select name="tags[]" id="tags" multiple
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                <option value="html">HTML</option>
-                                <option value="css">CSS</option>
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="python">Python</option>
-                                <option value="java">Java</option>
-                                <option value="react">React</option>
-                                <option value="angular">Angular</option>
-                                <option value="vue">Vue.js</option>
-                                <option value="node">Node.js</option>
+                                <?php
+                                    $tags = new tags();
+                                    $data = $requite->selectAll('tags');
+                                    if ($data) {
+                                        foreach($data as $tag) {
+                                            $tags->setData($tag);
+                                            $tags->toString();
+                                        }
+                                    }
+                                ?>
                             </select>
                             <p class="mt-1 text-sm text-gray-500">Maintenez Ctrl (Windows) ou Cmd (Mac) pour sélectionner plusieurs tags</p>
                         </div>
