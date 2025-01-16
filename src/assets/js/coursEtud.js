@@ -60,8 +60,8 @@ function AfficherVéhicules(params) {
             let continaire = document.querySelector(`#contTags${element['id_cour']}`);
             continaire = '';
             params.forEach(elem => {
-                if (id_cours == element['id_cours']) {
-                    continaire += `<span class="bg-purple-100 text-purple-600 text-sm px-3 py-1 rounded-full">${element['tag_Titre']}</span>`;
+                if (id_cours == elem['id_cours']) {
+                    continaire += `<span class="bg-purple-100 text-purple-600 text-sm px-3 py-1 rounded-full">${elem['tag_Titre']}</span>`;
                 }
             });
 

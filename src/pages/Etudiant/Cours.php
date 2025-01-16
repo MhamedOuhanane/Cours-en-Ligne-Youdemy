@@ -1,3 +1,11 @@
+<?php
+    spl_autoload_register(function($class){
+        require "../../classes/". $class . ".class.php";
+    });
+
+    $requite = new Requites();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -42,9 +50,16 @@
             <div class="flex gap-4">
                 <select id="selectTags" class="px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500">
                     <option value="">Filtrer par tag</option>
-                    <option value="debutant">Débutant</option>
-                    <option value="intermediaire">Intermédiaire</option>
-                    <option value="avance">Avancé</option>
+                    <?php
+                        $tags = new tags();
+                        $data = $requite->selectAll('tags');
+                        if ($data) {
+                            foreach($data as $tag) {
+                                $tags->setData($tag);
+                                $tags->toString();
+                            }
+                        }
+                    ?>
                 </select>
             </div>
         </div>
