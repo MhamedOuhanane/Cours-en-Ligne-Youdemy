@@ -56,7 +56,7 @@
                                 <span><?= htmlspecialchars($_SESSION['username'])?></span>
                             </button>
                         </a>
-                        <a href="../../pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
+                        <a href="../../../pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
                             <i class="fas fa-sign-out-alt"></i>
                         </a>
                     </div>

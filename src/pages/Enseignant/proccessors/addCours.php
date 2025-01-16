@@ -178,10 +178,12 @@
 
                         <!-- Submit Buttons -->
                         <div class="flex justify-end space-x-3 pt-6 border-t">
-                            <button type="button" onclick="window.location.href='dashboard.html'" 
-                                class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-50">
-                                Annuler
-                            </button>
+                            <a href="./MesCours.php">
+                                <button type="button"  
+                                    class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-50">
+                                    Annuler
+                                </button>
+                            </a>
                             <button type="submit" name="submitCours"
                                 class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
                                 Créer le cours

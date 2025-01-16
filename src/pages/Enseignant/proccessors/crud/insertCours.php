@@ -27,12 +27,19 @@
             'imageCours' => $cours_image,
             'id_user' => $_SESSION['id_user'],
             'id_catalogue' => $_POST['catalogue']
-        ];
+        ];  
 
         $cours = new Cours($ArrayCours);
-        var_dump($cours->getData('catalogue'));
         $insert = $cours->AjouterData();
         if ($cours->AjouterData()) {
+            if ($_POST['tags'] != null) {
+                $requite = new Requites();
+                $dernierCours = $requite->selectMAX('cours', 'id_cour');
+            
+                foreach($_POST['tags'] as $tagID){
+                    $requite->insertData('tagcours', ['id_cour' => $dernierCours, 'id_tag' => $tagID]);
+                }
+            }
             header('Location: ../MesCours.php');
         }
 

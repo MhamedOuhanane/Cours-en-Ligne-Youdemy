@@ -155,6 +155,14 @@ use function PHPSTORM_META\type;
 
             $stmt->execute($params);
                 return $this->data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
+        }
+
+        // Max
+        public function selectMAX($table, $columnName)
+        {
+            $this->sql = "SELECT MAX($columnName) FROM $table";
+            $this->data = $this->dbcon->query($this->sql);
+            $this->data = $this->data->fetch(PDO::FETCH_ASSOC);
+            return $this->data["MAX($columnName)"];
         }
     }
