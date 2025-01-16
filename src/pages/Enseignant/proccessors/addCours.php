@@ -90,6 +90,12 @@
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border-[1px] focus:border-blue-500 focus:ring-blue-500 p-2"></textarea>
                         </div>
 
+                        <!-- Image -->
+                        <div>
+                            <label class="block text-gray-700 mb-2">Image *</label>
+                            <input type="file" name="cours_image" multiple accept="image/*" class="w-full border rounded-lg p-2">
+                        </div>
+
                         <!-- Type de contenu -->
                         <div class="space-y-4">
                             <label class="block text-sm font-medium text-gray-700">Type de contenu *</label>

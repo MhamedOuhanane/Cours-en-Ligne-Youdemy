@@ -78,3 +78,6 @@ ADD imageCours longblob NOT  NULL AFTER description;
 
 ALTER TABLE users
 MODIFY telephone varchar(13) NOT NULL;
+
+ALTER TABLE cours
+MODIFY cours_contenu longblob NOT NULL;

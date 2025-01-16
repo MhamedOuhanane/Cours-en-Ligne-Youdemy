@@ -32,4 +32,8 @@
             $selected = ($id == $this->id_catalogue) ? "selected" : "" ;
             echo '<option '. $selected .' value="'. $this->id_catalogue .'">'. $this->catalogue_titre .'</option>';
         }
+
+        public function AjouterData(){
+            
+        }
     }

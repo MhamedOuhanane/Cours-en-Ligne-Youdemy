@@ -1,10 +1,10 @@
 <?php
 
-use function PHPSTORM_META\type;
-
     spl_autoload_register(function($class){
         require "./classes/". $class . ".class.php";
     });
+
+    $cours = new Cours();
     
 
 
@@ -15,11 +15,14 @@ use function PHPSTORM_META\type;
             var_dump($_POST['video_url']);
         } else {
             $type = 'document';
-            if ($_FILES['document']['size'] <= 5 *1024*1024) {
+            if (($_FILES['document']['size'] > 0) && ($_FILES['document']['size'] <= 5 *1024*1024)) {
                 $cours_contenu = file_get_contents($_FILES['document']['tmp_name']);
             }
         }
-
+        if ($_FILES['cours_image']['size'] > 0) {
+            $cours_image = file_get_contents($_FILES['cours_image']['tmp_name']);
+        }
+        
         // $_POST['cours_titre']
         // $_POST['description']
         // $_POST['catalogue']
