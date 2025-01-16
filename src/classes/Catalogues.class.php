@@ -27,4 +27,9 @@
                         <label for="page'.$i.'" class="px-4 py-2 border rounded-lg '. $stylePg .' cursor-pointer">'. $i .'</label>';
             }
         }
+
+        public final function SelectorCatal($id) {
+            $selected = ($id == $this->id_catalogue) ? "selected" : "" ;
+            echo '<option '. $selected .' value="'. $this->id_catalogue .'">'. $this->catalogue_titre .'</option>';
+        }
     }

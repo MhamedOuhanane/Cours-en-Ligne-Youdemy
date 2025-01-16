@@ -4,6 +4,7 @@
     });
 
     $requite = new Requites();
+
 ?>
 
 <!DOCTYPE html>
@@ -17,21 +18,38 @@
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-md">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <a href="../../" class="text-2xl font-bold text-blue-600">Youdemy</a>
+    <!-- Navigation -->
+    <nav class="bg-white h-[4rem] shadow-md">
+        <div class="container h-full mx-auto px-6 py-3">
+            <div class="flex h-full items-center justify-between">
+                <div class="flex h-full items-center">
+                    <a href="../../index.php" class="text-2xl h-full font-bold text-blue-600">
+                        <img src="../../assets/images/logo.png" alt="logo du site" class="h-full">
+                    </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="../../" class="text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="../../index.php" class="text-gray-600 hover:text-blue-600 ">Home</a>
                     <a href="Cours.php" class="text-blue-600">Cours</a>
                     <a href="Profil.php" class="text-gray-600 hover:text-blue-600">Profil</a>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <a href="../Authentification/connexion.php" class="text-gray-600 hover:text-blue-600">Se connecter</a>
-                    <a href="../../pages/Authentification/inscription.php" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">S'inscrire</a>
-                </div>
+                <?php if (isset($_SESSION['id_user'])) {?>
+                    <div class="flex items-center space-x-4">
+                        <a href="./pages/Etudiant/Prfil.php">
+                            <button class="flex items-center text-gray-700 hover:text-blue-600">
+                                <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
+                                <span><?= htmlspecialchars($_SESSION['username'])?></span>
+                            </button>
+                        </a>
+                        <a href="./pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </div>
+                <?php } else { ?>
+                    <div class="flex items-center space-x-4">
+                        <a href="./pages/Authentification/connexion.php" class="text-gray-600 hover:text-blue-600">Se connecter</a>
+                        <a href="./pages/Authentification/inscription.php" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">S'inscrire</a>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </nav>
@@ -48,6 +66,21 @@
                 </div>
             </div>
             <div class="flex gap-4">
+                <select class="px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500">
+                    <option value="">Filtrer par catalogue</option>
+                    <?php
+                        $catalgue = new Catalogues();
+                        $data = $requite->selectAll('catalogues');
+                        if ($data) {
+                            foreach($data as $catalo) {
+                                $catalgue->setData('id_catalogue', $catalo['id_catalogue']);
+                                $catalgue->setData('catalogue_titre', $catalo['catalogue_titre']);
+                                $id = $_GET['idCatalogue'] ?? null;
+                                $catalgue->SelectorCatal($id);
+                            }
+                        }
+                    ?>
+                </select>
                 <select id="selectTags" class="px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-500">
                     <option value="">Filtrer par tag</option>
                     <?php
