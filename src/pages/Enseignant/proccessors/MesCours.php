@@ -1,3 +1,10 @@
+<?php 
+    spl_autoload_register(function($class){
+        require "./classes/". $class . ".class.php";
+    });
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,29 +15,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md fixed w-full z-10">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <a href="#" class="text-2xl font-bold text-blue-600">Youdemy</a>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <div class="relative">
-                        <button class="flex items-center text-gray-700 hover:text-blue-600">
-                            <img src="/api/placeholder/32/32" alt="Profile" class="w-8 h-8 rounded-full mr-2">
-                            <span>Prof. John Doe</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
 
     <!-- Sidebar and Main Content Container -->
-    <div class="flex h-screen pt-16">
+    <div class="flex h-screen">
         <!-- Sidebar -->
         <aside class="w-64 bg-white shadow-md fixed h-full">
+            <div class="w-full flex h-[4rem] items-center">
+                <a href="../Dashbord.php" class="text-2xl h-full font-bold text-blue-600">
+                    <img src="../../../assets/images/logo.png" alt="logo du site" class="h-full">
+                </a>
+            </div>
             <div class="p-6">
                 <nav class="space-y-3">
                     <a href="./dashboard.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
@@ -51,9 +45,26 @@
 
         <!-- Main Content -->
         <main class="flex-1 ml-64 p-8">
+            <!-- Header -->
+            <header class="bg-white shadow-sm rounded-xl p-4 mb-8">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-2xl font-bold text-gray-800">Mes Cours</h2>
+                    <div class="flex items-center space-x-4">
+                        <a href="./pages/Etudiant/Prfil.php">
+                            <button class="flex items-center text-gray-700 hover:text-blue-600">
+                                <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
+                                <span><?= htmlspecialchars($_SESSION['username'])?></span>
+                            </button>
+                        </a>
+                        <a href="../../pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+
             <!-- Header Section -->
             <div class="flex justify-between items-center mb-8">
-                <h1 class="text-2xl font-bold text-gray-800">Mes Cours</h1>
                 <a href="./addCours.php">
                     <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 flex items-center">
                         <i class="fas fa-plus mr-2"></i>
@@ -131,5 +142,15 @@
             </div>
         </main>
     </div>
+
+    <!-- Footer -->
+    <!-- <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2025 Youdemy. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer> -->
 </body>
 </html>

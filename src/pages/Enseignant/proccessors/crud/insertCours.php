@@ -1,18 +1,15 @@
 <?php
 
     spl_autoload_register(function($class){
-        require "./classes/". $class . ".class.php";
+        require "../../../../classes/". $class . ".class.php";
     });
-
-    $cours = new Cours();
-    
+    session_start();
 
 
     if (isset($_POST['submitCours'])) {
         if ($_POST['content_type'] == 'video') {
             $type = 'video';
             $cours_contenu = base64_decode($_POST['video_url']);
-            var_dump($_POST['video_url']);
         } else {
             $type = 'document';
             if (($_FILES['document']['size'] > 0) && ($_FILES['document']['size'] <= 5 *1024*1024)) {
@@ -22,7 +19,24 @@
         if ($_FILES['cours_image']['size'] > 0) {
             $cours_image = file_get_contents($_FILES['cours_image']['tmp_name']);
         }
-        
+        $ArrayCours = [
+            'cours_titre' => $_POST['cours_titre'],
+            'description' => $_POST['description'],
+            'cours_contenu' => $cours_contenu,
+            'type' => $type,
+            'imageCours' => $cours_image,
+            'id_user' => $_SESSION['id_user'],
+            'id_catalogue' => $_POST['catalogue']
+        ];
+
+        $cours = new Cours($ArrayCours);
+        var_dump($cours->getData('catalogue'));
+        $insert = $cours->AjouterData();
+        if ($cours->AjouterData()) {
+            header('Location: ../MesCours.php');
+        }
+
+
         // $_POST['cours_titre']
         // $_POST['description']
         // $_POST['catalogue']
