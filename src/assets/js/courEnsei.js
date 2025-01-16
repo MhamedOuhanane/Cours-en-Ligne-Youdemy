@@ -32,42 +32,46 @@ function AfficherVéhicules(params) {
     params.forEach(element => {
         if (id_cours == null || id_cours != element['id_cours']) {
             id_cours = element['id_cours'];
-            CoursesGrid.innerHTML += `<div id="Cours${element['id_cour']}" class="bg-white rounded-lg shadow-md overflow-hidden">
-                                        <img src="data:image/png;base64,${element['imageCours']}" alt="Course ${element['id_cour']}" class="w-full h-48 object-cover">
-                                        <div class="p-6">
-                                            <div class="flex items-center justify-between mb-4">
-                                                <span class="text-sm text-gray-500">#ID: ${element['id_cour']}</span>
-                                                <div id="contTags${element['id_cour']}" class="flex self-end flex-wrap gap-2">
+            CoursesGrid.innerHTML += `<div class="CarteCours bg-white rounded-lg shadow-md overflow-hidden">
+                                            <div class="relative">
+                                                <img src="data:image/pnp;base64,${element['imageCours']}" alt="Course" class="w-full h-48 object-cover">
+                                                <span class="absolute top-4 right-4 px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                                    Publié
+                                                </span>
+                                            </div>
+                                            <div class="p-6">
+                                                <h3 class="text-lg font-semibold mb-2 min-h-14">${element['cours_titre']}</h3>
+                                                <p class="text-gray-600 text-sm mb-4">${element['description']}</p>
+                                                <p class="text-gray-600 text-sm mb-4">${element['catalogue_titre']}</p>
+                                                <div class="flex items-center justify-between mb-4">
+                                                    <span class="text-sm text-gray-500">
+                                                        <i class="fas fa-users mr-2"></i>
+                                                        ${element['etudiants']}
+                                                    </span>
+                                                    <span class="text-sm text-gray-500">
+                                                        <i class="fas fa-clock mr-2"></i>
+                                                        ${element['createDate']}
+                                                    </span>
+                                                </div>
+                                                <div class="flex justify-end space-x-4">
+                                                    <a href="./addCours.php?Modify=${element['id_cour']}">
+                                                        <button class="text-blue-600 hover:bg-blue-50 rounded-lg">
+                                                            <i class="fas fa-edit"></i>
+                                                        </button>
+                                                    </a>
+                                                    <button data-delete="${element['id_cour']}" class="text-red-600 hover:bg-red-50 rounded-lg">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
                                                 </div>
                                             </div>
-                                            <h3 class="text-xl font-semibold mb-2">${element['catalogue_titre']}</h3>
-                                            <p class="text-gray-600 mb-4 line-clamp-2">${element['description']}</p>
-                                            <div class="flex items-center mb-4">
-                                                <img src="data:image/png;base64,${element['image']}" alt="Author" class="w-8 h-8 rounded-full mr-3">
-                                                <div>
-                                                    <p class="text-sm font-semibold">Mr.${element['username']}</p>
-                                                    <p class="text-xs text-gray-500">${element['createDate']}</p>
-                                                </div>
-                                            </div>
-                                            <div class="catalog flex items-center justify-between">
-                                                <div class="text-sm text-gray-500">
-                                                    <i class="fas fa-folder-open mr-2"></i>
-                                                    ${element['catalogue_titre']}</span>
-                                                </div>`;
-                                            if (element['role'] == 'Etudiant') {
-                                                carteCoure = document.querySelector(`#Cours${element['id_cour']} .catalog`);
-                                                carteCoure.innerHTML += `<a href="./Details.php?idCours=${element['id_cour']}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Voir le cours</a>`;
-                                            }
-                                            `</div>
-                                        </div>
-                                    </div>`;
-            let continaire = document.querySelector(`#contTags${element['id_cour']}`);
-            continaire = '';
-            params.forEach(elem => {
-                if (id_cours == elem['id_cours']) {
-                    continaire += `<span class="bg-purple-100 text-gray-600 text-sm px-3 py-1 rounded-full">${elem['tag_Titre']}</span>`;
-                }
-            });
+                                        </div>`;
+            // let continaire = document.querySelector(`#contTags${element['id_cour']}`);
+            // continaire = '';
+            // params.forEach(elem => {
+            //     if (id_cours == elem['id_cours']) {
+            //         continaire += `<span class="bg-purple-100 text-gray-600 text-sm px-3 py-1 rounded-full">${elem['tag_Titre']}</span>`;
+            //     }
+            // });
 
         }
     });

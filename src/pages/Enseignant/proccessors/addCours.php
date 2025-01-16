@@ -198,6 +198,10 @@
                                 class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
                                 Créer le cours
                             </button>
+                            <button type="submit" name="submitModiCours"
+                                class="hidden px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">
+                                Modifier le cours
+                            </button>
                         </div>
                     </form>
                 </div>

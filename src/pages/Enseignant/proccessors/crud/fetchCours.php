@@ -14,13 +14,14 @@
         $etudiant = $requite->selectCount('inscriptioncours', 'id_cour', $array['id_cour']);
         return [
             'id_cour' => $array['id_cour'],
+            'cours_titre' => $array['cours_titre'],
             'catalogue_titre' => $array['catalogue_titre'],
             'description' => $array['description'],
             'imageCours' => $array['imageCours'],
             'id_user' => $array['id_user'],
             'username' => $array['username'],
             'image' => base64_encode($array['image']),
-            'etudians' => $etudiant,
+            'etudiants' => $etudiant,
             'createDate' => $array['createDate'],
             'id_tag' => $array['id_tag'],
             'tag_Titre' => $array['tag_Titre']

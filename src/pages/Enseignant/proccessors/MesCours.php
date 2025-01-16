@@ -109,46 +109,12 @@
 
             <!-- Course Cards Grid -->
             <div id="CoursesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Course Card 1 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="relative">
-                        <img src="/api/placeholder/400/200" alt="Course" class="w-full h-48 object-cover">
-                        <span class="absolute top-4 right-4 px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                            Publié
-                        </span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-semibold mb-2">Introduction au développement web</h3>
-                        <p class="text-gray-600 text-sm mb-4">Développement Web</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-sm text-gray-500">
-                                <i class="fas fa-users mr-2"></i>
-                                45 étudiants
-                            </span>
-                            <span class="text-sm text-gray-500">
-                                <i class="fas fa-clock mr-2"></i>
-                                12 heures
-                            </span>
-                        </div>
-                        <div class="flex justify-end space-x-4">
-                            <button class="text-blue-600 hover:bg-blue-50 rounded-lg">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="text-red-600 hover:bg-red-50 rounded-lg">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                            <button class="text-green-500 hover:bg-green-50 rounded-lg">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Additional course cards would be duplicated here -->
+                <!-- Course Cards -->
+                
             </div>
 
             <!-- Pagination -->
-            <div class="flex items-center justify-between mt-8">
+            <!-- <div class="flex items-center justify-between mt-8">
                 <div class="text-sm text-gray-500">
                     Affichage de 1 à 10 sur 12 cours
                 </div>
@@ -158,7 +124,7 @@
                     <button class="px-3 py-1 border rounded-lg hover:bg-gray-50">2</button>
                     <button class="px-3 py-1 border rounded-lg hover:bg-gray-50">Suivant</button>
                 </div>
-            </div>
+            </div> -->
         </main>
     </div>
 
@@ -171,5 +137,7 @@
             </div>
         </div>
     </footer> -->
+
+    <script src="../../../assets/js/courEnsei.js"></script>
 </body>
 </html>

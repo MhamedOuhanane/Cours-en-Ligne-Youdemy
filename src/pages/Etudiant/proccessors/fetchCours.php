@@ -18,6 +18,7 @@
     $FormerCours = array_map(function($array) use ($role){
         return [
             'id_cour' => $array['id_cour'],
+            'cours_titre' => $array['cours_titre'],
             'catalogue_titre' => $array['catalogue_titre'],
             'description' => $array['description'],
             'imageCours' => $array['imageCours'],
