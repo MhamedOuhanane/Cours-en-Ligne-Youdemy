@@ -31,7 +31,7 @@
 
         $cours = new Cours($ArrayCours);
         $insert = $cours->AjouterData();
-        if ($cours->AjouterData()) {
+        if ($insert) {
             if ($_POST['tags'] != null) {
                 $requite = new Requites();
                 $dernierCours = $requite->selectMAX('cours', 'id_cour');

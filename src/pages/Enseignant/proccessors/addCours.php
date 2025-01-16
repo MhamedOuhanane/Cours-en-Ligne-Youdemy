@@ -15,7 +15,7 @@
     <title>Youdemy - Ajouter un cours</title>
     <link
         rel="shortcut icon"
-        href="../../../../assets/images/logo_icone.png"
+        href="../../../assets/images/logo_icone.png"
         type="image/png"
     >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>

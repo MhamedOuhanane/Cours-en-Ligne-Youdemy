@@ -51,8 +51,8 @@
                     </div>
                 <?php } else { ?>
                     <div class="flex items-center space-x-4">
-                        <a href="./pages/Authentification/connexion.php" class="text-gray-600 hover:text-blue-600">Se connecter</a>
-                        <a href="./pages/Authentification/inscription.php" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">S'inscrire</a>
+                        <a href="../../pages/Authentification/connexion.php" class="text-gray-600 hover:text-blue-600">Se connecter</a>
+                        <a href="../../pages/Authentification/inscription.php" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">S'inscrire</a>
                     </div>
                 <?php } ?>
             </div>

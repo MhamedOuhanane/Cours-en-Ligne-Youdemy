@@ -31,7 +31,7 @@
                     </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                        <a href="./pages/Etudiant/Prfil.php">
+                        <a href="../Dashbord.php">
                             <button class="flex items-center text-gray-700 hover:text-blue-600">
                                 <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
                                 <span><?= htmlspecialchars($_SESSION['username'])?></span>
@@ -46,21 +46,21 @@
     </nav>
 
     <!-- Sidebar and Main Content Container -->
-    <div class="flex h-screen pt-[3rem]">
+    <div class="flex h-screen  pt-16">
         <!-- Sidebar -->
         <aside class="w-64 bg-white shadow-md fixed h-full">
             
             <div class="p-6">
                 <nav class="space-y-3">
-                    <a href="./dashboard.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
+                    <a href="../Dashbord.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
                         <i class="fas fa-chart-line mr-3"></i>
                         <span>Tableau de bord</span>
                     </a>
-                    <a href="#" class="flex items-center text-blue-600 py-2 px-4 bg-blue-50 rounded-lg">
+                    <a href="./MesCours.php" class="flex items-center text-blue-600 py-2 px-4 bg-blue-50 rounded-lg">
                         <i class="fas fa-book mr-3"></i>
                         <span>Mes cours</span>
                     </a>
-                    <a href="#stats" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
+                    <a href="./MesEtudiant.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
                         <i class="fas fa-chart-bar mr-3"></i>
                         <span>Statistiques</span>
                     </a>
@@ -114,8 +114,8 @@
             </div>
 
             <!-- Pagination -->
-            <!-- <div class="flex items-center justify-between mt-8">
-                <div class="text-sm text-gray-500">
+            <div class="flex items-center justify-between mt-8">
+                <!-- <div class="text-sm text-gray-500">
                     Affichage de 1 à 10 sur 12 cours
                 </div>
                 <div class="flex space-x-2">
@@ -123,8 +123,8 @@
                     <button class="px-3 py-1 bg-blue-600 text-white rounded-lg">1</button>
                     <button class="px-3 py-1 border rounded-lg hover:bg-gray-50">2</button>
                     <button class="px-3 py-1 border rounded-lg hover:bg-gray-50">Suivant</button>
-                </div>
-            </div> -->
+                </div> -->
+            </div>
         </main>
     </div>
 
