@@ -135,8 +135,25 @@ use function PHPSTORM_META\type;
         // fetchData
         public function fetchData($table, $filter1, $filter2, $search) {
             $this->sql = "SELECT * FROM $table WHERE 1";
-            $stmt = $this->dbcon->query($this->sql);
-            if ($stmt->execute()) {
+            $params = array();
+
+            if ($filter1 != null) {
+                $this->sql .= " AND id_catalogue = ?";
+                $params [] = $filter1;
+            }
+            if ($filter2 != null) {
+                $this->sql .= " AND id_tag = ?";
+                $params [] = $filter2;
+            }
+            if ($search != null) {
+                $this->sql .= " AND (cours_titre Like ? || createDate Like ?)";
+                $parms[] = "%".$search."%";
+                $parms[] = "%".$search."%";
+            }
+
+            $stmt = $this->dbcon->prepare($this->sql);
+
+            if ($stmt->execute($params)) {
                 return $this->data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
         }
