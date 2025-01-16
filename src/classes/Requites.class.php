@@ -146,15 +146,15 @@ use function PHPSTORM_META\type;
                 $params [] = $filter2;
             }
             if ($search != null) {
-                $this->sql .= " AND (cours_titre Like ? || createDate Like ?)";
-                $parms[] = "%".$search."%";
-                $parms[] = "%".$search."%";
+                $this->sql .= " AND ((cours_titre LIKE ?) OR (createDate LIKE ?))";
+                $params [] = "%" . $search . "%"; 
+                $params [] = "%" . $search . "%";
             }
 
             $stmt = $this->dbcon->prepare($this->sql);
 
-            if ($stmt->execute($params)) {
+            $stmt->execute($params);
                 return $this->data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
+            
         }
     }
