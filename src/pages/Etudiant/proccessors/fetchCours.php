@@ -9,7 +9,7 @@
     $filterCata = $_GET['CatalogueId'] ?? null;
     $Search = $_GET['Search'] ?? null;
 
-    $Cours = $requite->fetchData('listecours', $filterCata, $filterCata, $Search);
+    $Cours = $requite->fetchData('listecours', $filterCata, $filterTag, $Search);
     $FormerCours = array_map(function($array){
         return [
             'id_cour' => $array['id_cour'],

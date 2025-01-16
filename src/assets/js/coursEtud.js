@@ -2,7 +2,8 @@ function filterCours() {
     const searchValue = InputSearch.value;
     const filterValue = selectTags.value;
     const urlfiltre = `./proccessors/fetchCours.php?tagId=${filterValue}&Search=${searchValue}`;
-
+    console.log(urlfiltre);
+    
     fetch(urlfiltre)
     .then(response => response.json())
     .then(data => {
