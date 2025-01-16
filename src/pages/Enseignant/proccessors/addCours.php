@@ -1,3 +1,12 @@
+<?php
+    spl_autoload_register(function($class){
+        require "../../../classes/". $class . ".class.php";
+    });
+
+    $requite = new Requites();
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,7 +14,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youdemy - Ajouter un cours</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../../assets/css/input.css">
+    <link rel="stylesheet" href="../../../assets/css/output.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
@@ -61,19 +75,19 @@
                         </a>
                     </div>
 
-                    <form action="process_course.php" method="POST" class="space-y-6">
+                    <form action="./crud/insertCours.php" method="POST" class="space-y-6" enctype="multipart/form-data">
                         <!-- Titre du cours -->
                         <div>
                             <label for="cours_titre" class="block text-sm font-medium text-gray-700">Titre du cours *</label>
-                            <input type="text" name="cours_titre" id="cours_titre" required
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <input type="text" name="cours_titre" id="cours_titre" required placeholder="Titre du cours"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border-[1px] focus:border-blue-500 focus:ring-blue-500 p-2">
                         </div>
 
                         <!-- Description -->
                         <div>
                             <label for="description" class="block text-sm font-medium text-gray-700">Description *</label>
-                            <textarea name="description" id="description" rows="4" required
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                            <textarea name="description" id="description" rows="4" required placeholder="Description"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border-[1px] focus:border-blue-500 focus:ring-blue-500 p-2"></textarea>
                         </div>
 
                         <!-- Type de contenu -->
@@ -81,7 +95,7 @@
                             <label class="block text-sm font-medium text-gray-700">Type de contenu *</label>
                             <div class="flex space-x-4">
                                 <label class="inline-flex items-center">
-                                    <input type="radio" name="content_type" value="video" class="form-radio text-blue-600" checked>
+                                    <input type="radio" name="content_type" value="video" class="form-radio  text-blue-600" checked>
                                     <span class="ml-2">Vidéo</span>
                                 </label>
                                 <label class="inline-flex items-center">
@@ -94,7 +108,7 @@
                             <div id="video_input" class="space-y-2">
                                 <label for="video_url" class="block text-sm font-medium text-gray-700">URL de la vidéo *</label>
                                 <input type="url" name="video_url" id="video_url" placeholder="https://youtube.com/..."
-                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border-[1px] p-2">
                                 <p class="text-sm text-gray-500">Collez l'URL YouTube ou Vimeo de votre vidéo</p>
                             </div>
 
@@ -110,7 +124,7 @@
                                                 <input id="document-upload" name="document" type="file" class="sr-only" accept=".pdf,.doc,.docx">
                                             </label>
                                         </div>
-                                        <p class="text-xs text-gray-500">PDF, DOC jusqu'à 10MB</p>
+                                        <p class="text-xs text-gray-500">PDF, DOC jusqu'à 5MB</p>
                                     </div>
                                 </div>
                             </div>
@@ -120,14 +134,20 @@
                         <div>
                             <label for="catalogue" class="block text-sm font-medium text-gray-700">Catalogue *</label>
                             <select name="catalogue" id="catalogue" required
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border-[1px] focus:border-blue-500 focus:ring-blue-500 p-2">
                                 <option value="">Sélectionnez une catégorie</option>
-                                <option value="web">Développement Web</option>
-                                <option value="mobile">Développement Mobile</option>
-                                <option value="data">Data Science</option>
-                                <option value="design">Design</option>
-                                <option value="marketing">Marketing Digital</option>
-                                <option value="business">Business</option>
+                                <?php
+                                    $catalgue = new Catalogues();
+                                    $data = $requite->selectAll('catalogues');
+                                    if ($data) {
+                                        foreach($data as $catalo) {
+                                            $catalgue->setData('id_catalogue', $catalo['id_catalogue']);
+                                            $catalgue->setData('catalogue_titre', $catalo['catalogue_titre']);
+                                            $id = $_GET['idCatalogue'] ?? null;
+                                            $catalgue->SelectorCatal($id);
+                                        }
+                                    }
+                                ?>
                             </select>
                         </div>
 
@@ -156,7 +176,7 @@
                                 class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-50">
                                 Annuler
                             </button>
-                            <button type="submit"
+                            <button type="submit" name="submitCours"
                                 class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
                                 Créer le cours
                             </button>
@@ -174,7 +194,7 @@
                 const videoInput = document.getElementById('video_input');
                 const documentInput = document.getElementById('document_input');
                 
-                if (e.target.value === 'video') {
+                if (e.target.value == 'video') {
                     videoInput.classList.remove('hidden');
                     documentInput.classList.add('hidden');
                 } else {
@@ -183,6 +203,17 @@
                 }
             });
         });
+        
+
+        $(document).ready(function () {
+            // Initialize Select2 on the Tags dropdown
+            $('#tags').select2({
+                placeholder: "Sélectionnez des tags",
+                allowClear: true,
+                width: '100%'
+            });
+        });
     </script>
+
 </body>
 </html>
