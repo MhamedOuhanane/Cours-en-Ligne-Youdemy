@@ -797,6 +797,10 @@ video {
   height: 2rem;
 }
 
+.h-\[2\.5rem\] {
+  height: 2.5rem;
+}
+
 .h-\[4rem\] {
   height: 4rem;
 }
@@ -1153,14 +1157,6 @@ video {
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
 }
 
-.border-\[\] {
-  border-color: ;
-}
-
-.border-\[1p\] {
-  border-color: 1p;
-}
-
 .bg-blue-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1));
@@ -1447,6 +1443,10 @@ video {
 
 .pt-8 {
   padding-top: 2rem;
+}
+
+.pt-\[3rem\] {
+  padding-top: 3rem;
 }
 
 .text-left {

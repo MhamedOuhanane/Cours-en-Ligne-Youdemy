@@ -11,6 +11,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youdemy - Tableau de bord Enseignant</title>
+    <link
+        rel="shortcut icon"
+        href="../../assets/images/logo_icone.png"
+        type="image/png"
+    >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>

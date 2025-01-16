@@ -133,13 +133,17 @@ use function PHPSTORM_META\type;
         }
 
         // fetchData
-        public function fetchData($table, $filter1, $filter2, $search) {
+        public function fetchData($table, $filter1, $filter2, $search, $enseig = null) {
             $this->sql = "SELECT * FROM $table WHERE 1";
             $params = array();
 
             if ($filter1 != "") {
                 $this->sql .= " AND id_catalogue = ?";
                 $params [] = $filter1;
+            }
+            if ($enseig != null) {
+                $this->sql .= " AND id_user = ?";
+                $params [] = $enseig;
             }
             if ($filter2 != "") {
                 $this->sql .= " AND id_tag = ?";

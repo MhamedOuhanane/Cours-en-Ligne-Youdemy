@@ -2,7 +2,7 @@
     spl_autoload_register(function($class){
         require "../../../classes/". $class . ".class.php";
     });
-
+    session_start();
     $requite = new Requites();
 
 ?>
@@ -13,6 +13,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youdemy - Ajouter un cours</title>
+    <link
+        rel="shortcut icon"
+        href="../../../../assets/images/logo_icone.png"
+        type="image/png"
+    >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <link rel="stylesheet" href="../../../assets/css/input.css">
     <link rel="stylesheet" href="../../../assets/css/output.css">
@@ -26,17 +31,22 @@
     <nav class="bg-white shadow-md fixed w-full z-10">
         <div class="container mx-auto px-6 py-3">
             <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <a href="#" class="text-2xl font-bold text-blue-600">Youdemy</a>
+                <div class="w-full flex h-[2.5rem] items-center">
+                    <a href="../Dashbord.php" class="text-2xl h-full font-bold text-blue-600">
+                        <img src="../../../assets/images/logo.png" alt="logo du site" class="h-full">
+                    </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <div class="relative">
-                        <button class="flex items-center text-gray-700 hover:text-blue-600">
-                            <img src="/api/placeholder/32/32" alt="Profile" class="w-8 h-8 rounded-full mr-2">
-                            <span>Prof. John Doe</span>
-                        </button>
+                        <a href="../Dashbord.php">
+                            <button class="flex items-center text-gray-700 hover:text-blue-600">
+                                <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
+                                <span><?= htmlspecialchars($_SESSION['username'])?></span>
+                            </button>
+                        </a>
+                        <a href="../../../pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
                     </div>
-                </div>
             </div>
         </div>
     </nav>
@@ -47,17 +57,17 @@
         <aside class="w-64 bg-white shadow-md fixed h-full">
             <div class="p-6">
                 <nav class="space-y-3">
-                    <a href="dashboard.html" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
+                    <a href="../Dashbord.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
                         <i class="fas fa-chart-line mr-3"></i>
                         <span>Tableau de bord</span>
                     </a>
-                    <a href="#" class="flex items-center text-blue-600 py-2 px-4 bg-blue-50 rounded-lg">
+                    <a href="./MesCours.php" class="flex items-center text-blue-600 py-2 px-4 bg-blue-50 rounded-lg">
                         <i class="fas fa-book mr-3"></i>
                         <span>Mes cours</span>
                     </a>
-                    <a href="#stats" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
+                    <a href="./MesEtudiant.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
                         <i class="fas fa-chart-bar mr-3"></i>
-                        <span>Statistiques</span>
+                        <span>Mes Etudiants</span>
                     </a>
                 </nav>
             </div>
@@ -70,7 +80,7 @@
                 <div class="p-6">
                     <div class="flex items-center justify-between mb-6">
                         <h1 class="text-xl font-bold text-gray-900">Ajouter un nouveau cours</h1>
-                        <a href="dashboard.html" class="text-gray-600 hover:text-gray-900">
+                        <a href="./MesCours.php" class="text-gray-600 hover:text-gray-900">
                             <i class="fas fa-times"></i>
                         </a>
                     </div>

@@ -12,20 +12,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youdemy - Mes Cours</title>
+    <link
+        rel="shortcut icon"
+        href="../../../assets/images/logo_icone.png"
+        type="image/png"
+    >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="w-full flex h-[2.5rem] items-center">
+                    <a href="../Dashbord.php" class="text-2xl h-full font-bold text-blue-600">
+                        <img src="../../../assets/images/logo.png" alt="logo du site" class="h-full">
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                        <a href="./pages/Etudiant/Prfil.php">
+                            <button class="flex items-center text-gray-700 hover:text-blue-600">
+                                <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
+                                <span><?= htmlspecialchars($_SESSION['username'])?></span>
+                            </button>
+                        </a>
+                        <a href="../../../pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </div>
+            </div>
+        </div>
+    </nav>
 
     <!-- Sidebar and Main Content Container -->
-    <div class="flex h-screen">
+    <div class="flex h-screen pt-[3rem]">
         <!-- Sidebar -->
         <aside class="w-64 bg-white shadow-md fixed h-full">
-            <div class="w-full flex h-[4rem] items-center">
-                <a href="../Dashbord.php" class="text-2xl h-full font-bold text-blue-600">
-                    <img src="../../../assets/images/logo.png" alt="logo du site" class="h-full">
-                </a>
-            </div>
+            
             <div class="p-6">
                 <nav class="space-y-3">
                     <a href="./dashboard.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
@@ -46,32 +70,17 @@
 
         <!-- Main Content -->
         <main class="flex-1 ml-64 p-8">
-            <!-- Header -->
-            <header class="bg-white shadow-sm rounded-xl p-4 mb-8">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-2xl font-bold text-gray-800">Mes Cours</h2>
-                    <div class="flex items-center space-x-4">
-                        <a href="./pages/Etudiant/Prfil.php">
-                            <button class="flex items-center text-gray-700 hover:text-blue-600">
-                                <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
-                                <span><?= htmlspecialchars($_SESSION['username'])?></span>
-                            </button>
-                        </a>
-                        <a href="../../../pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </a>
-                    </div>
-                </div>
-            </header>
-
             <!-- Header Section -->
             <div class="flex justify-between items-center mb-8">
-                <a href="./addCours.php">
-                    <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 flex items-center">
-                        <i class="fas fa-plus mr-2"></i>
-                        Ajouter un nouveau cours
-                    </button>
-                </a>
+                <div class="flex  justify-between items-center w-full px-2">
+                    <h2 class="text-2xl font-bold text-gray-800">Mes Cours</h2>
+                    <a href="./addCours.php">
+                        <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 flex items-center">
+                            <i class="fas fa-plus mr-2"></i>
+                            Ajouter un nouveau cours
+                        </button>
+                    </a>
+                </div>
             </div>
 
             <!-- Search and Filter -->
@@ -99,7 +108,7 @@
             </div>
 
             <!-- Course Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div id="CoursesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Course Card 1 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
                     <div class="relative">
