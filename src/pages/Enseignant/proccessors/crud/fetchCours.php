@@ -17,12 +17,13 @@
             'cours_titre' => $array['cours_titre'],
             'catalogue_titre' => $array['catalogue_titre'],
             'description' => $array['description'],
-            'imageCours' => $array['imageCours'],
+            'imageCours' => base64_encode($array['imageCours']),
             'id_user' => $array['id_user'],
             'username' => $array['username'],
             'image' => base64_encode($array['image']),
             'etudiants' => $etudiant,
             'createDate' => $array['createDate'],
+            'status' => $array['status'],
             'id_tag' => $array['id_tag'],
             'tag_Titre' => $array['tag_Titre']
         ];

@@ -5,6 +5,11 @@
     session_start();
     $requite = new Requites();
 
+    $idCour = $_GET['Modify'] ?? null;
+    if ($idCour) {
+        $dataCour = $requite->selectWhere('cours', 'id_cour', $_GET['Modify']);
+        $cours = new Cours($dataCour);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -85,11 +90,11 @@
                         </a>
                     </div>
 
-                    <form action="./crud/insertCours.php" method="POST" class="space-y-6" enctype="multipart/form-data">
+                    <form action="./crud/insertCours.php<?= ($idCour) ? "?  Modifier=$idCour" : "" ?>" method="POST" class="space-y-6" enctype="multipart/form-data">
                         <!-- Titre du cours -->
                         <div>
                             <label for="cours_titre" class="block text-sm font-medium text-gray-700">Titre du cours *</label>
-                            <input type="text" name="cours_titre" id="cours_titre" required placeholder="Titre du cours"
+                            <input type="text" name="cours_titre" id="cours_titre" required placeholder="Titre du cours" value="<?= ($idCour) ? $cours->getData('cours_titre') : "" ?>"
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border-[1px] focus:border-blue-500 focus:ring-blue-500 p-2">
                         </div>
 
@@ -97,13 +102,15 @@
                         <div>
                             <label for="description" class="block text-sm font-medium text-gray-700">Description *</label>
                             <textarea name="description" id="description" rows="4" required placeholder="Description"
+                                value="<?= ($idCour) ? $cours->getData('description') : "" ?>"
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border-[1px] focus:border-blue-500 focus:ring-blue-500 p-2"></textarea>
                         </div>
 
                         <!-- Image -->
                         <div>
                             <label class="block text-gray-700 mb-2">Image *</label>
-                            <input type="file" name="cours_image" multiple accept="image/*" class="w-full border rounded-lg p-2">
+                            <input type="file" name="cours_image"
+                                multiple accept="image/*" class="w-full border rounded-lg p-2">
                         </div>
 
                         <!-- Type de contenu -->
@@ -111,11 +118,13 @@
                             <label class="block text-sm font-medium text-gray-700">Type de contenu *</label>
                             <div class="flex space-x-4">
                                 <label class="inline-flex items-center">
-                                    <input type="radio" name="content_type" value="video" class="form-radio  text-blue-600" checked>
+                                    <input type="radio" <?= ($idCour && ($cours->getData('type') == "video")) ? "checked" : "" ?>
+                                        name="content_type" value="video" class="form-radio  text-blue-600" >
                                     <span class="ml-2">Vidéo</span>
                                 </label>
                                 <label class="inline-flex items-center">
-                                    <input type="radio" name="content_type" value="document" class="form-radio text-blue-600">
+                                    <input type="radio" <?= ($idCour && ($cours->getData('type') == "document")) ? "checked" : "" ?>
+                                        name="content_type" value="document" class="form-radio text-blue-600">
                                     <span class="ml-2">Document</span>
                                 </label>
                             </div>
@@ -123,7 +132,8 @@
                             <!-- URL Vidéo -->
                             <div id="video_input" class="space-y-2">
                                 <label for="video_url" class="block text-sm font-medium text-gray-700">URL de la vidéo *</label>
-                                <input type="url" name="video_url" id="video_url" placeholder="https://youtube.com/..."
+                                <input type="url" <?= ($idCour && $cours->getData('type') == "video") ? $cours->getData('cours_contenu') : "" ?>
+                                    name="video_url" id="video_url" placeholder="https://youtube.com/..."
                                     class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border-[1px] p-2">
                                 <p class="text-sm text-gray-500">Collez l'URL YouTube ou Vimeo de votre vidéo</p>
                             </div>
@@ -137,7 +147,8 @@
                                         <div class="flex text-sm text-gray-600">
                                             <label for="document-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
                                                 <span>Télécharger un document</span>
-                                                <input id="document-upload" name="document" type="file" class="sr-only" accept=".pdf,.doc,.docx">
+                                                <input id="document-upload" value="<?= ($idCour && $cours->getData('type') == "video") ? $cours->getData('cours_contenu') : "" ?>"
+                                                    name="document" type="file" class="sr-only" accept=".pdf,.doc,.docx">
                                             </label>
                                         </div>
                                         <p class="text-xs text-gray-500">PDF, DOC jusqu'à 5MB</p>
@@ -159,7 +170,7 @@
                                         foreach($data as $catalo) {
                                             $catalgue->setData('id_catalogue', $catalo['id_catalogue']);
                                             $catalgue->setData('catalogue_titre', $catalo['catalogue_titre']);
-                                            $id = $_GET['idCatalogue'] ?? null;
+                                            $id = ($idCour) ? $cours->getData('id_catalogue') : null;
                                             $catalgue->SelectorCatal($id);
                                         }
                                     }
@@ -194,14 +205,18 @@
                                     Annuler
                                 </button>
                             </a>
-                            <button type="submit" name="submitCours"
-                                class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
-                                Créer le cours
-                            </button>
-                            <button type="submit" name="submitModiCours"
-                                class="hidden px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">
-                                Modifier le cours
-                            </button>
+                            <?php if (!$idCour) { ?>
+                                <button type="submit" name="submitCours"
+                                    class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                                    Créer le cours
+                                </button>
+                            <?php } ?>
+                            <?php if ($idCour) { ?>
+                                    <button type="submit" name="submitModiCours"
+                                        class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">
+                                        Modifier le cours
+                                    </button>
+                            <?php } ?>
                         </div>
                     </form>
                 </div>

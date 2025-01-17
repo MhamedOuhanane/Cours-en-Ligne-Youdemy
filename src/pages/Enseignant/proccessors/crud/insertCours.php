@@ -31,7 +31,7 @@
 
         $cours = new Cours($ArrayCours);
         $insert = $cours->AjouterData();
-        if ($insert) {
+        if ($insert == true) {
             if ($_POST['tags'] != null) {
                 $requite = new Requites();
                 $dernierCours = $requite->selectMAX('cours', 'id_cour');
@@ -48,4 +48,28 @@
         // $_POST['description']
         // $_POST['catalogue']
         // $_POST['tags']
+    }  else if (isset($_POST['submitModiCours'])) {
+        if ($_POST['content_type'] == 'video') {
+            $type = 'video';
+            $cours_contenu = base64_decode($_POST['video_url']);
+        } else {
+            $type = 'document';
+            if (($_FILES['document']['size'] > 0) && ($_FILES['document']['size'] <= 5 *1024*1024)) {
+                $cours_contenu = file_get_contents($_FILES['document']['tmp_name']);
+            }
+        }
+        if ($_FILES['cours_image']['size'] > 0) {
+            $cours_image = file_get_contents($_FILES['cours_image']['tmp_name']);
+        }
+        $ArrayCours = [
+            'id_cour' => $_GET['Modifier'],
+            'cours_titre' => $_POST['cours_titre'],
+            'description' => $_POST['description'],
+            'cours_contenu' => $cours_contenu,
+            'type' => $type,
+            'imageCours' => $cours_image,
+            'id_catalogue' => $_POST['catalogue']
+        ];  
+
+        $cours = new Cours($ArrayCours);
     }

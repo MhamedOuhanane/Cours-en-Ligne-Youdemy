@@ -27,15 +27,18 @@ function AfficherVéhicules(params) {
 
     CoursesGrid.innerHTML = '';
     let id_cours = null;
-
+    let status = "";
     params.forEach(element => {
-        if (id_cours == null || id_cours != element['id_cours']) {
-            id_cours = element['id_cours'];
+        if (id_cours == null || id_cours != element['id_cour']) {
+            id_cours = element['id_cour'];  
+            status = (element['status'] == 'Publié') ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800";
+            console.log(status);
+            
             CoursesGrid.innerHTML += `<div id='Cours${element['id_cour']}' class="CarteCours bg-white rounded-lg shadow-md overflow-hidden">
                                             <div class="relative">
                                                 <img src="data:image/pnp;base64,${element['imageCours']}" alt="Course" class="w-full h-48 object-cover">
-                                                <span class="absolute top-4 right-4 px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                                                    Publié
+                                                <span class="absolute top-4 right-4 px-2 py-1 text-xs font-semibold rounded-full ${status}">
+                                                    ${element['status']}
                                                 </span>
                                             </div>
                                             <div class="p-6">
@@ -96,8 +99,7 @@ document.addEventListener('DOMContentLoaded', filterCours);
 
 // fonction de delete 
 function deleteCours(id) {
-    const urlDelete = `./crud/updateCours.php?DeleteCours=${id}`;
-    console.log(urlDelete);
+    const urlDelete = `./crud/deleteCours.php?DeleteCours=${id}`;
     
     fetch(urlDelete)
     .then(response => response.json())

@@ -35,7 +35,6 @@
             $requite = new Requites();
 
             $values = [
-                'id_cour' => $this->id_cour,
                 'cours_titre' => $this->cours_titre,
                 'description' => $this->description,
                 'cours_contenu' => $this->cours_contenu,
@@ -46,6 +45,23 @@
             ];
 
             return $requite->insertData('cours', $values);
+        } 
+
+        function UpdateCours($name, $valus) {
+            $requite = new Requites();
+
+            $values = [
+                'id_cour' => $this->id_cour,
+                'cours_titre' => $this->cours_titre,
+                'description' => $this->description,
+                'cours_contenu' => $this->cours_contenu,
+                'type' => $this->type,
+                'imageCours' => $this-> imageCours,
+                'id_catalogue' => $this->id_catalogue,
+                'id_user' => $this->id_user
+            ];
+
+            return $requite->update('cours', $values, 'id_cour', $this->id_cour);
         }
         
     }

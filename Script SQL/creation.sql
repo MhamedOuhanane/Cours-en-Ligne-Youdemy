@@ -81,3 +81,6 @@ MODIFY telephone varchar(13) NOT NULL;
 
 ALTER TABLE cours
 MODIFY cours_contenu longblob NOT NULL;
+
+ALTER TABLE cours 
+ADD status ENUM('Publié', 'Refusé') DEFAULT 'Refusé';
