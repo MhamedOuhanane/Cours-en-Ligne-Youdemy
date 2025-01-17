@@ -17,7 +17,8 @@
         type="image/png"
     >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../assets/css/input.css">
+    <link rel="stylesheet" href="../../assets/css/output.css">
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
@@ -45,7 +46,7 @@
     </nav>
 
     <!-- Sidebar and Main Content Container -->
-    <div class="flex h-screen pt-[3rem]">
+    <div class="flex h-screen pt-16">
         <!-- Sidebar -->
         <aside class="w-64 bg-white shadow-md fixed h-full">
             <div class="p-6">

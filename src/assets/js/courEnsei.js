@@ -2,7 +2,6 @@ function filterCours() {
     const searchValue = InputSearch.value;
     const filterCata = selectCatalogue.value;
     const urlfiltre = `./crud/fetchCours.php?CatalogueId=${filterCata}&Search=${searchValue}`;
-    console.log(urlfiltre);
     
     fetch(urlfiltre)
     .then(response => response.json())
@@ -32,7 +31,7 @@ function AfficherVéhicules(params) {
     params.forEach(element => {
         if (id_cours == null || id_cours != element['id_cours']) {
             id_cours = element['id_cours'];
-            CoursesGrid.innerHTML += `<div class="CarteCours bg-white rounded-lg shadow-md overflow-hidden">
+            CoursesGrid.innerHTML += `<div id='Cours${element['id_cour']}' class="CarteCours bg-white rounded-lg shadow-md overflow-hidden">
                                             <div class="relative">
                                                 <img src="data:image/pnp;base64,${element['imageCours']}" alt="Course" class="w-full h-48 object-cover">
                                                 <span class="absolute top-4 right-4 px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
@@ -59,7 +58,7 @@ function AfficherVéhicules(params) {
                                                             <i class="fas fa-edit"></i>
                                                         </button>
                                                     </a>
-                                                    <button data-delete="${element['id_cour']}" class="text-red-600 hover:bg-red-50 rounded-lg">
+                                                    <button data-delete="${element['id_cour']}" class="deleteCours text-red-600 hover:bg-red-50 rounded-lg">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 </div>
@@ -75,6 +74,13 @@ function AfficherVéhicules(params) {
 
         }
     });
+    let deleteBTN = document.querySelectorAll('.deleteCours');
+    deleteBTN.forEach(element => {
+        element.addEventListener('click', () => {
+            const idCours = element.dataset['delete'];
+            deleteCours(idCours);
+        })
+    });
 }
 
 let searchTime;
@@ -87,3 +93,24 @@ InputSearch.addEventListener('input', () => {
 selectCatalogue.addEventListener('change', filterCours);
 
 document.addEventListener('DOMContentLoaded', filterCours);
+
+// fonction de delete 
+function deleteCours(id) {
+    const urlDelete = `./crud/updateCours.php?DeleteCours=${id}`;
+    console.log(urlDelete);
+    
+    fetch(urlDelete)
+    .then(response => response.json())
+    .then(data => {
+            if (data) {
+                const cours = document.querySelector(`#Cours${id}`);
+                cours.remove();
+            }
+            
+        })
+        // .catch(error => {
+        //     CoursesGrid.innerHTML = `<div class="col-span-full text-center text-red-500">
+        //                                 <span>ERREUR : ${error.message}</span>
+        //                             </div>`;
+        // });
+}

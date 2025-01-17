@@ -17,8 +17,9 @@
         href="../../../assets/images/logo_icone.png"
         type="image/png"
     >
+    <link rel="stylesheet" href="../../../assets/css/output.css">
+    <link rel="stylesheet" href="../../../assets/css/input.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
