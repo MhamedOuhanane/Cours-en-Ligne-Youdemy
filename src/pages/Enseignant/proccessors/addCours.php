@@ -94,7 +94,7 @@
                         <!-- Titre du cours -->
                         <div>
                             <label for="cours_titre" class="block text-sm font-medium text-gray-700">Titre du cours *</label>
-                            <input type="text" name="cours_titre" id="cours_titre" required placeholder="Titre du cours" value="<?= ($idCour) ? $cours->getData('cours_titre') : "" ?>"
+                            <input type="text" name="cours_titre" id="cours_titre" required placeholder="Titre du cours" value="<?= htmlspecialchars(($idCour) ? $cours->getData('cours_titre') : "") ?>"
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border-[1px] focus:border-blue-500 focus:ring-blue-500 p-2">
                         </div>
 
@@ -102,8 +102,8 @@
                         <div>
                             <label for="description" class="block text-sm font-medium text-gray-700">Description *</label>
                             <textarea name="description" id="description" rows="4" required placeholder="Description"
-                                value="<?= ($idCour) ? $cours->getData('description') : "" ?>"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border-[1px] focus:border-blue-500 focus:ring-blue-500 p-2"></textarea>
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border-[1px] focus:border-blue-500 focus:ring-blue-500 p-2"><?= ($idCour) ? $cours->getData('description') : "" ?>
+                            </textarea>
                         </div>
 
                         <!-- Image -->
@@ -119,6 +119,7 @@
                             <div class="flex space-x-4">
                                 <label class="inline-flex items-center">
                                     <input type="radio" <?= ($idCour && ($cours->getData('type') == "video")) ? "checked" : "" ?>
+                                        <?= (!$idCour) ? "checked" : "" ?>
                                         name="content_type" value="video" class="form-radio  text-blue-600" >
                                     <span class="ml-2">Vidéo</span>
                                 </label>
@@ -132,7 +133,7 @@
                             <!-- URL Vidéo -->
                             <div id="video_input" class="space-y-2">
                                 <label for="video_url" class="block text-sm font-medium text-gray-700">URL de la vidéo *</label>
-                                <input type="url" <?= ($idCour && $cours->getData('type') == "video") ? $cours->getData('cours_contenu') : "" ?>
+                                <input type="url" value="<?= ($idCour && $cours->getData('type') == "video") ? base64_encode($cours->getData('cours_contenu')) : "" ?>"
                                     name="video_url" id="video_url" placeholder="https://youtube.com/..."
                                     class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border-[1px] p-2">
                                 <p class="text-sm text-gray-500">Collez l'URL YouTube ou Vimeo de votre vidéo</p>
@@ -147,7 +148,7 @@
                                         <div class="flex text-sm text-gray-600">
                                             <label for="document-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
                                                 <span>Télécharger un document</span>
-                                                <input id="document-upload" value="<?= ($idCour && $cours->getData('type') == "video") ? $cours->getData('cours_contenu') : "" ?>"
+                                                <input id="document-upload"
                                                     name="document" type="file" class="sr-only" accept=".pdf,.doc,.docx">
                                             </label>
                                         </div>
@@ -184,12 +185,16 @@
                             <select name="tags[]" id="tags" multiple
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                                 <?php
+                                    $tagcours = null;
+                                    if ($idCour) {
+                                        $tagcours = $requite->selectAll('tagcours', 'id_cour', $idCour);
+                                    }
                                     $tags = new tags();
                                     $data = $requite->selectAll('tags');
                                     if ($data) {
                                         foreach($data as $tag) {
                                             $tags->setData($tag);
-                                            $tags->toString();
+                                            $tags->toString($tagcours);
                                         }
                                     }
                                 ?>
@@ -227,10 +232,19 @@
     <script>
         // Toggle between video and document inputs
         document.querySelectorAll('input[name="content_type"]').forEach((radio) => {
+            const videoInput = document.getElementById('video_input');
+            const documentInput = document.getElementById('document_input');
+            
+            if (radio.checked) {
+                if (radio.value == 'video') {
+                    videoInput.classList.remove('hidden');
+                    documentInput.classList.add('hidden');
+                } else {
+                    videoInput.classList.add('hidden');
+                    documentInput.classList.remove('hidden');
+                }
+            }
             radio.addEventListener('change', (e) => {
-                const videoInput = document.getElementById('video_input');
-                const documentInput = document.getElementById('document_input');
-                
                 if (e.target.value == 'video') {
                     videoInput.classList.remove('hidden');
                     documentInput.classList.add('hidden');

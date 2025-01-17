@@ -15,7 +15,7 @@
 
         public function __construct($Arrays)
         {
-            $this->id_cour = $Arrays['id_cours'] ?? null;
+            $this->id_cour = $Arrays['id_cour'] ?? null;
             $this->cours_titre = $Arrays['cours_titre'] ?? null;
             $this->description = $Arrays['description'] ?? null;
             $this->cours_contenu = $Arrays['cours_contenu'] ?? null;
@@ -47,19 +47,22 @@
             return $requite->insertData('cours', $values);
         } 
 
-        function UpdateCours($name, $valus) {
+        function UpdateCours() {
             $requite = new Requites();
 
             $values = [
-                'id_cour' => $this->id_cour,
                 'cours_titre' => $this->cours_titre,
                 'description' => $this->description,
-                'cours_contenu' => $this->cours_contenu,
                 'type' => $this->type,
-                'imageCours' => $this-> imageCours,
-                'id_catalogue' => $this->id_catalogue,
-                'id_user' => $this->id_user
+                'id_catalogue' => $this->id_catalogue
             ];
+            if ($this->cours_contenu != null) {
+                $values['cours_contenu'] = $this->cours_contenu; 
+            }
+            if ($this->imageCours != null) {
+                $values['imageCours'] = $this->imageCours; 
+            }
+            var_dump($this->id_cour);
 
             return $requite->update('cours', $values, 'id_cour', $this->id_cour);
         }

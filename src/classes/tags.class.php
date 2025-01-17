@@ -19,7 +19,15 @@
             ];
         }
 
-        public function toString(){
-            echo '<option value="'.htmlspecialchars($this->getData()[0]).'">'.htmlspecialchars($this->getData()[1]).'</option>';
+        public function toString($tags = null){
+            $selected = "";
+            if ($tags != null) {
+                foreach($tags as $tag) {
+                    if ($tag['id_tag'] == $this->id) {
+                        $selected = "selected";
+                    }
+                }
+            }
+            echo '<option '. htmlspecialchars($selected) .' value="'.htmlspecialchars($this->id).'">'.htmlspecialchars($this->tagTitre).'</option>';
         }
     }
