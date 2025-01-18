@@ -4,8 +4,6 @@
     });
     session_start();
     $requite = new Requites();
-    $role = new Roles();
-    $role->setData('Enseignant');
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +47,7 @@
                     <i class="fas fa-book w-6"></i>
                     <span>Cours</span>
                 </a>
-                <a href="./Catégories.php" class="flex items-center px-6 py-3 hover:bg-gray-800">
+                <a href="./Catégories.php" class="flex items-center px-6 py-3 hover:bg-gray-800 text-blue-500">
                     <i class="fas fa-folder w-6"></i>
                     <span>Catégories</span>
                 </a>
@@ -57,7 +55,7 @@
                     <i class="fas fa-tags w-6"></i>
                     <span>Tags</span>
                 </a>
-                <a href="./Enseignants.php" class="flex items-center px-6 py-3 hover:bg-gray-800  text-blue-500">
+                <a href="./Enseignants.php" class="flex items-center px-6 py-3 hover:bg-gray-800">
                     <i class="fas fa-chalkboard-teacher w-6"></i>
                     <span>Enseignants</span>
                 </a>
@@ -69,7 +67,7 @@
             <!-- Header -->
             <header class="bg-white shadow-sm rounded-xl p-4 mb-8">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-2xl font-bold text-gray-800">Enseignants</h2>
+                    <h2 class="text-2xl font-bold text-gray-800">Gestion des Catégories</h2>
                     <div class="flex items-center space-x-4">
                         <a href="./pages/Etudiant/Prfil.php">
                             <button class="flex items-center text-gray-700 hover:text-blue-600">
@@ -84,23 +82,52 @@
                 </div>
             </header>
 
-            <!-- Enseignants Page -->
-            <div id="Enseignants" class="page">
+            <!-- Content -->
+            <div class="p-8">
+            <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-semibold">Ajout Catégories  <i class="fas fa-plus w-6"></i> </h3>
+                    <div class="space-x-4">
+                        <button onclick="document.getElementById('bulkCategoriesModal').classList.remove('hidden')" 
+                                class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600">
+                            <i class="fas fa-tags mr-2"></i>Catégories
+                        </button>
+                    </div>
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- les cartes des Enseignants -->
+                    <!-- Categorie Cards -->
                     <?php
-                        $usersEn = $requite->selectAll('users', 'id_role', $role->getData()['id_role']);
-                        if ($usersEn != []) {
-                            foreach($usersEn as $enseign) {
-                                $Enseignant = new Enseignants($enseign);
-                                $Enseignant->toStringUser();
+                        $catégories = $requite->selectAll('catalogues');
+                        if ($catégories) {
+                            foreach($catégories as $catégo) {
+                                $catalogue = new Catalogues();
+                                $catalogue->setData('id_catalogue', $catégo['id_catalogue']);
+                                $catalogue->setData('catalogue_titre', $catégo['catalogue_titre']);
+                                $catalogue->setData('catalogue_contenu', $catégo['catalogue_contenu']);
+                                $catalogue->setData('catalogue_image', $catégo['catalogue_image']);
+
+                                $catalogue->toString();
                             }
                         }
                     ?>
                 </div>
             </div>
+
+            <!-- Bulk Categories Modal -->
+            <div id="bulkCategoriesModal" class="<?= (isset($_GET['Modifier'])) ? '':'hidden'?> fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 ">
+                <div class="relative top-20 mx-auto p-5 border w-4/5 shadow-lg rounded-xl bg-white">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">Ajout un catégories</h3>
+                            <a <?= (isset($_GET['Modifier'])) ? 'href="admineCatégorie.php"':''?>>
+                                <button onclick="FormManager.closeCategoriesModal()" 
+                                        class="p-2 rounded-full hover:bg-gray-100 transition-all duration-200 text-gray-600 hover:text-gray-800">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </a>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
-    <script src="../../../assets/js/enseiDash.js"></script>
 </body>
 </html>
