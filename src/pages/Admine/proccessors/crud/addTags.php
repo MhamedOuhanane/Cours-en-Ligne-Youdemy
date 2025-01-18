@@ -6,7 +6,7 @@
     session_start();
 
 
-    $require = new Requites();
+    $requite = new Requites();
     $tags = new tags();
 
     if (isset($_POST['submitTags'])) {
@@ -19,4 +19,15 @@
             }
         }
         header('Location: '. $_SERVER['HTTP_REFERER']);
-    } 
+    } else if (isset($_POST['submitModifTags'])) {
+        $name = $_POST['tags'][0];
+        $listetags = $requite->selectWhere('tags', 'tag_Titre', $_POST['tags'][0]);
+        if ($listetags == null) {
+            if ($requite->update('tags', ['tag_Titre' => $name], 'id_tag', $_GET['idTag'])) {
+                header('Location: ../Tags.php');
+            }
+        } else {
+            header('Location: '. $_SERVER['HTTP_REFERER']);
+        }
+
+    }

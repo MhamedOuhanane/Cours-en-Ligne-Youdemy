@@ -4,6 +4,9 @@
     });
     session_start();
     $requite = new Requites();
+    $tags = new tags();
+    
+    
 ?>
 
 <!DOCTYPE html>
@@ -98,7 +101,6 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4   gap-6">
                     <!-- Tags Cards -->
                     <?php
-                        $tags = new tags();
                         $listeTags = $requite->selectAll('tags');
                         if ($listeTags) {
                             foreach ($listeTags as $value) {
@@ -112,22 +114,36 @@
 
             
             <!-- Tags Modal -->
-            <div id="tagsModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+            <div id="tagsModal" class="<?= (isset($_GET['Modifier'])) ? '' : 'hidden' ?> fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
                 <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-xl bg-white">
                     <div class="flex justify-between items-center mb-6">
                         <h3 class="text-xl font-bold">Gestion des Tags</h3>
-                        <button onclick="document.getElementById('tagsModal').classList.add('hidden'); tagsForm.reset()" 
-                                class="text-gray-600 hover:text-gray-800">
-                            <i class="fas fa-times"></i>
-                        </button>
+                        <a href="<?= (isset($_GET['Modifier'])) ? './Tags.php' : '' ?>">
+                            <button onclick="document.getElementById('tagsModal').classList.add('hidden'); tagsForm.reset()" 
+                                    class="text-gray-600 hover:text-gray-800">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </a>
                     </div>
-                    <form id="tagsForm" action="./crud/addTags.php" method="POST" class="space-y-4">
+
+                    <?php
+                        if (isset($_GET['Modifier'])) {
+                            $tag = $requite->selectWhere('tags', 'id_tag', $_GET['Modifier']);
+                            if ($tag != null) {
+                                $tags->setData($tag);
+                            }
+                        }
+                    ?>
+
+                    <form id="tagsForm" action="./crud/addTags.php <?= (isset($_GET['Modifier'])) ? '?idTag='.$_GET['Modifier'] : '' ?>" method="POST" class="space-y-4">
                         <div id="tagInputs">
                             <div class="mb-4">
                                 <input type="text" name="tags[]" placeholder="Nouveau tag" 
+                                    value="<?= (isset($_GET['Modifier'])) ? $tags->getData()[1] : '' ?>"
                                     class="w-full px-4 py-2 border rounded-lg">
                             </div>
                         </div>
+                    <?php if (!isset($_GET['Modifier'])) { ?>
                         <button type="button" onclick="addTagInput()" 
                                 class="w-full text-blue-500 border border-blue-500 px-4 py-2 rounded-lg hover:bg-blue-50">
                             <i class="fas fa-plus mr-2"></i>Ajouter un autre tag
@@ -136,6 +152,13 @@
                                 class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
                             Enregistrer les tags
                         </button>
+                    <?php } else { ?>
+                        <button type="submit" name="submitModifTags" 
+                                class="w-full bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+                            Modifier
+                        </button>
+                    <?php } ?>
+                    
                     </form>
                 </div>
             </div>
