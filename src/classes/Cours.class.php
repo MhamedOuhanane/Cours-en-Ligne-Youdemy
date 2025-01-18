@@ -98,7 +98,7 @@
                                                     </a>
                                                     <a href="./crud/StatusCours.php?idCours='. htmlspecialchars($this->id_cour) .'&status=Refusé" class="flex-1 bg-red-500 text-white hover:bg-red-600">
                                                         <button class="w-full  rounded-lg">
-                                                            <i class="fas fa-refuse "></i>
+                                                            <i class="fa fa-times"></i>
                                                         </button>
                                                     </a>
                                                 </div>
