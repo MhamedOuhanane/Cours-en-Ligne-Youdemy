@@ -5,11 +5,11 @@
     });
     session_start();
 
-
     $require = new Requites();
-    if (isset($_GET['DeleteCatégorie'])) {
-        $idCatego = $_GET['DeleteCatégorie'];
-        if ($require->deleteWhere('catalogues', 'id_catalogue', $idCatego)) {
+    $idTags = $_GET['Deletetags'] ?? null;
+
+    if (isset($idTags)) {
+        if ($require->deleteWhere('tags', 'id_tag', $idTags)) {
             header('Location: '. $_SERVER['HTTP_REFERER']);
         }
     } 
