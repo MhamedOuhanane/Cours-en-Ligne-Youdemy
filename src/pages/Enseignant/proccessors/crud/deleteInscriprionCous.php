@@ -4,13 +4,13 @@
         require "../../../../classes/". $class . ".class.php";
     });
     session_start();
+    $require = new Requites();
 
     $return = false;
+    $id = $_GET['DeleteInscription'] ?? null;
 
-    $require = new Requites();
-    if (isset($_GET['DeleteCours'])) {
-        $idCours = $_GET['DeleteCours'];
-        if ($require->deleteWhere('cours', 'id_cour', $idCours)) {
+    if (isset($id)) {
+        if ($require->deleteWhere('inscriptioncours', 'id_inscription', $id)) {
         $return = true;
         }
     } 

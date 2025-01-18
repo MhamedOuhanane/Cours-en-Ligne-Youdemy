@@ -78,14 +78,14 @@ document.addEventListener('DOMContentLoaded', filterEtudiant);
 
 
 // fonction de delete 
-function deleteCours(id) {
-    const urlDelete = `./crud/deleteInscriprionCous.php?DeleteCours=${id}`;
+function banEtudiant(id) {
+    const urlDelete = `./crud/deleteInscriprionCous.php?DeleteInscription=${id}`;
     
     fetch(urlDelete)
     .then(response => response.json())
     .then(data => {
             if (data) {
-                const cours = document.querySelector(`#Cours${id}`);
+                const cours = document.querySelector(`#Inscription${id}`);
                 cours.remove();
             }
             
