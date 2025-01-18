@@ -59,7 +59,7 @@
                         <i class="fas fa-book mr-3"></i>
                         <span>Mes cours</span>
                     </a>
-                    <a href="./proccessors/MesEtudiant.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 bg-blue-50 rounded-lg">
+                    <a href="./proccessors/MesEtudiant.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
                         <i class="fas fa-users mr-3"></i>
                         <span>Étudiants</span>
                     </a>

@@ -51,7 +51,7 @@
         <aside class="w-64 bg-white shadow-md fixed h-full">
             <div class="p-6">
                 <nav class="space-y-3">
-                    <a href="./dashboard.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
+                    <a href="../dashboard.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
                         <i class="fas fa-chart-line mr-3"></i>
                         <span>Tableau de bord</span>
                     </a>
@@ -59,7 +59,7 @@
                         <i class="fas fa-book mr-3"></i>
                         <span>Mes cours</span>
                     </a>
-                    <a href="#" class="flex items-center text-blue-600 py-2 px-4 bg-blue-50 rounded-lg">
+                    <a href="./MesEtudiant.php" class="flex items-center text-blue-600 py-2 px-4 bg-blue-50 rounded-lg">
                         <i class="fas fa-users mr-3"></i>
                         <span>Étudiants</span>
                     </a>
@@ -85,7 +85,7 @@
             <div class="bg-white rounded-lg shadow-md p-6 mb-8">
                 <div class="flex flex-col md:flex-row gap-4">
                     <div class="flex-1">
-                        <input type="search" 
+                        <input id="InputSearch" type="search" 
                             class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
                             placeholder="Rechercher un étudiant...">
                     </div>
@@ -131,8 +131,8 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                <!-- Student Row 1 -->
+                            <tbody id="EtudiantRow" class="bg-white divide-y divide-gray-200">
+                                <!-- Student Rows -->
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
@@ -221,5 +221,7 @@
             </div>
         </main>
     </div>
+
+    <script src="../../../assets/js/Etudiants.js"></script>
 </body>
 </html>

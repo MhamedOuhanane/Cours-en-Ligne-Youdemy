@@ -1,38 +1,40 @@
-function filterCours() {
+function filterEtudiant() {
     const searchValue = InputSearch.value;
     const filterCata = selectCatalogue.value;
-    const filtertag = selectTags.value;
-    const urlfiltre = `./proccessors/fetchCours.php?CatalogueId=${filterCata}&tagId=${filtertag}&Search=${searchValue}`;
-    
+    const urlfiltre = `./proccessors/fetchCours.php?CatalogueId=${filterCata}&Search=${searchValue}`;
     fetch(urlfiltre)
     .then(response => response.json())
     .then(data => {
         
-            AfficherCours(data);
+            AfficherEtudiant(data);
             
         })
         .catch(error => {
-            CoursesGrid.innerHTML = `<div class="col-span-full text-center text-red-500">
+            EtudiantRow.innerHTML = `<div class="col-span-full text-center text-red-500">
                                         <span>ERREUR : ${error.message}</span>
                                     </div>`;
         });
 }
 
-function AfficherCours(params) {
+function AfficherEtudiant(params) {
     if (params.length == 0) {
-        CoursesGrid.innerHTML = `<div class="col-span-full text-center text-red-500">
-                                    <span>Aucun Cours trouvé</span>
-                                </div>`;  
+        EtudiantRow.innerHTML = `<tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="col-span-full text-center text-red-500">
+                                            <span>Aucun Etudiant inscrer</span>
+                                        </div>
+                                    </td>
+                                </tr>`;  
         return;          
     }
 
-    CoursesGrid.innerHTML = '';
-    let id_cours = null;
+    EtudiantRow.innerHTML = '';
+    let id_etudiant = null;
 
     params.forEach(element => {
-        if (id_cours == null || id_cours != element['id_cours']) {
-            id_cours = element['id_cours'];
-            CoursesGrid.innerHTML += `<div id="Cours${element['id_cour']}" class="bg-white rounded-lg shadow-md overflow-hidden">
+        if (id_etudiant == null || id_etudiant != element['id_user']) {
+            id_etudiant = element['id_user'];
+            EtudiantRow.innerHTML += `<div id="Cours${element['id_cour']}" class="bg-white rounded-lg shadow-md overflow-hidden">
                                         <img src="data:image/png;base64,${element['imageCours']}" alt="Course ${element['id_cour']}" class="w-full h-48 object-cover">
                                         <div class="p-6">
                                             <div class="flex items-center justify-between mb-4">
@@ -61,13 +63,6 @@ function AfficherCours(params) {
                                             `</div>
                                         </div>
                                     </div>`;
-            let continaire = document.querySelector(`#contTags${element['id_cour']}`);
-            continaire = '';
-            params.forEach(elem => {
-                if (id_cours == elem['id_cours']) {
-                    continaire += `<span class="bg-purple-100 text-purple-600 text-sm px-3 py-1 rounded-full">${elem['tag_Titre']}</span>`;
-                }
-            });
 
         }
     });
@@ -76,11 +71,10 @@ function AfficherCours(params) {
 let searchTime;
 InputSearch.addEventListener('input', () => {
     clearTimeout(searchTime);
-    searchTime = setTimeout(filterCours, 150);
+    searchTime = setTimeout(filterEtudiant, 150);
 });
 
 
-selectCatalogue.addEventListener('change', filterCours);
-selectTags.addEventListener('change', filterCours);
+selectCatalogue.addEventListener('change', filterEtudiant);
 
-document.addEventListener('DOMContentLoaded', filterCours);
+document.addEventListener('DOMContentLoaded', filterEtudiant);
