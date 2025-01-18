@@ -55,16 +55,16 @@
                                             <i class="fas fa-edit"></i>
                                         </button>
                                     </a>
-                                    <a href="./crud/delete.php?DeleteCatégorie='.htmlspecialchars($this->id_catalogue).'">
+                                    <a href="./crud/deleteCatégo.php?DeleteCatégorie='.htmlspecialchars($this->id_catalogue).'">
                                         <button class="text-red-500 hover:text-red-600">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </a>
                                 </div>
                             </div>
-                            <p class="text-gray-600 mt-2">'. htmlspecialchars($this->catalogue_contenu) .'</p>
+                            <p class="text-gray-600 mt-2 pb-2">'. htmlspecialchars($this->catalogue_contenu) .'</p>
                             <div class="mt-4 pt-4 border-t">
-                                <p class="text-gray-600">'.htmlspecialchars($Countvéhicule).' véhicules disponibles</p>
+                                <p class="text-gray-600">'.htmlspecialchars($Countvéhicule).' Cours disponibles</p>
                             </div>
                         </div>
                     </div>';

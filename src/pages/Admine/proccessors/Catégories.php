@@ -85,11 +85,11 @@
             <!-- Content -->
             <div class="p-8">
             <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-xl font-semibold">Ajout Catégories  <i class="fas fa-plus w-6"></i> </h3>
+                    <h3 class="text-xl font-semibold">Ajout Catégories</h3>
                     <div class="space-x-4">
-                        <button onclick="document.getElementById('bulkCategoriesModal').classList.remove('hidden')" 
+                        <button onclick="document.getElementById('bulkCategoriesModal').classList.remove('hidden') " 
                                 class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600">
-                            <i class="fas fa-tags mr-2"></i>Catégories
+                            <i class="fas fa-tags mr-2"></i>Catégories   <i class="fas fa-plus w-6"></i>
                         </button>
                     </div>
                 </div>
@@ -114,20 +114,89 @@
             </div>
 
             <!-- Bulk Categories Modal -->
-            <div id="bulkCategoriesModal" class="<?= (isset($_GET['Modifier'])) ? '':'hidden'?> fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 ">
+            <div id="bulkCategoriesModal" class="<?= (isset($_GET['Modifier'])) ? '':'hidden'?>  fixed bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
                 <div class="relative top-20 mx-auto p-5 border w-4/5 shadow-lg rounded-xl bg-white">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-2xl font-bold text-gray-800">Ajout un catégories</h3>
-                            <a <?= (isset($_GET['Modifier'])) ? 'href="admineCatégorie.php"':''?>>
-                                <button onclick="FormManager.closeCategoriesModal()" 
-                                        class="p-2 rounded-full hover:bg-gray-100 transition-all duration-200 text-gray-600 hover:text-gray-800">
-                                    <i class="fas fa-times"></i>
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-2xl font-bold text-gray-800">Ajout un catégories</h3>
+                            <button onclick="closeModal()" 
+                                    class="p-2 rounded-full hover:bg-gray-100 transition-all duration-200 text-gray-600 hover:text-gray-800">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        
+                        <form action="processors/ajouteCatégorie.php" method="POST" enctype="multipart/form-data" class="space-y-6 mt-6">
+                            <div class="grid gap-6 mb-6">
+                                <!-- Titre de la catégorie -->
+                                <div>
+                                    <label for="catalogue_titre" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Titre de la catégorie <span class="text-red-500">*</span>
+                                    </label>
+                                    <input type="text" id="catalogue_titre" name="catalogue_titre" 
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+                                        placeholder="Ex: Développement Web" required>
+                                </div>
+
+                                <!-- Description de la catégorie -->
+                                <div>
+                                    <label for="catalogue_contenu" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Description <span class="text-red-500">*</span>
+                                    </label>
+                                    <textarea id="catalogue_contenu" name="catalogue_contenu" rows="4" 
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+                                        placeholder="Description de la catégorie..." required></textarea>
+                                </div>
+
+                                <!-- Image de la catégorie -->
+                                <div>
+                                    <label for="catalogue_image" class="block mb-2 text-sm font-medium text-gray-900">
+                                        Image <span class="text-red-500">*</span>
+                                    </label>
+                                    <div class="flex items-center justify-center w-full">
+                                        <label for="catalogue_image" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                                <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                                </svg>
+                                                <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Cliquez pour uploader</span> ou glissez-déposez</p>
+                                                <p class="text-xs text-gray-500">PNG, JPG ou JPEG</p>
+                                            </div>
+                                            <input id="catalogue_image" name="catalogue_image" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg" required />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Boutons d'action -->
+                            <div class="flex justify-end space-x-4">
+                                <button type="button" onclick="closeModal()" 
+                                    class="text-gray-500 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+                                    Annuler
                                 </button>
-                            </a>
+                                <button type="submit" 
+                                    class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+                                    Ajouter la catégorie
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </main>
     </div>
+
+
+    <script>
+        function openModal() {
+            document.getElementById('bulkCategoriesModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('bulkCategoriesModal').classList.add('hidden');
+        }
+
+        document.querySelector('.bg-yellow-500').onclick = openModal;
+    </script>
+
 </body>
 </html>
