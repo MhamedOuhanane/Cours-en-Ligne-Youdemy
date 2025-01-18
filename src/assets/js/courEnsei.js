@@ -32,6 +32,9 @@ function AfficherVéhicules(params) {
         if (id_cours == null || id_cours != element['id_cour']) {
             id_cours = element['id_cour'];  
             status = (element['status'] == 'Publié') ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800";
+            if (element['status'] == 'En Attente') {
+                status = "bg-yellow-100 text-yellow-800"
+            }
             console.log(status);
             
             CoursesGrid.innerHTML += `<div id='Cours${element['id_cour']}' class="CarteCours bg-white rounded-lg shadow-md overflow-hidden">

@@ -5,7 +5,7 @@
 
     class Catalogues {
         protected $id_catalogue;
-        private $catalogue_titre;
+        protected $catalogue_titre;
         private $catalogue_contenu;
         private $catalogue_image;
 

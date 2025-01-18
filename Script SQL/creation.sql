@@ -84,6 +84,8 @@ MODIFY cours_contenu longblob NOT NULL;
 
 ALTER TABLE cours 
 ADD status ENUM('Publié', 'Refusé') DEFAULT 'Refusé';
+ALTER TABLE cours
+MODIFY status ENUM('En Attente', 'Publicé', 'Refusé') DEFAULT 'En Attente';
 
 CREATE VIEW listeInscriptionCours AS
 SELECT u.id_user, u.username, u.email, u.image,
