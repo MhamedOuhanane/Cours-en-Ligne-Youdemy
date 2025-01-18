@@ -89,7 +89,7 @@
                     <div class="flex">
                         <button onclick="document.getElementById('bulkCategoriesModal').classList.remove('hidden')" 
                                 class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600">
-                            <i class="fas fa-th-large mr-2"></i>Gérer les Catégoris<i class="fas fa-plus ml-2"></i>
+                            <i class="fas fa-folder w-6"></i>Gérer les Catégoris<i class="fas fa-plus ml-2"></i>
                         </button>
                     </div>
                 </div>

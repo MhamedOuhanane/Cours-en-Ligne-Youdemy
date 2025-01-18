@@ -8,8 +8,8 @@
         private $tagTitre;
 
         public function setData($Array){
-            $this->id  = $Array['id_tag'];
-            $this->tagTitre = $Array['tag_Titre'];
+            $this->id  = $Array['id_tag'] ?? null;
+            $this->tagTitre = $Array['tag_Titre'] ?? null;
         }
 
         public function getData(){
@@ -54,5 +54,16 @@
                             </div>
                         </div>
                     </div>';
+        }
+
+        public function insertTags() {
+            $requite = new Requites();
+            $Array =$requite->selectWhere('tags', 'tag_Titre', $this->tagTitre);
+            if ($Array == null) {
+                $values = [
+                    'tag_Titre' => $this->tagTitre
+                ];
+                $requite->insertData('tags', $values);
+            }
         }
     }
