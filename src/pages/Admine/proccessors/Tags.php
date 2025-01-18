@@ -95,47 +95,23 @@
                     </div>
                 </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Categorie Cards -->
-                        
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4   gap-6">
+                        <!-- Tags Cards -->
+                        <?php
+                            $tags = new tags();
+                            $listeTags = $requite->selectAll('tags');
+                            if ($listeTags) {
+                                foreach ($listeTags as $value) {
+                                    $tags->setData($value);
+                                    $tags->toStringDash();
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
 
-            <!-- Themes Modal -->
-            <div id="themesModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-                <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-xl bg-white">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-xl font-bold">Gestion des Thèmes</h3>
-                        <button onclick="document.getElementById('themesModal').classList.add('hidden')" 
-                                class="text-gray-600 hover:text-gray-800">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                    <form action="./crud/addThemes.php" method="POST" class="space-y-4">
-                        <div id="themeInputs">
-                            <div class="mb-4">
-                                <input type="text" name="themes[]" placeholder="Nouveau thème" 
-                                    class="w-full px-4 py-2 mb-2 border rounded-lg">
-                                <textarea 
-                                        name="description[]" 
-                                        required
-                                        placeholder="Description"
-                                        rows="2"
-                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"></textarea>
-                            </div>
-                        </div>
-                        <button type="button" onclick="addThemeInput()" 
-                                class="w-full text-purple-500 border border-purple-500 px-4 py-2 rounded-lg hover:bg-purple-50">
-                            <i class="fas fa-plus mr-2"></i>Ajouter un autre thème
-                        </button>
-                        <button type="submit" name="submitThemes" 
-                                class="w-full bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600">
-                            Enregistrer les thèmes
-                        </button>
-                    </form>
-                </div>
-            </div>
+            
         </main>
     </div>
 
