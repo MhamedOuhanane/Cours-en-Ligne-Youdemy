@@ -133,7 +133,7 @@ use function PHPSTORM_META\type;
         }
 
         // fetchData
-        public function fetchData($table, $columnfilter1, $filter1, $columnfilter2, $filter2, $columnsearch1, $columnsearch2, $search, $id_user, $enseig = null) {
+        public function fetchData($table, $columnfilter1, $filter1, $columnfilter2, $filter2, $columnsearch1, $columnsearch2, $search, $id_user=null, $enseig = null) {
             $this->sql = "SELECT * FROM $table WHERE 1";
             $params = array();
 

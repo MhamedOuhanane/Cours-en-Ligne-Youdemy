@@ -19,7 +19,9 @@
     >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <link rel="stylesheet" href="../../../assets/css/input.css">
-    <link rel="stylesheet" href="../../../assets/css/output.css"></head>
+    <link rel="stylesheet" href="../../../assets/css/output.css">
+</head>
+
 <body class="bg-gray-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-md fixed w-full z-10">
