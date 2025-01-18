@@ -135,7 +135,7 @@
                         }
                     ?>
 
-                    <form id="tagsForm" action="./crud/addTags.php <?= (isset($_GET['Modifier'])) ? '?idTag='.$_GET['Modifier'] : '' ?>" method="POST" class="space-y-4">
+                    <form id="tagsForm" action="./crud/addTags.php<?= (isset($_GET['Modifier'])) ? '?idTag='.$_GET['Modifier'] : '' ?>" method="POST" class="space-y-4">
                         <div id="tagInputs">
                             <div class="mb-4">
                                 <input type="text" name="tags[]" placeholder="Nouveau tag" 

@@ -114,18 +114,19 @@
             </div>
 
             <!-- Bulk Categories Modal -->
-            <div id="bulkCategoriesModal" class="<?= (isset($_GET['Modifier'])) ? '':'hidden'?>  fixed bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-                <div class="relative top-20 mx-auto p-5 border w-4/5 shadow-lg rounded-xl bg-white">
-                    <div class="mb-6">
-                        <div class="flex justify-between items-center">
-                            <h3 class="text-2xl font-bold text-gray-800">Ajout un catégories</h3>
-                            <button onclick="closeModal()" 
-                                    class="p-2 rounded-full hover:bg-gray-100 transition-all duration-200 text-gray-600 hover:text-gray-800">
+            <div id="bulkCategoriesModal" class="<?= (isset($_GET['Modifier'])) ? '' : 'hidden' ?> fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+                <div class="relative top-20 mx-auto p-5 border w-[40rem] shadow-lg rounded-xl bg-white">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold">Ajouter Catégorie</h3>
+                        <a href="<?= (isset($_GET['Modifier'])) ? './Catégories.php' : '' ?>">
+                            <button onclick="document.getElementById('bulkCategoriesModal').classList.add('hidden'); bulkCategoriesModal.reset(); " 
+                                    class="text-gray-600 hover:text-gray-800">
                                 <i class="fas fa-times"></i>
                             </button>
-                        </div>
+                        </a>
+                    </div>
                         
-                        <form action="processors/ajouteCatégorie.php" method="POST" enctype="multipart/form-data" class="space-y-6 mt-6">
+                        <form action="processors/ajouteCatégorie.php<?= (isset($_GET['Modifier'])) ? '?idTag='.$_GET['Modifier'] : '' ?>" method="POST" enctype="multipart/form-data" class="space-y-6 mt-6">
                             <div class="grid gap-6 mb-6">
                                 <!-- Titre de la catégorie -->
                                 <div>
@@ -153,7 +154,7 @@
                                         Image <span class="text-red-500">*</span>
                                     </label>
                                     <div class="flex items-center justify-center w-full">
-                                        <label for="catalogue_image" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                                        <label for="catalogue_image" class="flex flex-col items-center justify-center w-full h-30 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
                                             <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                                 <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
@@ -169,34 +170,29 @@
 
                             <!-- Boutons d'action -->
                             <div class="flex justify-end space-x-4">
-                                <button type="button" onclick="closeModal()" 
+                                <?php if (!isset($_GET['Modifier'])) { ?>
+                                <button type="button" onclick="document.getElementById('bulkCategoriesModal').classList.add('hidden'); tagsForm.reset()" 
                                     class="text-gray-500 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
                                     Annuler
                                 </button>
-                                <button type="submit" 
+                                <button type="submit"  name="submitCatégorie"
                                     class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
                                     Ajouter la catégorie
                                 </button>
+                                <?php } else { ?>
+                                    <button type="submit" name="ModifierCatégorie"
+                                    class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+                                    Modifier
+                                </button>
+                                <?php } ?>
                             </div>
+
                         </form>
                     </div>
                 </div>
-            </div>
+            
         </main>
     </div>
-
-
-    <script>
-        function openModal() {
-            document.getElementById('bulkCategoriesModal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('bulkCategoriesModal').classList.add('hidden');
-        }
-
-        document.querySelector('.bg-yellow-500').onclick = openModal;
-    </script>
 
 </body>
 </html>
