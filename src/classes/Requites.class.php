@@ -133,24 +133,24 @@ use function PHPSTORM_META\type;
         }
 
         // fetchData
-        public function fetchData($table, $filter1, $filter2, $search, $enseig = null) {
+        public function fetchData($table, $columnfilter1, $filter1, $columnfilter2, $filter2, $columnsearch1, $columnsearch2, $search, $id_user, $enseig = null) {
             $this->sql = "SELECT * FROM $table WHERE 1";
             $params = array();
 
             if ($filter1 != "") {
-                $this->sql .= " AND id_catalogue = ?";
+                $this->sql .= " AND $columnfilter1 = ?";
                 $params [] = $filter1;
             }
             if ($enseig != null) {
-                $this->sql .= " AND id_user = ?";
+                $this->sql .= " AND $id_user = ?";
                 $params [] = $enseig;
             }
             if ($filter2 != "") {
-                $this->sql .= " AND id_tag = ?";
+                $this->sql .= " AND $columnfilter2 = ?";
                 $params [] = $filter2;
             }
             if ($search != "") {
-                $this->sql .= " AND ((cours_titre LIKE ?) OR (createDate LIKE ?))";
+                $this->sql .= " AND (($columnsearch1 LIKE ?) OR ($columnsearch2 LIKE ?))";
                 $params [] = "%" . $search . "%"; 
                 $params [] = "%" . $search . "%";
             }

@@ -9,7 +9,7 @@
     $Search = $_GET['Search'] ?? "";
     
 
-    $Cours = $requite->fetchData('listecours', $filterCata, "", $Search, $_SESSION['id_user']);
+    $Cours = $requite->fetchData('listecours', 'id_catalogue', $filterCata, "","", "cours_titre", "createDate",$Search, "id_user",$_SESSION['id_user']);
     $FormerCours = array_map(function($array) use ($requite){
         $etudiant = $requite->selectCount('inscriptioncours', 'id_cour', $array['id_cour']);
         return [

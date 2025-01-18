@@ -84,3 +84,13 @@ MODIFY cours_contenu longblob NOT NULL;
 
 ALTER TABLE cours 
 ADD status ENUM('Publié', 'Refusé') DEFAULT 'Refusé';
+
+CREATE VIEW listeInscriptionCours AS
+SELECT u.id_user, u.username, u.email, u.image,
+		ic.id_inscription, ic.date_inscret,
+        c.id_cour, c.cours_titre, cg.id_catalogue, cg.catalogue_titre,
+        c.id_user as id_enseign
+FROM users u
+JOIN inscriptioncours ic ON ic.id_user = u.id_user
+JOIN cours c ON c.id_cour = ic.id_cour
+JOIN catalogues cg ON cg.id_catalogue = c.id_catalogue
