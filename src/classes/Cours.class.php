@@ -91,12 +91,12 @@
                                                     </span>
                                                 </div>
                                                 <div class="flex justify-end space-x-4">
-                                                    <a href="./crud/gestionUser.php?idUser='. htmlspecialchars($this->id_cour) .'&status=Publicé" class="flex-1 bg-green-500 text-white hover:bg-green-600">
+                                                    <a href="./crud/StatusCours.php?idCours='. htmlspecialchars($this->id_cour) .'&status=Publicé" class="flex-1 bg-green-500 text-white hover:bg-green-600">
                                                         <button class="w-full flex-1 rounded-lg">
                                                             <i class="fas fa-check"></i>
                                                         </button>
                                                     </a>
-                                                    <a href="./crud/gestionUser.php?idUser='. htmlspecialchars($this->id_cour) .'&status=Refusé" class="flex-1 bg-red-500 text-white hover:bg-red-600">
+                                                    <a href="./crud/StatusCours.php?idCours='. htmlspecialchars($this->id_cour) .'&status=Refusé" class="flex-1 bg-red-500 text-white hover:bg-red-600">
                                                         <button class="w-full  rounded-lg">
                                                             <i class="fas fa-refuse "></i>
                                                         </button>

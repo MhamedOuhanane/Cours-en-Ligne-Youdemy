@@ -87,10 +87,13 @@
                 <!-- Course Cards -->
                 <?php 
                     $listecours = $requite->selectAll('listecours', 'status', 'En Attente');
+                    $idCours = null;
                     foreach($listecours as $cour) {
                         $cours = new Cours($cour);
-                        $cours->toString();
-
+                        if ($idCours == null || $idCours != $cours->getData('id_cour')) {
+                            $idCours = $cours->getData('id_cour');
+                            $cours->toString();
+                        }
                     }
                 ?>
             </div>
