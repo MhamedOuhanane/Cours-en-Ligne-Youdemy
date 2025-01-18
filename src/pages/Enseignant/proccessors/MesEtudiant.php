@@ -1,3 +1,11 @@
+<?php 
+    spl_autoload_register(function($class){
+        require "../../../classes/". $class . ".class.php";
+    });
+    session_start();
+    $requite = new Requites();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,17 +25,22 @@
     <nav class="bg-white shadow-md fixed w-full z-10">
         <div class="container mx-auto px-6 py-3">
             <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <a href="#" class="text-2xl font-bold text-blue-600">Youdemy</a>
+                <div class="w-full flex h-[2.5rem] items-center">
+                    <a href="../Dashbord.php" class="text-2xl h-full font-bold text-blue-600">
+                        <img src="../../../assets/images/logo.png" alt="logo du site" class="h-full">
+                    </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <div class="relative">
-                        <button class="flex items-center text-gray-700 hover:text-blue-600">
-                            <img src="/api/placeholder/32/32" alt="Profile" class="w-8 h-8 rounded-full mr-2">
-                            <span>Prof. John Doe</span>
-                        </button>
+                        <a href="../Dashbord.php">
+                            <button class="flex items-center text-gray-700 hover:text-blue-600">
+                                <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
+                                <span><?= htmlspecialchars($_SESSION['username'])?></span>
+                            </button>
+                        </a>
+                        <a href="../../../pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
                     </div>
-                </div>
             </div>
         </div>
     </nav>
@@ -50,10 +63,6 @@
                         <i class="fas fa-users mr-3"></i>
                         <span>Étudiants</span>
                     </a>
-                    <a href="#stats" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
-                        <i class="fas fa-chart-bar mr-3"></i>
-                        <span>Statistiques</span>
-                    </a>
                 </nav>
             </div>
         </aside>
@@ -69,10 +78,6 @@
                         <span class="text-sm text-gray-500">Total Étudiants</span>
                         <p class="text-xl font-bold">256</p>
                     </div>
-                    <div class="bg-white px-6 py-3 rounded-lg shadow-sm">
-                        <span class="text-sm text-gray-500">Actifs ce mois</span>
-                        <p class="text-xl font-bold">180</p>
-                    </div>
                 </div>
             </div>
 
@@ -84,22 +89,26 @@
                             class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
                             placeholder="Rechercher un étudiant...">
                     </div>
-                    <select class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
-                        <option value="">Filtrer par cours</option>
-                        <option value="web">Introduction au développement web</option>
-                        <option value="mobile">Développement Mobile</option>
-                        <option value="data">Data Science</option>
-                    </select>
-                    <select class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
-                        <option value="">Statut</option>
-                        <option value="active">Actif</option>
-                        <option value="inactive">Inactif</option>
+                    <select id="selectCatalogue" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                        <option value="">Filtrer par catégorie</option>
+                        <?php
+                            $catalgue = new Catalogues();
+                            $data = $requite->selectAll('catalogues');
+                            if ($data) {
+                                foreach($data as $catalo) {
+                                    $catalgue->setData('id_catalogue', $catalo['id_catalogue']);
+                                    $catalgue->setData('catalogue_titre', $catalo['catalogue_titre']);
+                                    $id = $_GET['idCatalogue'] ?? null;
+                                    $catalgue->SelectorCatal($id);
+                                }
+                            }
+                        ?>
                     </select>
                 </div>
             </div>
 
             <!-- Students List -->
-            <div class="bg-white rounded-lg shadow-md">
+            <div class="bg-white rounded-lg shadow-lg mb-5">
                 <div class="p-6">
                     <div class="overflow-x-auto">
                         <table class="min-w-full">
@@ -207,20 +216,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-
-                    <!-- Pagination -->
-                    <div class="flex items-center justify-between mt-6">
-                        <div class="text-sm text-gray-500">
-                            Affichage de 1 à 10 sur 256 étudiants
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="px-3 py-1 border rounded-lg hover:bg-gray-50">Précédent</button>
-                            <button class="px-3 py-1 bg-blue-600 text-white rounded-lg">1</button>
-                            <button class="px-3 py-1 border rounded-lg hover:bg-gray-50">2</button>
-                            <button class="px-3 py-1 border rounded-lg hover:bg-gray-50">3</button>
-                            <button class="px-3 py-1 border rounded-lg hover:bg-gray-50">Suivant</button>
-                        </div>
                     </div>
                 </div>
             </div>

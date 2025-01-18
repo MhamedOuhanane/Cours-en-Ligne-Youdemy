@@ -102,8 +102,7 @@
                         <div>
                             <label for="description" class="block text-sm font-medium text-gray-700">Description *</label>
                             <textarea name="description" id="description" rows="4" required placeholder="Description"
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border-[1px] focus:border-blue-500 focus:ring-blue-500 p-2"><?= ($idCour) ? $cours->getData('description') : "" ?>
-                            </textarea>
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border-[1px] focus:border-blue-500 focus:ring-blue-500 p-2"><?= ($idCour) ? $cours->getData('description') : "" ?></textarea>
                         </div>
 
                         <!-- Image -->

@@ -63,7 +63,7 @@
                     </a>
                     <a href="./MesEtudiant.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
                         <i class="fas fa-chart-bar mr-3"></i>
-                        <span>Statistiques</span>
+                        <span>Étudiants</span>
                     </a>
                 </nav>
             </div>
