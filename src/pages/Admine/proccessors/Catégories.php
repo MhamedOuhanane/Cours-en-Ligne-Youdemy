@@ -4,6 +4,8 @@
     });
     session_start();
     $requite = new Requites();
+    $catalogue = new Catalogues();
+
 ?>
 
 <!DOCTYPE html>
@@ -100,7 +102,6 @@
                         $catégories = $requite->selectAll('catalogues');
                         if ($catégories) {
                             foreach($catégories as $catégo) {
-                                $catalogue = new Catalogues();
                                 $catalogue->setData('id_catalogue', $catégo['id_catalogue']);
                                 $catalogue->setData('catalogue_titre', $catégo['catalogue_titre']);
                                 $catalogue->setData('catalogue_contenu', $catégo['catalogue_contenu']);
@@ -113,6 +114,17 @@
                 </div>
             </div>
 
+            <?php
+                if (isset($_GET['Modifier'])) {
+                    $cataData = $requite->selectWhere('catalogues', 'id_catalogue', $_GET['Modifier']);
+                    if ($cataData) {
+                        $catalogue->setData('id_catalogue', $cataData['id_catalogue']);
+                        $catalogue->setData('catalogue_titre', $cataData['catalogue_titre']);
+                        $catalogue->setData('catalogue_contenu', $cataData['catalogue_contenu']);
+                        $catalogue->setData('catalogue_image', $cataData['catalogue_image']);
+                    }
+                }
+            ?>
             <!-- Bulk Categories Modal -->
             <div id="bulkCategoriesModal" class="<?= (isset($_GET['Modifier'])) ? '' : 'hidden' ?> fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
                 <div class="relative top-20 mx-auto p-5 border w-[40rem] shadow-lg rounded-xl bg-white">
@@ -126,7 +138,7 @@
                         </a>
                     </div>
                         
-                        <form action="./crud/ajouteCatégorie.php<?= (isset($_GET['Modifier'])) ? '?idTag='.$_GET['Modifier'] : '' ?>" method="POST" enctype="multipart/form-data" class="space-y-6 mt-6">
+                        <form action="./crud/ajouteCatégorie.php<?= (isset($_GET['Modifier'])) ? '?idCatal='.$_GET['Modifier'] : '' ?>" method="POST" enctype="multipart/form-data" class="space-y-6 mt-6">
                             <div class="grid gap-6 mb-6">
                                 <!-- Titre de la catégorie -->
                                 <div>
@@ -134,6 +146,7 @@
                                         Titre de la catégorie <span class="text-red-500">*</span>
                                     </label>
                                     <input type="text" id="catalogue_titre" name="catalogue_titre" 
+                                        value="<?= (isset($_GET['Modifier'])) ? $catalogue->getData('catalogue_titre') : '' ?>"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
                                         placeholder="Ex: Développement Web" required>
                                 </div>
@@ -145,7 +158,7 @@
                                     </label>
                                     <textarea id="catalogue_contenu" name="catalogue_contenu" rows="4" 
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
-                                        placeholder="Description de la catégorie..." required></textarea>
+                                        placeholder="Description de la catégorie..." required><?= (isset($_GET['Modifier'])) ? $catalogue->getData('catalogue_contenu') : '' ?></textarea>
                                 </div>
 
                                 <!-- Image de la catégorie -->
@@ -162,7 +175,7 @@
                                                 <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Cliquez pour uploader</span> ou glissez-déposez</p>
                                                 <p class="text-xs text-gray-500">PNG, JPG ou JPEG</p>
                                             </div>
-                                            <input id="catalogue_image" name="catalogue_image" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg" required />
+                                            <input id="catalogue_image" name="catalogue_image" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg" <?= (!isset($_GET['Modifier'])) ? 'required' : '' ?> />
                                         </label>
                                     </div>
                                 </div>

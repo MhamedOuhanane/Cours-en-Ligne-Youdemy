@@ -30,15 +30,28 @@
             $error = "Le catalogue $catalogueTitre est déjat existe!!" ;
             header('Location: '. $_SERVER['HTTP_REFERER']. '?Errour='. $error);
         }
-    } else if (isset($_POST['submitModifTags'])) {
-        $name = $_POST['tags'][0];
-        $listetags = $requite->selectWhere('tags', 'tag_Titre', $_POST['tags'][0]);
-        if ($listetags == null) {
-            if ($requite->update('tags', ['tag_Titre' => $name], 'id_tag', $_GET['idTag'])) {
-                header('Location: ../Tags.php');
-            }
-        } else {
-            header('Location: '. $_SERVER['HTTP_REFERER']);
+    } else if (isset($_POST['ModifierCatégorie'])) {
+        $catalogueTitre = $_POST['catalogue_titre'];
+        $catalogueDescr = $_POST['catalogue_contenu'];
+        $catalogueImage = null;
+
+        if ($_FILES['catalogue_image']['size'] > 0) {
+            $catalogueImage = file_get_contents($_FILES['catalogue_image']['tmp_name']);
         }
+
+        $listeCata = $requite->selectWhere('catalogues', 'catalogue_titre', $catalogueTitre);
+        if ($listeCata == null) {
+            $catalogue->setData('id_catalogue', $_GET['idCatal']);
+            $catalogue->setData('catalogue_titre', $catalogueTitre);
+            $catalogue->setData('catalogue_contenu', $catalogueDescr);            
+            $catalogue->setData('catalogue_image', $catalogueImage);
+
+            $catalogue->modifyCatalogue();
+            header('Location: ../Catégories.php');
+        } else {
+            $error = "Le catalogue $catalogueTitre est déjat existe!!" ;
+            header('Location: '. $_SERVER['HTTP_REFERER']. '&Errour='. $error);
+        }
+        
 
     }

@@ -43,6 +43,20 @@
             return $requite->insertData('catalogues', $values);
         }
 
+        public function modifyCatalogue() {
+            $requite = new Requites();
+            $values = [
+                'catalogue_titre' => $this->catalogue_titre,
+                'catalogue_contenu' => $this->catalogue_contenu,
+            ]; 
+            if ($this->catalogue_image != null) {
+                $values ['catalogue_image'] = $this->catalogue_image;
+            }
+            var_dump($values);
+
+            return $requite->update('catalogues', $values, 'id_catalogue', $this->id_catalogue);
+        }
+
         public function toString() {
             $requite = new Requites();
             $Countvéhicule = $requite->selectCount('cours', 'id_catalogue', $this->id_catalogue, 'int');
