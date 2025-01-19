@@ -126,7 +126,7 @@
                         </a>
                     </div>
                         
-                        <form action="processors/ajouteCatégorie.php<?= (isset($_GET['Modifier'])) ? '?idTag='.$_GET['Modifier'] : '' ?>" method="POST" enctype="multipart/form-data" class="space-y-6 mt-6">
+                        <form action="./crud/ajouteCatégorie.php<?= (isset($_GET['Modifier'])) ? '?idTag='.$_GET['Modifier'] : '' ?>" method="POST" enctype="multipart/form-data" class="space-y-6 mt-6">
                             <div class="grid gap-6 mb-6">
                                 <!-- Titre de la catégorie -->
                                 <div>
@@ -171,7 +171,7 @@
                             <!-- Boutons d'action -->
                             <div class="flex justify-end space-x-4">
                                 <?php if (!isset($_GET['Modifier'])) { ?>
-                                <button type="button" onclick="document.getElementById('bulkCategoriesModal').classList.add('hidden'); tagsForm.reset()" 
+                                <button type="button" onclick="document.getElementById('bulkCategoriesModal').classList.add('hidden'); bulkCategoriesModal.reset()" 
                                     class="text-gray-500 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
                                     Annuler
                                 </button>

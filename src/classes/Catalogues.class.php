@@ -34,12 +34,18 @@
         }
 
         public function AjouterData(){
-
+            $requite = new Requites();
+            $values = [
+                'catalogue_titre' => $this->catalogue_titre,
+                'catalogue_contenu' => $this->catalogue_contenu,
+                'catalogue_image' => $this->catalogue_image
+            ];
+            return $requite->insertData('catalogues', $values);
         }
 
         public function toString() {
-            $rquite = new Requites();
-            $Countvéhicule = $rquite->selectCount('cours', 'id_catalogue', $this->id_catalogue, 'int');
+            $requite = new Requites();
+            $Countvéhicule = $requite->selectCount('cours', 'id_catalogue', $this->id_catalogue, 'int');
 
             echo '<div class="bg-white rounded-xl shadow-lg hover:shadow-black overflow-hidden">
                         <img src="data:image/png;base64,'. htmlspecialchars(base64_encode($this->catalogue_image)) .'" alt="Catalogue" class="w-full h-60 object-cover">
