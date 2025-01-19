@@ -105,4 +105,40 @@
                                             </div>
                                         </div>';
         }
+
+        public function toStringMesCours($idUser) {
+            $requite = new Requites();
+            $enseign = $requite->selectAll('cours', 'id_cour', $this->id_cour, 'users', 'id_user');
+
+            echo '<div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="data:image/png;base64,'.  htmlspecialchars(base64_encode($this->imageCours)) .'" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-gray-500">#ID: '.  htmlspecialchars(base64_encode($this->id_cour)) .'</span>
+                            <div class="flex self-end flex-wrap gap-2">
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">'.  htmlspecialchars(base64_encode($this->cours_titre)) .'</h3>
+                        <p class="text-gray-600 mb-4 line-clamp-2">'.  htmlspecialchars(base64_encode($this->description)) .'</p>
+                        <div class="flex items-center mb-4">
+                            <img src="data:image/png;base64,'.  htmlspecialchars(base64_encode($enseign[0]['image'])) .'" alt="Author" class="w-8 h-8 rounded-full mr-3">
+                            <div>
+                                <p class="text-sm font-semibold">'.  htmlspecialchars(base64_encode($enseign[0]['username'])) .'</p>
+                                <p class="text-xs text-gray-500">'.  htmlspecialchars(base64_encode($this->createDate))  .'</p>
+                            </div>
+                        </div>
+                        <div class="catalog flex items-center justify-between">
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-folder-open mr-2"></i>
+                                '.  htmlspecialchars(base64_encode($this->catalogue_titre))  .'
+                            </span>
+                            </div>
+                                <a href="./Details.php?idCours='.  htmlspecialchars(base64_encode($this->id_cour))  .'" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                    Voir le cours
+                                </a>
+                            </div>
+                    </div>
+                </div>';
+
+        }
     }
