@@ -161,4 +161,17 @@
             }
         }
 
+        public function totalUser($role = null) {
+            $requite = new Requites();
+            $roles = new Roles();
+            if ($role == null) {
+                $totale = $requite->selectCount('users');
+                return $totale - 1; 
+            } else {
+                $roles->setData($role);
+                $idRole = $roles->getData()['id_role'];
+                return $requite->selectCount('users', 'id_role', $idRole);
+            }
+        }
+
     }

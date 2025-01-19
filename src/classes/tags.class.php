@@ -70,4 +70,9 @@
                 $requite->insertData('tags', $values);
             }
         }
+
+        public function totalTags() {
+            $requite = new Requites();
+            return $requite->selectCount('tags');
+        }
     }

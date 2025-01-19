@@ -141,4 +141,10 @@
                 </div>';
 
         }
+
+        public function totalCours() {
+            $requite = new Requites();
+            $totale = $requite->selectCount('cours');
+            return $totale;
+        }
     }

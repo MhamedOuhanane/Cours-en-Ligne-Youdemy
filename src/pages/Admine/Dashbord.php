@@ -1,8 +1,12 @@
 <?php 
     spl_autoload_register(function($class){
-        require "./classes/". $class . ".class.php";
+        require "../../classes/". $class . ".class.php";
     });
     session_start();
+    $requite = new Requites();
+    $users = new Users([]);
+    $cours = new Cours([]);
+    $tags = new tags([]);
 ?>
 
 
@@ -92,7 +96,7 @@
                         </div>
                         <div class="ml-4">
                             <h4 class="text-sm font-medium text-gray-500">Total Utilisateurs</h4>
-                            <span class="text-2xl font-bold">1,234</span>
+                            <span class="text-2xl font-bold"><?= htmlspecialchars($users->totalUser()) ?></span>
                         </div>
                     </div>
                 </div>
@@ -104,7 +108,7 @@
                         </div>
                         <div class="ml-4">
                             <h4 class="text-sm font-medium text-gray-500">Total Cours</h4>
-                            <span class="text-2xl font-bold">156</span>
+                            <span class="text-2xl font-bold"><?= htmlspecialchars($cours->totalCours()) ?></span>
                         </div>
                     </div>
                 </div>
@@ -116,19 +120,19 @@
                         </div>
                         <div class="ml-4">
                             <h4 class="text-sm font-medium text-gray-500">Enseignants</h4>
-                            <span class="text-2xl font-bold">45</span>
+                            <span class="text-2xl font-bold"><?= htmlspecialchars($users->totalUser('Enseignant')) ?></span>
                         </div>
                     </div>
                 </div>
 
                 <div class="bg-white rounded-xl shadow-sm p-6">
                     <div class="flex items-center">
-                        <div class="p-3 bg-yellow-100 rounded-full">
-                            <i class="fas fa-star text-yellow-500 text-xl"></i>
+                        <div class="p-3 bg-red-100 rounded-full">
+                            <i class="fas fa-tags text-red-500"></i>
                         </div>
                         <div class="ml-4">
-                            <h4 class="text-sm font-medium text-gray-500">Note Moyenne</h4>
-                            <span class="text-2xl font-bold">4.5</span>
+                            <h4 class="text-sm font-medium text-gray-500">Total Tags</h4>
+                            <span class="text-2xl font-bold"><?= htmlspecialchars($tags->totalTags()) ?></span>
                         </div>
                     </div>
                 </div>

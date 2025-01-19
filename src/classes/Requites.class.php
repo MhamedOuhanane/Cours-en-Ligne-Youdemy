@@ -78,7 +78,6 @@ use function PHPSTORM_META\type;
                 $type1 = is_int($columnName2) ? PDO::PARAM_INT : PDO::PARAM_STR;
                 $result->bindValue(":".$columnName2, $columnValue2, $type1);
             }
-            var_dump($this->sql);
             if ($result->execute()) {
                 return $result->fetch(PDO::FETCH_ASSOC);
             }
