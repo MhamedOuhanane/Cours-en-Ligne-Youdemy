@@ -37,24 +37,17 @@
                     <a href="./Cours.php" class="text-gray-600 hover:text-blue-600">Cours</a>
                     <a href="./Profil.php" class="text-blue-600">Profil</a>
                 </div>
-                <?php if (isset($_SESSION['id_user'])) {?>
-                    <div class="flex items-center space-x-4">
-                        <a href="./pages/Etudiant/Prfil.php">
-                            <button class="flex items-center text-gray-700 hover:text-blue-600">
-                                <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
-                                <span><?= htmlspecialchars($_SESSION['username'])?></span>
-                            </button>
-                        </a>
-                        <a href="../../pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </a>
-                    </div>
-                <?php } else { ?>
-                    <div class="flex items-center space-x-4">
-                        <a href="./pages/Authentification/connexion.php" class="text-gray-600 hover:text-blue-600">Se connecter</a>
-                        <a href="./pages/Authentification/inscription.php" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">S'inscrire</a>
-                    </div>
-                <?php } ?>
+                <div class="flex items-center space-x-4">
+                    <a href="./pages/Etudiant/Prfil.php">
+                        <button class="flex items-center text-gray-700 hover:text-blue-600">
+                            <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
+                            <span><?= htmlspecialchars($_SESSION['username'])?></span>
+                        </button>
+                    </a>
+                    <a href="../../pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -70,7 +63,7 @@
                     </div>
                     <div class="flex-1 text-center md:text-left">
                         <h1 class="text-2xl font-bold mb-2"><?= $_SESSION['username']; ?></h1>
-                        <p class="text-gray-600 mb-4">Client Premium</p>
+                        <p class="text-gray-600 mb-4">Etudiant</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-map-marker-alt text-blue-500"></i>

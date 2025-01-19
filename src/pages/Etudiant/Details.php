@@ -1,3 +1,19 @@
+<?php
+    session_start();
+    spl_autoload_register(function($class){
+        require "../../classes/". $class . ".class.php";
+    });
+    $requite = new Requites();
+
+    if (isset($_GET['idCours'])) {
+        $idCours = $_GET['idCours'];
+        $listeCour = $requite->selectAll('listecours', 'id_cour', $idCours);
+        $Cours = new Cours($listeCour[0]);
+
+        $listeIscription = $requite->selectWhere('inscriptioncours', 'id_user', $_SESSION['id_user'], 'id_cour', $idCours);
+        var_dump($listeIscription);
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -38,32 +54,37 @@
             <div class="flex flex-col md:flex-row gap-8">
                 <div class="md:w-2/3">
                     <div class="flex gap-2 mb-4">
-                        <span class="bg-blue-500 bg-opacity-25 text-white px-3 py-1 rounded-full text-sm">Web Dev</span>
-                        <span class="bg-blue-500 bg-opacity-25 text-white px-3 py-1 rounded-full text-sm">Frontend</span>
-                        <span class="bg-blue-500 bg-opacity-25 text-white px-3 py-1 rounded-full text-sm">Débutant</span>
+                    <?php
+                        $tags = new tags();
+                        foreach ($listeCour as $value) {
+                            $tags->setData($value);
+                            $tags->toStringDetail();
+                        }
+                    ?>
                     </div>
-                    <h1 class="text-4xl font-bold mb-4">Introduction au développement web</h1>
-                    <p class="text-xl mb-6">Apprenez les bases du développement web avec HTML, CSS et JavaScript.</p>
+
+                    <h1 class="text-4xl font-bold mb-4"><?= htmlspecialchars($Cours->getData('cours_titre')) ?></h1>
+                    <p class="text-xl mb-6"><?= htmlspecialchars($Cours->getData('description')) ?></p>
                     <div class="flex items-center mb-4">
-                        <img src="/api/placeholder/48/48" alt="Author" class="w-12 h-12 rounded-full mr-4">
+                        <img src="data:image/png;base64,<?= htmlspecialchars(base64_encode($listeCour[0]['image'])) ?>" alt="Author" class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <p class="font-semibold">John Doe</p>
-                            <p class="text-sm">Expert en développement web</p>
+                            <p class="font-semibold"><?= htmlspecialchars($listeCour[0]['username']) ?></p>
+                            <p class="text-sm"><?= htmlspecialchars($listeCour[0]['email']) ?></p>
                         </div>
                     </div>
                 </div>
                 <div class="md:w-1/3 bg-white bg-opacity-10 rounded-lg p-6">
                     <div class="text-center mb-6">
-                        <p class="text-lg mb-2">ID du cours: #12345</p>
-                        <p class="text-sm">Créé le 15 Jan 2025</p>
-                        <p class="text-sm">Dernière mise à jour: 20 Jan 2025</p>
+                        <p class="text-lg mb-2">ID du cours: #<?= htmlspecialchars($Cours->getData('id_cour')) ?></p>
+                        <p class="text-sm">Créé le : </p>
+                        <p class="text-sm"><?= htmlspecialchars($Cours->getData('createDate')) ?></p>
                     </div>
                     <div class="flex flex-col gap-4">
                         <button class="w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">
                             Commencer le cours
                         </button>
-                        <button class="w-full border border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600">
-                            Ajouter aux favoris
+                        <button class="w-full border border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-500">
+                            Désinscription d'un cours
                         </button>
                     </div>
                 </div>

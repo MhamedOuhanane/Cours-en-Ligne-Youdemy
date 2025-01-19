@@ -64,12 +64,21 @@ use function PHPSTORM_META\type;
         }
 
         // selectWhere 
-        public function selectWhere($table, $columnName1, $columnValue1 ) {
+        public function selectWhere($table, $columnName1, $columnValue1, $columnName2=null, $columnValue2=null ) {
             $this->sql = "SELECT * FROM $table WHERE $columnName1 = :$columnName1";
+
             $result = $this->dbcon->prepare($this->sql);
-            
             $type = is_int($columnValue1) ? PDO::PARAM_INT : PDO::PARAM_STR;
             $result->bindValue(":".$columnName1, $columnValue1, $type);
+
+            if ($columnName2!=null && $columnValue2!=null) {
+                $this->sql .= " AND $columnName2 = :$columnName2";
+
+                $result = $this->dbcon->prepare($this->sql);
+                $type1 = is_int($columnName2) ? PDO::PARAM_INT : PDO::PARAM_STR;
+                $result->bindValue(":".$columnName2, $columnValue2, $type1);
+            }
+            var_dump($this->sql);
             if ($result->execute()) {
                 return $result->fetch(PDO::FETCH_ASSOC);
             }

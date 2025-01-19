@@ -53,8 +53,8 @@
                     </div>
                 <?php } else { ?>
                     <div class="flex items-center space-x-4">
-                        <a href="./pages/Authentification/connexion.php" class="text-gray-600 hover:text-blue-600">Se connecter</a>
-                        <a href="./pages/Authentification/inscription.php" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">S'inscrire</a>
+                        <a href="../../pages/Authentification/connexion.php" class="text-gray-600 hover:text-blue-600">Se connecter</a>
+                        <a href="../../pages/Authentification/inscription.php" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">S'inscrire</a>
                     </div>
                 <?php } ?>
             </div>
@@ -105,24 +105,9 @@
         </div>
 
         <!-- Courses Grid -->
-        <div id="CoursesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div id="CoursesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8">
             <!-- Courses Cards -->
             
-        </div>
-
-        <!-- Pagination -->
-        <div class="flex justify-center items-center space-x-2 mt-12">
-            <button class="px-4 py-2 border rounded-lg hover:bg-gray-100 disabled:opacity-50" disabled>
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">1</button>
-            <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">2</button>
-            <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">3</button>
-            <span class="px-4 py-2">...</span>
-            <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">10</button>
-            <button class="px-4 py-2 border rounded-lg hover:bg-gray-100">
-                <i class="fas fa-chevron-right"></i>
-            </button>
         </div>
     </div>
 

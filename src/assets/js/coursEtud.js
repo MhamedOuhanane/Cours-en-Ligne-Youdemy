@@ -33,7 +33,7 @@ function AfficherCours(params) {
         
             if ( id_cours == null || id_cours != element['id_cour']) {               
             id_cours = element['id_cour'];
-            CoursesGrid.innerHTML += `<div id="Cours${element['id_cour']}" class="bg-white rounded-lg shadow-md overflow-hidden">
+            CoursesGrid.innerHTML += `<div id="Cours${element['id_cour']}" class="bg-white h-auto rounded-lg shadow-md overflow-hidden">
                                         <img src="data:image/png;base64,${element['imageCours']}" alt="Course ${element['id_cour']}" class="w-full h-48 object-cover">
                                         <div class="p-6">
                                             <div class="flex items-center justify-between mb-4">
