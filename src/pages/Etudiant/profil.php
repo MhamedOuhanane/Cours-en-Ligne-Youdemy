@@ -45,7 +45,7 @@
                                 <span><?= htmlspecialchars($_SESSION['username'])?></span>
                             </button>
                         </a>
-                        <a href="./pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
+                        <a href="../../pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
                             <i class="fas fa-sign-out-alt"></i>
                         </a>
                     </div>
@@ -62,8 +62,8 @@
     <!-- Contenu Principal -->
     <div class="pt-16 pb-12">
         <!-- En-tête du profil -->
-        <div class="bg-white shadow-md mb-6">
-            <div class="max-w-7xl mx-auto p-6">
+        <div class="bg-white shadow-md mb-6 ">
+            <div class="max-w-7xl mx-auto p-6 ">
                 <div class="flex flex-col md:flex-row items-center gap-6">
                     <div class="w-32 h-32 rounded-full overflow-hidden">
                         <img src="<?= "data:image/png;base64,".$_SESSION['image']?>" alt="Photo de profil de <?= $_SESSION['username']; ?>" class="w-full h-full object-cover">
@@ -73,15 +73,15 @@
                         <p class="text-gray-600 mb-4">Client Premium</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="flex items-center gap-2">
-                                <i class="fas fa-map-marker-alt text-yellow-500"></i>
+                                <i class="fas fa-map-marker-alt text-blue-500"></i>
                                 <span><?= $_SESSION['ville']; ?>, Maroc</span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <i class="fas fa-phone text-yellow-500"></i>
+                                <i class="fas fa-phone text-blue-500"></i>
                                 <span><?= $_SESSION['telephone']; ?></span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <i class="fas fa-envelope text-yellow-500"></i>
+                                <i class="fas fa-envelope text-blue-500"></i>
                                 <span><?= $_SESSION['email']; ?></span>
                             </div>
                         </div>
@@ -95,13 +95,13 @@
             <div class="mb-6 border-b">
                 <div class="flex flex-wrap -mb-px">
                     <a href="profil.php?#">
-                        <button class="inline-flex items-center h-12 px-4 py-2 text-sm font-medium leading-5 <?= (empty($_GET))? 'text-yellow-500 border-yellow-500 border-b-2' : 'text-gray-500 hover:text-yellow-500' ?> focus:outline-none">
+                        <button class="inline-flex items-center h-12 px-4 py-2 text-sm font-medium leading-5 <?= (empty($_GET))? 'text-blue-500 border-bltext-blue-500 border-b-2' : 'text-gray-500 hover:text-blue-500' ?> focus:outline-none">
                             <i class="fas fa-user mr-2"></i>
                             Profile
                         </button>
                     </a>
                     <a href="?MesCours">
-                        <button class="inline-flex items-center h-12 px-4 py-2 text-sm font-medium leading-5 <?= (isset($_GET['MesCours']))? 'text-yellow-500 border-yellow-500 border-b-2' : 'text-gray-500 hover:text-yellow-500' ?> focus:outline-none">
+                        <button class="inline-flex items-center h-12 px-4 py-2 text-sm font-medium leading-5 <?= (isset($_GET['MesCours']))? 'text-blue-500 border-bltext-blue-500 border-b-2' : 'text-gray-500 hover:text-blue-500' ?> focus:outline-none">
                             <i class="fas fa-newspaper mr-2"></i>
                             Mes Cours
                         </button>
@@ -135,7 +135,7 @@
                             </div>
                         </div>
                         <div class="mt-6">
-                            <button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600">
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-500">
                                 <i class="fas fa-edit mr-2"></i>Modifier le profil
                             </button>
                         </div>
@@ -182,13 +182,13 @@
             
             // Mettre à jour les styles des boutons
             document.querySelectorAll('button').forEach(button => {
-                button.classList.remove('text-yellow-500', 'border-b-2', 'border-yellow-500');
+                button.classList.remove('text-blue-500', 'border-b-2', 'border-bltext-blue-500');
                 button.classList.add('text-gray-500');
             });
             
             // Mettre en surbrillance le bouton actif
             event.currentTarget.classList.remove('text-gray-500');
-            event.currentTarget.classList.add('text-yellow-500', 'border-b-2', 'border-yellow-500');
+            event.currentTarget.classList.add('text-blue-500', 'border-b-2', 'border-bltext-blue-500');
         }
     </script>
 </body>

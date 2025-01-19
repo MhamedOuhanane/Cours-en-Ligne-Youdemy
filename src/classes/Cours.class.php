@@ -115,6 +115,7 @@
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-sm text-gray-500">#ID: '.  htmlspecialchars($this->id_cour) .'</span>
                             <div class="flex self-end flex-wrap gap-2">
+                                <p class="text-xs text-gray-500">'.  htmlspecialchars($this->createDate)  .'</p>
                             </div>
                         </div>
                         <h3 class="text-xl font-semibold mb-2">'.  htmlspecialchars($this->cours_titre) .'</h3>
@@ -122,8 +123,8 @@
                         <div class="flex items-center mb-4">
                             <img src="data:image/png;base64,'.  htmlspecialchars(base64_encode($enseign['image'])) .'" alt="Author" class="w-8 h-8 rounded-full mr-3">
                             <div>
-                                <p class="text-sm font-semibold">'.  htmlspecialchars($enseign['username']) .'</p>
-                                <p class="text-xs text-gray-500">'.  htmlspecialchars($this->createDate)  .'</p>
+                                <p class="text-sm font-semibold">Mr.'.  htmlspecialchars($enseign['username']) .'</p>
+                                <p class="text-xs text-gray-500">'.  htmlspecialchars($enseign['email'])  .'</p>
                             </div>
                         </div>
                         <div class="catalog flex items-center justify-between">

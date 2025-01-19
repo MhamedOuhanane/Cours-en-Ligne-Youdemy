@@ -30,8 +30,8 @@ function AfficherCours(params) {
     let id_cours = null;
     
     params.forEach(element => {
-        if (id_cours == null || id_cours != element['id_cour']) {   
-            
+        
+            if ( id_cours == null || id_cours != element['id_cour']) {               
             id_cours = element['id_cour'];
             CoursesGrid.innerHTML += `<div id="Cours${element['id_cour']}" class="bg-white rounded-lg shadow-md overflow-hidden">
                                         <img src="data:image/png;base64,${element['imageCours']}" alt="Course ${element['id_cour']}" class="w-full h-48 object-cover">
@@ -47,6 +47,7 @@ function AfficherCours(params) {
                                                 <img src="data:image/png;base64,${element['image']}" alt="Author" class="w-8 h-8 rounded-full mr-3">
                                                 <div>
                                                     <p class="text-sm font-semibold">Mr.${element['username']}</p>
+                                                    <p class="text-xs text-gray-500">${element['email']}</p>
                                                     <p class="text-xs text-gray-500">${element['createDate']}</p>
                                                 </div>
                                             </div>
@@ -63,12 +64,15 @@ function AfficherCours(params) {
                                         </div>
                                     </div>`;
             let continaire = document.querySelector(`#contTags${element['id_cour']}`);
-            continaire = '';
-            params.forEach(elem => {
-                if (id_cours == elem['id_cour']) {
-                    continaire += `<span class="bg-purple-100 text-purple-600 text-sm px-3 py-1 rounded-full">${elem['tag_Titre']}</span>`;
-                }
-            });
+            
+            if (continaire) {
+                continaire.innerHTML = '';
+                params.forEach(elem => {
+                    if (id_cours == elem['id_cour']) {
+                        continaire += `<span class="bg-purple-100 text-purple-600 text-sm px-3 py-1 rounded-full">${elem['tag_Titre']}</span>`;
+                    }
+                });
+            }
 
         }
     });

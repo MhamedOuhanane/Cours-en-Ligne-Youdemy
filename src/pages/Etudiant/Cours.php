@@ -26,7 +26,6 @@
 
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <!-- Navigation -->
     <nav class="bg-white h-[4rem] shadow-md">
         <div class="container h-full mx-auto px-6 py-3">
             <div class="flex h-full items-center justify-between">
@@ -42,13 +41,13 @@
                 </div>
                 <?php if (isset($_SESSION['id_user'])) {?>
                     <div class="flex items-center space-x-4">
-                        <a href="./pages/Etudiant/Prfil.php">
+                        <a href="./Prfil.php">
                             <button class="flex items-center text-gray-700 hover:text-blue-600">
                                 <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
                                 <span><?= htmlspecialchars($_SESSION['username'])?></span>
                             </button>
                         </a>
-                        <a href="./pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
+                        <a href="../../pages/Authentification/proccessors/desconnecte.php?déconnexion=<?= htmlspecialchars($_SESSION['id_user'])?>" class="text-red-500 px-4 py-2 rounded-lg hover:bg-red-100">
                             <i class="fas fa-sign-out-alt"></i>
                         </a>
                     </div>

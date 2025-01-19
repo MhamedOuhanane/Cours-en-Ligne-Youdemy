@@ -15,14 +15,16 @@
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-md">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <a href="#" class="text-2xl font-bold text-blue-600">Youdemy</a>
+    <nav class="bg-white h-[4rem] shadow-md">
+        <div class="container h-full mx-auto px-6 py-3">
+            <div class="flex h-full items-center justify-between">
+                <div class="flex h-full items-center">
+                    <a href="../../index.php" class="text-2xl h-full font-bold text-blue-600">
+                        <img src="../../assets/images/logo.png" alt="logo du site" class="h-full">
+                    </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="#" class="text-gray-600 hover:text-blue-600">
+                    <a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="text-gray-600 hover:text-blue-600">
                         <i class="fas fa-arrow-left mr-2"></i>Retour aux cours
                     </a>
                 </div>

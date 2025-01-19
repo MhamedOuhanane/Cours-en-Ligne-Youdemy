@@ -16,7 +16,6 @@
 
     $Cours = $requite->fetchData('listecours', "id_catalogue", $filterCata, "id_tag", $filterTag, "cours_titre", "createDate", $Search);
     $FormerCours = array_map(function($array) use ($role){
-        if ($array['status'] == 'Publicé') {
             return [
                 'id_cour' => $array['id_cour'],
                 'cours_titre' => $array['cours_titre'],
@@ -31,7 +30,6 @@
                 'tag_Titre' => $array['tag_Titre'],
                 'role' => $role
             ];
-        }
     }, $Cours);
     
     echo json_encode($FormerCours);
