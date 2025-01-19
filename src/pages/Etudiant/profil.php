@@ -100,16 +100,10 @@
                             Profile
                         </button>
                     </a>
-                    <a href="?Articles">
-                        <button class="inline-flex items-center h-12 px-4 py-2 text-sm font-medium leading-5 <?= (isset($_GET['Articles']))? 'text-yellow-500 border-yellow-500 border-b-2' : 'text-gray-500 hover:text-yellow-500' ?> focus:outline-none">
+                    <a href="?MesCours">
+                        <button class="inline-flex items-center h-12 px-4 py-2 text-sm font-medium leading-5 <?= (isset($_GET['MesCours']))? 'text-yellow-500 border-yellow-500 border-b-2' : 'text-gray-500 hover:text-yellow-500' ?> focus:outline-none">
                             <i class="fas fa-newspaper mr-2"></i>
-                            Articles
-                        </button>
-                    </a>
-                    <a href="?Favoris">
-                        <button class="inline-flex items-center h-12 px-4 py-2 text-sm font-medium leading-5 <?= (isset($_GET['Favoris']))? 'text-yellow-500 border-yellow-500 border-b-2' : 'text-gray-500 hover:text-yellow-500' ?> focus:outline-none">
-                            <i class="fas fa-heart mr-2"></i>
-                            Favoris
+                            Mes Cours
                         </button>
                     </a>
                 </div>
@@ -149,18 +143,19 @@
                 </div>
             <?php } ?>
 
-            <!-- Les article -->
-            <?php if (isset($_GET['Articles'])) {?>
+            <!-- Mes cours -->
+            <?php if (isset($_GET['MesCours'])) {?>
                 <div id="Articles" class="tab-content ">
                     <div class="bg-white rounded-lg shadow-md p-6">
-                        <h2 class="text-xl font-semibold mb-4">Mes Articles</h2>
+                        <h2 class="text-xl font-semibold mb-4">Mes Cours</h2>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <?php
-                                $articlesData = $dbcon->selectWhere('articles', 'id_user', $_SESSION['id_user'], 'int');
-                                if ($articlesData) {
-                                    foreach($articlesData as $article){
-                                        $articles->setData($article);
-                                        $articles->toStringArticle();
+                                $listeMesCours = $requite->selectAll('listeinscriptioncours', 'email', $_SESSION['email'], 'cours', 'id_cour');
+                                
+                                if ($listeMesCours) {
+                                    foreach ($listeMesCours as $value) {
+                                        $cours = new Cours($value);
+                                        $cours->toStringMesCours($value['id_user']);
                                     }
                                 } else {
                                     echo '<p class="text-gray-600">Aucun article publié.</p>';

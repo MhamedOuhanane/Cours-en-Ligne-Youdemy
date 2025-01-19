@@ -45,7 +45,7 @@ use function PHPSTORM_META\type;
             $this->sql = "SELECT * FROM $table ";
 
             if ($tableJoin1 != null && $conditionJoin1 != null) {
-                $this->sql .= " JOIN roles r ON $table.$conditionJoin1 = r.$conditionJoin1";
+                $this->sql .= " JOIN $tableJoin1 tb ON $table.$conditionJoin1 = tb.$conditionJoin1";
             }
 
             $this->data = $this->dbcon->query($this->sql);
