@@ -161,9 +161,20 @@
 
             <!-- Sidebar -->
             <div class="md:col-span-1">
+                <!-- Category Info -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold mb-4">Catégorie</h3>
+                    <div class="flex items-center text-gray-600 mb-5">
+                        <i class="fas fa-folder-open mr-2"></i>
+                        <span class="text-lg"><?= htmlspecialchars($listeCour[0]['catalogue_titre']) ?></span>
+                    </div>
+                    <span><?= htmlspecialchars($listeCour[0]['catalogue_contenu']) ?></span>
+                </div>
+
+
                 <!-- Course Info Card -->
                 <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-                    <h3 class="text-xl font-bold mb-4">Informations du cours</h3>
+                    <h3 class="text-xl font-bold mb-4">Informations des Inscriptions</h3>
                     <div class="space-y-4">
                         <div class="flex items-center">
                             <i class="fas fa-clock w-6 text-gray-500"></i>
@@ -181,15 +192,6 @@
                             <i class="fas fa-globe w-6 text-gray-500"></i>
                             <span class="ml-2">Français</span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Category Info -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-bold mb-4">Catégorie</h3>
-                    <div class="flex items-center text-gray-600">
-                        <i class="fas fa-folder-open mr-2"></i>
-                        <span>Développement Web</span>
                     </div>
                 </div>
             </div>
