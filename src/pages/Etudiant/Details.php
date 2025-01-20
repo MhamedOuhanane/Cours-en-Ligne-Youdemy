@@ -11,7 +11,6 @@
         $Cours = new Cours($listeCour[0]);
 
         $listeIscription = $requite->selectWhere('inscriptioncours', 'id_user', $_SESSION['id_user'], 'id_cour', $idCours);
-        var_dump($listeIscription);
     }
 ?>
 <!DOCTYPE html>
@@ -20,6 +19,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youdemy - Détails du cours</title>
+    <link
+        rel="shortcut icon"
+        href="../../assets/images/logo_icone.png"
+        type="image/png"
+    >
     <link
         rel="shortcut icon"
         href="../../assets/images/logo_icone.png"
@@ -80,12 +84,22 @@
                         <p class="text-sm"><?= htmlspecialchars($Cours->getData('createDate')) ?></p>
                     </div>
                     <div class="flex flex-col gap-4">
-                        <button class="w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">
-                            Commencer le cours
-                        </button>
-                        <button class="w-full border border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-500">
-                            Désinscription d'un cours
-                        </button>
+                        <?php if (!$listeIscription) { ?>
+                            <a href="./proccessors/inscriptionCour.php?inscrit=<?= $_GET['idCours'] ?>">
+                                <button class="w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">
+                                    Commencer le cours
+                                </button>
+                            </a>
+                        <?php } else { ?>
+                            <div class="flex justify-center bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold">
+                                <p class="text-sm">Inscrit en : <?= htmlspecialchars($listeIscription['date_inscret']) ?></p>
+                            </div>
+                            <a href="./proccessors/inscriptionCour.php?désinscrit=<?= $_GET['idCours'] ?>">
+                                <button class="w-full border border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-500">
+                                    Désinscription d'un cours
+                                </button>
+                            </a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

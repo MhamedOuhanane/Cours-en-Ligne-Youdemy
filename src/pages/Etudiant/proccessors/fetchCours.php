@@ -24,6 +24,7 @@
                 'imageCours' => base64_encode($array['imageCours']),
                 'id_user' => $array['id_user'],
                 'username' => $array['username'],
+                'email' => $array['email'],
                 'image' => base64_encode($array['image']),
                 'createDate' => $array['createDate'],
                 'id_tag' => $array['id_tag'],

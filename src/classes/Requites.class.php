@@ -67,17 +67,21 @@ use function PHPSTORM_META\type;
         public function selectWhere($table, $columnName1, $columnValue1, $columnName2=null, $columnValue2=null ) {
             $this->sql = "SELECT * FROM $table WHERE $columnName1 = :$columnName1";
 
-            $result = $this->dbcon->prepare($this->sql);
-            $type = is_int($columnValue1) ? PDO::PARAM_INT : PDO::PARAM_STR;
-            $result->bindValue(":".$columnName1, $columnValue1, $type);
-
             if ($columnName2!=null && $columnValue2!=null) {
                 $this->sql .= " AND $columnName2 = :$columnName2";
 
                 $result = $this->dbcon->prepare($this->sql);
                 $type1 = is_int($columnName2) ? PDO::PARAM_INT : PDO::PARAM_STR;
                 $result->bindValue(":".$columnName2, $columnValue2, $type1);
+            } else {
+                $result = $this->dbcon->prepare($this->sql);
             }
+            
+
+            
+            $type = is_int($columnValue1) ? PDO::PARAM_INT : PDO::PARAM_STR;
+            $result->bindValue(":".$columnName1, $columnValue1, $type);
+
             if ($result->execute()) {
                 return $result->fetch(PDO::FETCH_ASSOC);
             }
@@ -130,9 +134,19 @@ use function PHPSTORM_META\type;
         }
 
         // deleteWhere
-        public function deleteWhere($table, $columnName1, $columnValue1) {
+        public function deleteWhere($table, $columnName1, $columnValue1, $columnName2=null, $columnValue2=null) {
             $this->sql = "DELETE FROM $table WHERE $columnName1 = :keyName";
-            $stmt = $this->dbcon->prepare($this->sql);
+
+            if ($columnName2!=null && $columnValue2!=null) {
+                $this->sql .= " AND $columnName2 = :$columnName2";
+
+                $stmt = $this->dbcon->prepare($this->sql);
+                $type1 = is_int($columnName2) ? PDO::PARAM_INT : PDO::PARAM_STR;
+                $stmt->bindValue(":".$columnName2, $columnValue2, $type1);
+            } else {
+                $stmt = $this->dbcon->prepare($this->sql);
+            }
+
             $type = is_int($columnValue1) ? PDO::PARAM_INT : PDO::PARAM_STR;
             $stmt->bindValue(':keyName', $columnValue1, $type);
             if ($stmt->execute()) {
