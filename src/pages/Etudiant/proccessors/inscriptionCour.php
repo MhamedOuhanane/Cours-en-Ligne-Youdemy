@@ -17,4 +17,10 @@
         if ($requite->insertData('inscriptioncours', $values)) {
             header('Location: '. $_SERVER['HTTP_REFERER']);
         }
+    } else if (isset($_GET['désinscrit'])) {
+        $idCour = $_GET['désinscrit'] ?? null;
+        $delete = $requite->deleteWhere('inscriptioncours', 'id_cour', $idCour, 'id_user', $_SESSION['id_user']);
+        if ($delete == true) {
+            header('Location: '. $_SERVER['HTTP_REFERER']);            
+        }
     } 

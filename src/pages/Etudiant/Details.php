@@ -44,7 +44,7 @@
                     </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="text-gray-600 hover:text-blue-600">
+                    <a href="./Cours.php" class="text-gray-600 hover:text-blue-600">
                         <i class="fas fa-arrow-left mr-2"></i>Retour aux cours
                     </a>
                 </div>
