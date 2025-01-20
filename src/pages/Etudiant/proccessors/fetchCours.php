@@ -14,7 +14,7 @@
         $role = $_SESSION['role'];
     }
 
-    $Cours = $requite->fetchData('listecours', "id_catalogue", $filterCata, "id_tag", $filterTag, "cours_titre", "createDate", $Search);
+    $Cours = $requite->fetchData('listecours', "id_catalogue", $filterCata, "id_tag", $filterTag, "cours_titre", "createDate", $Search, 'Publicé');
     $FormerCours = array_map(function($array) use ($role){
             return [
                 'id_cour' => $array['id_cour'],

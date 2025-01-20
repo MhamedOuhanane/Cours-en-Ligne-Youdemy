@@ -38,7 +38,7 @@
                     <a href="./Profil.php" class="text-blue-600">Profil</a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="./pages/Etudiant/Prfil.php">
+                    <a href="./profil.php">
                         <button class="flex items-center text-gray-700 hover:text-blue-600">
                             <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
                             <span><?= htmlspecialchars($_SESSION['username'])?></span>
@@ -151,7 +151,7 @@
                                         $cours->toStringMesCours($value['id_user']);
                                     }
                                 } else {
-                                    echo '<p class="text-gray-600">Aucun article publié.</p>';
+                                    echo '<p class="text-gray-600">Aucun inscription des cours.</p>';
                                 }
                             ?>
                         </div>

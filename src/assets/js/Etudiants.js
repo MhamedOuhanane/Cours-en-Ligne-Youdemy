@@ -50,7 +50,7 @@ function AfficherEtudiant(params) {
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                             <button data-ban="${element['id_inscription']}" class="banEtudiant text-red-600 hover:text-red-900">
-                                                <i class="fas fa-ban"></i>Ban
+                                                <i class="fas fa-ban"></i> Ban
                                             </button>
                                         </div>
                                     </td>

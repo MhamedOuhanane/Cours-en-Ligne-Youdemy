@@ -62,7 +62,7 @@
                         <span>Mes cours</span>
                     </a>
                     <a href="./MesEtudiant.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
-                        <i class="fas fa-chart-bar mr-3"></i>
+                        <i class="fas fa-users mr-3"></i>
                         <span>Étudiants</span>
                     </a>
                 </nav>

@@ -9,7 +9,6 @@
         $idCours = $_GET['idCours'];
         $listeCour = $requite->selectAll('listecours', 'id_cour', $idCours);
         $Cours = new Cours($listeCour[0]);
-
         $listeIscription = $requite->selectWhere('inscriptioncours', 'id_user', $_SESSION['id_user'], 'id_cour', $idCours);
     }
 ?>
@@ -19,11 +18,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youdemy - Détails du cours</title>
-    <link
-        rel="shortcut icon"
-        href="../../assets/images/logo_icone.png"
-        type="image/png"
-    >
     <link
         rel="shortcut icon"
         href="../../assets/images/logo_icone.png"
@@ -112,15 +106,15 @@
             <!-- Main Content -->
             <div class="md:col-span-2">
                 <!-- About Section -->
-                <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="bg-whiterounded-lg shadow-md p-6 mb-8">
                     <h2 class="text-2xl font-bold mb-4">À propos de ce cours</h2>
-                    <div class="prose max-w-none">
-                        <p class="text-gray-600 mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                        <p class="text-gray-600 mb-4">
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
+                    <div class="flex justify-center">
+                        <!-- contenu de cours -->
+                        <iframe width="600" height="350" src="https://www.youtube.com/embed/awpMvKTvvfM" 
+                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+
                     </div>
                 </div>
 

@@ -9,7 +9,7 @@
     $Search = $_GET['Search'] ?? "";
     
 
-    $Etud = $requite->fetchData('listeinscriptioncours', 'id_catalogue', $filterCata, "","", "username", "createDate",$Search, "id_enseign", $_SESSION['id_user']);
+    $Etud = $requite->fetchData('listeinscriptioncours', 'id_catalogue', $filterCata, "","", "username", "createDate", $Search, null,"id_enseign", $_SESSION['id_user']);
     $FormerCours = array_map(function($array){
         return [
             'id_inscription' => $array['id_inscription'],

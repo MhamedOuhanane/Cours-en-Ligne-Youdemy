@@ -132,7 +132,7 @@
                             <!-- URL Vidéo -->
                             <div id="video_input" class="space-y-2">
                                 <label for="video_url" class="block text-sm font-medium text-gray-700">URL de la vidéo *</label>
-                                <input type="url" value="<?= ($idCour && $cours->getData('type') == "video") ? base64_encode($cours->getData('cours_contenu')) : "" ?>"
+                                <input type="url" value="<?= ($idCour && $cours->getData('type') == "video") ? $cours->getData('cours_video') : "" ?>"
                                     name="video_url" id="video_url" placeholder="https://youtube.com/..."
                                     class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border-[1px] p-2">
                                 <p class="text-sm text-gray-500">Collez l'URL YouTube ou Vimeo de votre vidéo</p>

@@ -1,7 +1,5 @@
 <?php
 
-use function PHPSTORM_META\type;
-
     spl_autoload_register(function($class){
         require $class . ".class.php";
     });
@@ -155,8 +153,11 @@ use function PHPSTORM_META\type;
         }
 
         // fetchData
-        public function fetchData($table, $columnfilter1, $filter1, $columnfilter2, $filter2, $columnsearch1, $columnsearch2, $search, $id_user=null, $enseig = null) {
-            $this->sql = "SELECT * FROM $table WHERE status = 'Publicé'";
+        public function fetchData($table, $columnfilter1, $filter1, $columnfilter2, $filter2, $columnsearch1, $columnsearch2, $search, $status = null, $id_user=null, $enseig = null) {
+            $this->sql = "SELECT * FROM $table WHERE 1";
+            if ($status != null) {
+                $this->sql .= " AND status = '$status'";
+            }
             $params = array();
 
             if ($filter1 != "") {
@@ -178,7 +179,7 @@ use function PHPSTORM_META\type;
             }
 
             $stmt = $this->dbcon->prepare($this->sql);
-
+            
             $stmt->execute($params);
                 return $this->data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }

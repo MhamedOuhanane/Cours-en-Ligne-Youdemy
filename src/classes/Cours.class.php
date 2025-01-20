@@ -7,8 +7,9 @@
         private $id_cour;
         private $cours_titre;
         private $description;
-        private $cours_contenu;
-        private $type;
+        protected $cours_contenu;
+        protected $cours_video;
+        protected $type;
         private $createDate;
         private $status;
         private $imageCours;
@@ -20,6 +21,7 @@
             $this->cours_titre = $Arrays['cours_titre'] ?? null;
             $this->description = $Arrays['description'] ?? null;
             $this->cours_contenu = $Arrays['cours_contenu'] ?? null;
+            $this->cours_video = $Arrays['cours_video'] ?? null;
             $this->type = $Arrays['type'] ?? null;
             $this->createDate = $Arrays['createDate'] ?? null;
             $this->imageCours = $Arrays['imageCours'] ?? null;
@@ -41,6 +43,7 @@
                 'cours_titre' => $this->cours_titre,
                 'description' => $this->description,
                 'cours_contenu' => $this->cours_contenu,
+                'cours_video' => $this->cours_video,
                 'type' => $this->type,
                 'imageCours' => $this-> imageCours,
                 'status' => $this->status,
@@ -140,6 +143,13 @@
                     </div>
                 </div>';
 
+        }
+
+        public function AfficheContenu() {
+            if ($this->type == 'video') {
+                echo '<iframe width="560" height="315" src="'. $this->cours_video .'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+            } else if ($this->type == 'document') {
+            }
         }
 
         public function totalCours() {

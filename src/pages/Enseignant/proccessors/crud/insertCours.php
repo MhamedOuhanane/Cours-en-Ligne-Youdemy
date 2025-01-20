@@ -9,7 +9,7 @@
     if (isset($_POST['submitCours'])) {
         if ($_POST['content_type'] == 'video') {
             $type = 'video';
-            $cours_contenu = base64_decode($_POST['video_url']);
+            $cours_video = $_POST['video_url'];
         } else {
             $type = 'document';
             if (($_FILES['document']['size'] > 0) && ($_FILES['document']['size'] <= 5 *1024*1024)) {
@@ -23,10 +23,12 @@
             'cours_titre' => $_POST['cours_titre'],
             'description' => $_POST['description'],
             'cours_contenu' => $cours_contenu,
+            'cours_video' => $cours_video,
             'type' => $type,
             'imageCours' => $cours_image,
             'id_user' => $_SESSION['id_user'],
-            'id_catalogue' => $_POST['catalogue']
+            'id_catalogue' => $_POST['catalogue'],
+            'status' => 'En Attente'
         ];  
 
         $cours = new Cours($ArrayCours);
@@ -49,9 +51,10 @@
         // $_POST['tags']
     }  else if (isset($_POST['submitModiCours'])) {
         $cours_contenu = null;
+        $cours_video = null;
         if ($_POST['content_type'] == 'video') {
                 $type = 'video';
-                $cours_contenu = base64_decode($_POST['video_url']);
+                $cours_video = $_POST['video_url'];
         } else {
             $type = 'document';
             if (($_FILES['document']['size'] > 0) && ($_FILES['document']['size'] <= 5 *1024*1024)) {
@@ -68,11 +71,17 @@
             'description' => $_POST['description'],
             'type' => $type,
             'imageCours' => $cours_image,
-            'id_catalogue' => $_POST['catalogue']
+            'id_catalogue' => $_POST['catalogue'],
         ];  
 
         if ($cours_contenu != null) {
-            $ArrayCours['cours_contenu'] = $cours_contenu;
+            if ($_POST['content_type'] != 'video') {
+                $ArrayCours['cours_contenu'] = $cours_contenu;
+            } else {
+                $ArrayCours['cours_contenu'] = $cours_video;
+            }
+            
+            
         }
         if ($cours_image != null) {
             $ArrayCours['imageCours'] = $cours_image;

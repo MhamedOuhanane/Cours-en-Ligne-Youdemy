@@ -65,7 +65,7 @@ CREATE TABLE inscriptionCours(
 );
 
 CREATE VIEW listecours AS 
-SELECT c.* ,g.catalogue_titre, g.catalogue_contenu, u.username, u.image, t.*
+SELECT c.* ,g.catalogue_titre, g.catalogue_contenu, u.username, u.email, u.image, t.*
 FROM cours c
 JOIN catalogues g ON c.id_catalogue = g.id_catalogue
 JOIN users u ON u.id_user = c.id_user 
