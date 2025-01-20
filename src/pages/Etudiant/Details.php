@@ -116,36 +116,30 @@
 
                 <!-- Course Content Section -->
                 <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-                    <h2 class="text-2xl font-bold mb-6">Contenu du cours</h2>
-                    <div class="space-y-4">
-                        <!-- Section 1 -->
-                        <div class="border rounded-lg">
-                            <div class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50">
-                                <div class="flex items-center">
-                                    <i class="fas fa-chevron-down mr-4 text-gray-500"></i>
-                                    <div>
-                                        <h3 class="font-semibold">1. Introduction</h3>
-                                        <p class="text-sm text-gray-500">3 leçons • 45 minutes</p>
-                                    </div>
-                                </div>
-                                <span class="text-blue-600">Commencer</span>
-                            </div>
-                        </div>
-
-                        <!-- Section 2 -->
-                        <div class="border rounded-lg">
-                            <div class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50">
-                                <div class="flex items-center">
-                                    <i class="fas fa-chevron-right mr-4 text-gray-500"></i>
-                                    <div>
-                                        <h3 class="font-semibold">2. Les bases de HTML</h3>
-                                        <p class="text-sm text-gray-500">5 leçons • 1h15</p>
-                                    </div>
-                                </div>
-                                <span class="text-gray-500">Verrouillé</span>
-                            </div>
-                        </div>
-                    </div>
+                    <h2 class="text-2xl font-bold mb-6">Informations des Inscriptions</h2>
+                    <table class="min-w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Étudiant
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Date d'Inscription
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="EtudiantRow" class="bg-white divide-y divide-gray-200">
+                            <!-- Student Rows -->
+                            <?php
+                                if ($listeIscription) {
+                                    foreach ($listeIscription as $value) {
+                                        $etudiant = new Etudiant($value);
+                                        $etudiant->toString($value['date_inscret']);
+                                    }
+                                }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
 
                 <!-- Requirements Section -->
@@ -161,20 +155,9 @@
 
             <!-- Sidebar -->
             <div class="md:col-span-1">
-                <!-- Category Info -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-bold mb-4">Catégorie</h3>
-                    <div class="flex items-center text-gray-600 mb-5">
-                        <i class="fas fa-folder-open mr-2"></i>
-                        <span class="text-lg"><?= htmlspecialchars($listeCour[0]['catalogue_titre']) ?></span>
-                    </div>
-                    <span><?= htmlspecialchars($listeCour[0]['catalogue_contenu']) ?></span>
-                </div>
-
-
                 <!-- Course Info Card -->
                 <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-                    <h3 class="text-xl font-bold mb-4">Informations des Inscriptions</h3>
+                    <h3 class="text-xl font-bold mb-4">Informations du cours</h3>
                     <div class="space-y-4">
                         <div class="flex items-center">
                             <i class="fas fa-clock w-6 text-gray-500"></i>
@@ -193,6 +176,16 @@
                             <span class="ml-2">Français</span>
                         </div>
                     </div>
+                </div>
+
+                <!-- Category Info -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold mb-4">Catégorie</h3>
+                    <div class="flex items-center text-gray-600 mb-5">
+                        <i class="fas fa-folder-open mr-2"></i>
+                        <span class="text-lg"><?= htmlspecialchars($listeCour[0]['catalogue_titre']) ?></span>
+                    </div>
+                    <span><?= htmlspecialchars($listeCour[0]['catalogue_contenu']) ?></span>
                 </div>
             </div>
         </div>
