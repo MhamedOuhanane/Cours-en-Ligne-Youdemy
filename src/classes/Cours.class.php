@@ -147,8 +147,18 @@
 
         public function AfficheContenu() {
             if ($this->type == 'video') {
-                echo '<iframe width="560" height="315" src="'. $this->cours_video .'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                
+                echo '<iframe width="600" height="350" src="'.$this->cours_video.'" 
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>';
             } else if ($this->type == 'document') {
+                echo '<iframe 
+                        src="./proccessors/document.php?id=' . $this->id_cour . '" 
+                        style="width: 100%; height: 800px;" 
+                        frameborder="0"
+                        allowfullscreen>
+                    </iframe>';
             }
         }
 

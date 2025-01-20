@@ -7,12 +7,15 @@
     $requite = new Requites();
 
     if (isset($_POST['submitCours'])) {
+        $cours_contenu = null;
+        $cours_video = null;
         if ($_POST['content_type'] == 'video') {
             $type = 'video';
             $cours_video = $_POST['video_url'];
         } else {
             $type = 'document';
             if (($_FILES['document']['size'] > 0) && ($_FILES['document']['size'] <= 5 *1024*1024)) {
+                var_dump($_FILES['document']['size']);
                 $cours_contenu = file_get_contents($_FILES['document']['tmp_name']);
             }
         }

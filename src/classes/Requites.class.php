@@ -192,4 +192,18 @@
             $this->data = $this->data->fetch(PDO::FETCH_ASSOC);
             return $this->data["MAX($columnName)"];
         }
+
+        // document 
+        public function Document($id) {;
+            $query = "SELECT cours_contenu FROM cours WHERE id_cour = ?";
+            $stmt = $this->dbcon->prepare($query);
+            $stmt->execute([$id]);
+            $pdf = $stmt->fetchColumn();
+            
+            header('Content-Type: application/pdf');
+            header('Content-Length: ' . strlen($pdf));
+            
+            echo $pdf;
+            exit;
+        }
     }

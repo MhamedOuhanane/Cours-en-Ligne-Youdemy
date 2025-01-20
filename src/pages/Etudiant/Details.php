@@ -110,11 +110,7 @@
                     <h2 class="text-2xl font-bold mb-4">À propos de ce cours</h2>
                     <div class="flex justify-center">
                         <!-- contenu de cours -->
-                        <iframe width="600" height="350" src="https://www.youtube.com/embed/awpMvKTvvfM" 
-                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                        </iframe>
-
+                        <?php $Cours->AfficheContenu() ?>
                     </div>
                 </div>
 

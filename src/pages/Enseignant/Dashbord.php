@@ -32,7 +32,7 @@
                 </div>
                 <div class="flex items-center space-x-4">
                         <a href="./Dashbord.php">
-                            <button class="flex items-center text-gray-700 hover:text-blue-600">
+                            <button class="flex items-center text-gray-700 hover:text-blue-600 mr-4">
                                 <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
                                 <span><?= htmlspecialchars($_SESSION['username'])?></span>
                             </button>
