@@ -7,6 +7,8 @@
     $roles = new Roles();
     $roles->setData($role);
     $roles->Authan("Enseignant");
+
+    $requite = new Requites();
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +88,7 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-gray-500">Total Cours</p>
-                            <h3 class="text-2xl font-bold">12</h3>
+                            <h3 class="text-2xl font-bold"><?= htmlspecialchars($requite->selectCount('cours', 'id_user', $_SESSION['id_user'])); ?></h3>
                         </div>
                         <div class="bg-blue-100 p-3 rounded-full">
                             <i class="fas fa-book text-blue-600"></i>
@@ -97,24 +99,13 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-gray-500">Total Étudiants</p>
-                            <h3 class="text-2xl font-bold">256</h3>
+                            <h3 class="text-2xl font-bold"><?= htmlspecialchars($requite->selectCount('listeinscriptioncours', 'id_enseign', $_SESSION['id_user'])); ?></h3>
                         </div>
                         <div class="bg-green-100 p-3 rounded-full">
                             <i class="fas fa-users text-green-600"></i>
                         </div>
                     </div>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-gray-500">Taux de Complétion</p>
-                            <h3 class="text-2xl font-bold">75%</h3>
-                        </div>
-                        <div class="bg-purple-100 p-3 rounded-full">
-                            <i class="fas fa-chart-pie text-purple-600"></i>
-                        </div>
-                    </div>
-                </div>
+                </div>  
             </div>
         </main>
     </div>

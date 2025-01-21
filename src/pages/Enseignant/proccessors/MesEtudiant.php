@@ -58,7 +58,7 @@
         <aside class="w-64 bg-white shadow-md fixed h-full">
             <div class="p-6">
                 <nav class="space-y-3">
-                    <a href="../dashboard.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
+                    <a href="../Dashbord.php" class="flex items-center text-gray-600 hover:text-blue-600 py-2 px-4 rounded-lg">
                         <i class="fas fa-chart-line mr-3"></i>
                         <span>Tableau de bord</span>
                     </a>
@@ -79,13 +79,6 @@
             <!-- Header Section -->
             <div class="flex justify-between items-center mb-8">
                 <h1 class="text-2xl font-bold text-gray-800">Gestion des Étudiants</h1>
-                <!-- Stats Cards -->
-                <div class="flex space-x-4">
-                    <div class="bg-white px-6 py-3 rounded-lg shadow-sm">
-                        <span class="text-sm text-gray-500">Total Étudiants</span>
-                        <p class="text-xl font-bold">256</p>
-                    </div>
-                </div>
             </div>
 
             <!-- Search and Filter -->

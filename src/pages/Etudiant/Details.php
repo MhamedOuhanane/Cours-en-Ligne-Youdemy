@@ -1,5 +1,4 @@
 <?php
-    session_start();
     spl_autoload_register(function($class){
         require "../../classes/". $class . ".class.php";
     });
@@ -163,29 +162,6 @@
 
             <!-- Sidebar -->
             <div class="md:col-span-1">
-                <!-- Course Info Card -->
-                <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-                    <h3 class="text-xl font-bold mb-4">Informations du cours</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center">
-                            <i class="fas fa-clock w-6 text-gray-500"></i>
-                            <span class="ml-2">10 heures de contenu</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-video w-6 text-gray-500"></i>
-                            <span class="ml-2">42 leçons</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-graduation-cap w-6 text-gray-500"></i>
-                            <span class="ml-2">Certificat de réussite</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-globe w-6 text-gray-500"></i>
-                            <span class="ml-2">Français</span>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Category Info -->
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-bold mb-4">Catégorie</h3>

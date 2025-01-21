@@ -48,7 +48,6 @@ function AfficherCours(params) {
                                                 <div>
                                                     <p class="text-sm font-semibold">Mr.${element['username']}</p>
                                                     <p class="text-xs text-gray-500">${element['email']}</p>
-                                                    <p class="text-xs text-gray-500">${element['createDate']}</p>
                                                 </div>
                                             </div>
                                             <div class="catalog flex items-center justify-between">

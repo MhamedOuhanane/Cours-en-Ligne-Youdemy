@@ -6,7 +6,7 @@
     $role = $_SESSION['role'] ?? null;
     $roles = new Roles();
     $roles->setData($role);
-    $roles->Authan(NULL);
+    $roles->Authan($role);
 
     $requite = new Requites();
 

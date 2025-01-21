@@ -86,7 +86,7 @@
         }
 
         // selectCount
-        public function selectCount($table, $columnName1 = null, $columnValue1 = null) {
+        public function selectCount($table, $columnName1 = null, $columnValue1 = null, $columnName2 = null, $columnValue2 = null) {
             $this->sql = "SELECT COUNT(*) FROM $table ";
             $result = $this->dbcon->query($this->sql);
 
@@ -95,7 +95,10 @@
                 $result = $this->dbcon->prepare($this->sql);
                 $type = is_int($columnValue1) ? PDO::PARAM_INT : PDO::PARAM_STR;
                 $result->bindValue(":$columnName1", $columnValue1, $type);
-            }
+            } 
+
+            
+            
             if ($result->execute()) {
                 $this->data = $result->fetch(PDO::FETCH_ASSOC);
                 return $this->data["COUNT(*)"];

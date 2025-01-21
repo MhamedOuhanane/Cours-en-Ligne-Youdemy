@@ -146,11 +146,6 @@
             <!-- Charts Section -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
                 <div class="bg-white rounded-xl shadow-sm p-6">
-                    <h3 class="text-xl font-semibold mb-4">Évolution des Inscriptions</h3>
-                    <canvas id="enrollmentsChart" height="200"></canvas>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-sm p-6">
                     <h3 class="text-xl font-semibold mb-4">Répartition des Cours</h3>
                     <canvas id="coursesChart" height="200"></canvas>
                 </div>
@@ -197,63 +192,6 @@
         </main>
     </div>
 
-    <script>
-        // Configuration des graphiques
-        const enrollmentsCtx = document.getElementById('enrollmentsChart').getContext('2d');
-        const coursesCtx = document.getElementById('coursesChart').getContext('2d');
-
-        // Graphique des inscriptions
-        new Chart(enrollmentsCtx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
-                datasets: [{
-                    label: 'Inscriptions',
-                    data: [65, 85, 110, 95, 130, 150],
-                    borderColor: '#3B82F6',
-                    tension: 0.3,
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        // Graphique des cours
-        new Chart(coursesCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Développement', 'Design', 'Marketing', 'Business'],
-                datasets: [{
-                    data: [45, 25, 20, 10],
-                    backgroundColor: [
-                        '#3B82F6',
-                        '#10B981',
-                        '#F59E0B',
-                        '#6366F1'
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
-                    }
-                }
-            }
-        });
-    </script>
+    <script src="../../assets/js/Admine.js"></script>
 </body>
 </html>
