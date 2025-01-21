@@ -74,9 +74,9 @@
                 <div class="flex justify-between items-center">
                     <h2 class="text-2xl font-bold text-gray-800">Utilisateurs</h2>
                     <div class="flex items-center space-x-4">
-                        <a href="./pages/Etudiant/Prfil.php">
+                        <a href="../Dashbord.php">
                             <button class="flex items-center text-gray-700 hover:text-blue-600">
-                                <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Etudiant" class="w-8 h-8 rounded-full mr-2">
+                                <img src="data:image/png;base64,<?= htmlspecialchars($_SESSION['image'])?>" alt="Admine" class="w-8 h-8 rounded-full mr-2">
                                 <span><?= htmlspecialchars($_SESSION['username'])?></span>
                             </button>
                         </a>

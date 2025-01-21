@@ -36,7 +36,6 @@ function AfficherVéhicules(params) {
             if (element['status'] == 'En Attente') {
                 status = "bg-yellow-100 text-yellow-800"
             }
-            console.log(element['status']);
             
             CoursesGrid.innerHTML += `<div id='Cours${element['id_cour']}' class="CarteCours bg-white rounded-lg shadow-md overflow-hidden">
                                             <div class="relative">
@@ -59,26 +58,21 @@ function AfficherVéhicules(params) {
                                                         ${element['createDate']}
                                                     </span>
                                                 </div>
-                                                <div class="flex justify-end space-x-4">
-                                                    <a href="./addCours.php?Modify=${element['id_cour']}">
-                                                        <button class="text-blue-600 hover:bg-blue-50 rounded-lg">
-                                                            <i class="fas fa-edit"></i>
-                                                        </button>
-                                                    </a>
-                                                    <button data-delete="${element['id_cour']}" class="deleteCours text-red-600 hover:bg-red-50 rounded-lg">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </div>
+                                                <div class="crudCours flex justify-end space-x-4">`;
+                                            if (element['status'] == 'En Attente') { 
+                                                    crudCours = document.querySelector(`#Cours${element['id_cour']} .crudCours`);
+                                                    crudCours.innerHTML = ` <a href="./addCours.php?Modify=${element['id_cour']}">
+                                                                                <button class="text-blue-600 hover:bg-blue-50 rounded-lg">
+                                                                                    <i class="fas fa-edit"></i>
+                                                                                </button>
+                                                                            </a>
+                                                                            <button data-delete="${element['id_cour']}" class="deleteCours text-red-600 hover:bg-red-50 rounded-lg">
+                                                                                <i class="fas fa-trash"></i>
+                                                                            </button>`;
+                                            }
+                                                `</div>
                                             </div>
                                         </div>`;
-            // let continaire = document.querySelector(`#contTags${element['id_cour']}`);
-            // continaire = '';
-            // params.forEach(elem => {
-            //     if (id_cours == elem['id_cours']) {
-            //         continaire += `<span class="bg-purple-100 text-gray-600 text-sm px-3 py-1 rounded-full">${elem['tag_Titre']}</span>`;
-            //     }
-            // });
-
         }
     });
     let deleteBTN = document.querySelectorAll('.deleteCours');

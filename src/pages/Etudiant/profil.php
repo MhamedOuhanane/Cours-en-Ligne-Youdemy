@@ -1,5 +1,4 @@
 <?php
-    session_start();
     spl_autoload_register(function($class){
         require "../../classes/". $class . ".class.php";
     });
@@ -7,7 +6,7 @@
     $role = $_SESSION['role'] ?? null;
     $roles = new Roles();
     $roles->setData($role);
-    $roles->Authan($role);
+    $roles->Authan("Etudiant");
     
     $requite = new Requites();
 ?>

@@ -36,17 +36,17 @@
             return $this->$name;
         }
 
-        // public function GETCOURS() {
-        //     $requite = new Requites();
-        //     $Result = $requite->selectAll('cours');
-        //     $Cours = [];
+        public function GETCOURS() {
+            $requite = new Requites();
+            $Result = $requite->selectAll('cours');
+            $Cours = [];
             
-        //     foreach ($Result as $row) {
-        //         $Cours[] = new Cours($row);
-        //     }
+            foreach ($Result as $row) {
+                $Cours[] = new Cours($row);
+            }
 
-        //     return $Cours;
-        // }
+            return $Cours;
+        }
 
         function AjouterData() {
             $requite = new Requites();
