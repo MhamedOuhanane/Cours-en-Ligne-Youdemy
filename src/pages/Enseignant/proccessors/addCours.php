@@ -3,12 +3,19 @@
         require "../../../classes/". $class . ".class.php";
     });
     session_start();
+    $role = $_SESSION['role'] ?? null;
+    $roles = new Roles();
+    $roles->setData($role);
+    $roles->Authan("Enseignant");
+
     $requite = new Requites();
 
     $idCour = $_GET['Modify'] ?? null;
     if ($idCour) {
         $dataCour = $requite->selectWhere('cours', 'id_cour', $_GET['Modify']);
         $cours = new Cours($dataCour);
+    } else {
+        $roles->Authan("Enseignant");
     }
 ?>
 

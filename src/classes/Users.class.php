@@ -77,6 +77,8 @@
                         $_SESSION['ville'] = $users['ville'];
                         $_SESSION['role'] = $this->role;
 
+                        $this->Authan(null);
+
                     } else {
                         $erreur = 'Le mot de pas est inccorect . ';
                         header("Location: ../connexion.php?erreur=$erreur");

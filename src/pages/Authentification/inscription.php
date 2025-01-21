@@ -1,3 +1,14 @@
+<?php 
+    spl_autoload_register(function($class){
+        require "../../classes/". $class . ".class.php";
+    });
+    session_start();
+    $role = $_SESSION['role'] ?? null;
+    $roles = new Roles();
+    $roles->setData($role);
+    $roles->Authan($role);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

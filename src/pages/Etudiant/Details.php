@@ -5,11 +5,19 @@
     });
     $requite = new Requites();
 
+    session_start();
+    $role = $_SESSION['role'] ?? null;
+    $roles = new Roles();
+    $roles->setData($role);
+    $roles->Authan("Etudiant");
+
     if (isset($_GET['idCours'])) {
         $idCours = $_GET['idCours'];
         $listeCour = $requite->selectAll('listecours', 'id_cour', $idCours);
         $Cours = new Cours($listeCour[0]);
         $listeIscription = $requite->selectWhere('inscriptioncours', 'id_user', $_SESSION['id_user'], 'id_cour', $idCours);
+    } else {
+        $roles->Authan(NULL);
     }
 ?>
 <!DOCTYPE html>

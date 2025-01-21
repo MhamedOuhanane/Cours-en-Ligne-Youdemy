@@ -3,6 +3,11 @@
         require "../../../classes/". $class . ".class.php";
     });
     session_start();
+    $role = $_SESSION['role'] ?? null;
+    $roles = new Roles();
+    $roles->setData($role);
+    $roles->Authan("Admine");
+
     $requite = new Requites();
     $role = new Roles();
     $role->setData('Enseignant');

@@ -8,26 +8,18 @@
         protected $id_role;
         protected $role;
 
-        // private function __construct($url) {
-            
-        //     $current_url = $_SERVER['REQUEST_URI'];
-        //     $source_index = '/Cours-en-Ligne-Youdemy/src/';
-
-        //     if (($current_url != $source_index) && ($current_url != $source_index . 'index.php')) {
-        //         header("Location: $source_index");
-        //     } else {
-        //         if ($role != null) {
-        //             if ($role == 'Admine') {
-        //                 # code...
-        //             } if (condition) {
-        //                 # code...
-        //             } else {
-        //                 # code...
-        //             }
-                    
-        //         }
-        //     }
-        // }
+        public function Authan($roleUser = null) {
+            $raelpath = realpath(__DIR__.'./src/');
+            if ($this->role != $roleUser) {
+                if ($this->role == 'Admine') {
+                    header("Location: $raelpath/Cours-en-Ligne-Youdemy/src/pages/Admine/Dashbord.php");
+                } else if ($this->role == 'Enseignant') {
+                    header("Location: $raelpath/Cours-en-Ligne-Youdemy/src/pages/Enseignant/Dashbord.php");
+                } else {
+                    header("Location: $raelpath/Cours-en-Ligne-Youdemy/src/");
+                }      
+            }
+        }
 
         public function setData($role) {
             $requite = new Requites();

@@ -3,6 +3,10 @@
         require "./classes/". $class . ".class.php";
     });
     session_start();
+    $role = $_SESSION['role'] ?? null;
+    $roles = new Roles();
+    $roles->setData($role);
+    $roles->Authan(NULL);
 ?>
 
 <!DOCTYPE html>
