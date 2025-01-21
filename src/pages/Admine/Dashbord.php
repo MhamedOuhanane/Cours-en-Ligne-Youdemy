@@ -14,6 +14,7 @@
     $tags = new tags([]);
 
     $liste = $requite->GroupOrder('listeinscriptioncours', 'users', 'id_enseign', 'id_user', 'id_enseign', 'Totale');
+    
 ?>
 
 
