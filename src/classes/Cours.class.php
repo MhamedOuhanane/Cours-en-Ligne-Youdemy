@@ -31,12 +31,17 @@
             $this->id_user = $Arrays['id_user'] ?? null;
         }
         
+        function setData($name, $value)
+        {
+            return $this->$name;
+        }
+
         function getData($name)
         {
             return $this->$name;
         }
 
-        public function GETCOURS() {
+        public static function GETCOURS() {
             $requite = new Requites();
             $Result = $requite->selectAll('cours');
             $Cours = [];

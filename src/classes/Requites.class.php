@@ -195,18 +195,14 @@
             $this->data = $this->data->fetch(PDO::FETCH_ASSOC);
             return $this->data["MAX($columnName)"];
         }
+        
+        public function GroupOrder($table1, $table2, $conditionJoin1, $conditionJoin2, $conditionGroup, $conditionOrder) {
+            $this->sql = "SELECT $table2.*, COUNT(*) AS Totale FROM $table1 LEFT JOIN $table2 ON $table2.$conditionJoin2 = $table1.$conditionJoin1 GROUP BY $conditionGroup ORDER BY $conditionOrder";
+            $this->data = $this->dbcon->query($this->sql);
+            if ($this->data->execute()) {
+                return $this->data->fetchAll(PDO::FETCH_ASSOC);
+            }
+        } 
 
-        // document 
-        public function Document($id) {;
-            $query = "SELECT cours_contenu FROM cours WHERE id_cour = ?";
-            $stmt = $this->dbcon->prepare($query);
-            $stmt->execute([$id]);
-            $pdf = $stmt->fetchColumn();
-            
-            header('Content-Type: application/pdf');
-            header('Content-Length: ' . strlen($pdf));
-            
-            echo $pdf;
-            exit;
-        }
+
     }

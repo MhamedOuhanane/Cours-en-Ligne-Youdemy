@@ -12,6 +12,8 @@
     $users = new Users([]);
     $cours = new Cours([]);
     $tags = new tags([]);
+
+    $liste = $requite->GroupOrder('listeinscriptioncours', 'users', 'id_enseign', 'id_user', 'id_enseign', 'Totale');
 ?>
 
 
@@ -143,47 +145,50 @@
                 </div>
             </div>
 
-            <!-- Charts Section -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Charts Section -->
                 <div class="bg-white rounded-xl shadow-sm p-6">
                     <h3 class="text-xl font-semibold mb-4">Répartition des Cours</h3>
                     <canvas id="coursesChart" height="200"></canvas>
                 </div>
-            </div>
 
-            <!-- Recent Activities with Top Teachers -->
-            <div class="bg-white rounded-xl shadow-sm p-6">
-                    <h3 class="text-xl font-semibold mb-4">Top 3 Enseignants</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center py-3 border-b">
-                            <div class="p-3 bg-yellow-100 rounded-full mr-4">
-                                <i class="fas fa-trophy text-yellow-500"></i>
+                <!-- Recent Activities with Top Teachers -->
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h3 class="text-xl font-semibold mb-4">Top 3 Enseignants</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center py-3 border-b">
+                                <div class="p-3 bg-yellow-100 rounded-full mr-4">
+                                    <i class="fas fa-trophy text-yellow-500"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium"><?= (isset($liste[0])) ? $liste[0]['username'] : '____'?></p>
+                                    <p class="text-sm text-gray-500"><?= (isset($liste[0])) ? $liste[0]['email'] : '____'?></p>
+                                    <p class="text-sm text-gray-500">Totale d'inscription : <?= (isset($liste[0])) ? $liste[0]['Totale'] : '____'?></p>
+                                </div>
+                                <span class="text-green-500 font-bold">1er</span>
                             </div>
-                            <div class="flex-1">
-                                <p class="font-medium">Sarah Martin</p>
-                                <p class="text-sm text-gray-500">Développement Web - 4.9★ (156 avis)</p>
+                            <div class="flex items-center py-3 border-b">
+                                <div class="p-3 bg-gray-100 rounded-full mr-4">
+                                    <i class="fas fa-medal text-gray-500"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium"><?= (isset($liste[1])) ? $liste[1]['username'] : '____'?></p>
+                                    <p class="text-sm text-gray-500"><?= (isset($liste[1])) ? $liste[1]['email'] : '____'?></p>
+                                    <p class="text-sm text-gray-500">Totale d'inscription : <?= (isset($liste[1])) ? $liste[1]['Totale'] : '____'?></p>
+                                </div>
+                                <span class="text-blue-500 font-bold">2ème</span>
                             </div>
-                            <span class="text-green-500 font-bold">1er</span>
-                        </div>
-                        <div class="flex items-center py-3 border-b">
-                            <div class="p-3 bg-gray-100 rounded-full mr-4">
-                                <i class="fas fa-medal text-gray-500"></i>
+                            <div class="flex items-center py-3">
+                                <div class="p-3 bg-orange-100 rounded-full mr-4">
+                                    <i class="fas fa-award text-orange-500"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium"><?= (isset($liste[2])) ? $liste[2]['username'] : '____'?></p>
+                                    <p class="text-sm text-gray-500"><?= (isset($liste[2])) ? $liste[2]['email'] : '____'?></p>
+                                    <p class="text-sm text-gray-500">Totale d'inscription : <?= (isset($liste[2])) ? $liste[2]['Totale'] : '____'?></p>
+                                </div>
+                                <span class="text-orange-500 font-bold">3ème</span>
                             </div>
-                            <div class="flex-1">
-                                <p class="font-medium">Jean Dubois</p>
-                                <p class="text-sm text-gray-500">Design UX/UI - 4.8★ (132 avis)</p>
-                            </div>
-                            <span class="text-blue-500 font-bold">2ème</span>
-                        </div>
-                        <div class="flex items-center py-3">
-                            <div class="p-3 bg-orange-100 rounded-full mr-4">
-                                <i class="fas fa-award text-orange-500"></i>
-                            </div>
-                            <div class="flex-1">
-                                <p class="font-medium">Marie Laurent</p>
-                                <p class="text-sm text-gray-500">Marketing Digital - 4.7★ (98 avis)</p>
-                            </div>
-                            <span class="text-orange-500 font-bold">3ème</span>
                         </div>
                     </div>
                 </div>

@@ -64,7 +64,7 @@ const DashboardManager = {
         });
         
         
-        const ctx = document.getElementById('categoriesChart')?.getContext('2d');
+        const ctx = document.getElementById('coursesChart')?.getContext('2d');
         if (!ctx) return;
 
         new Chart(ctx, {
